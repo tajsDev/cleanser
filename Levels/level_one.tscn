@@ -1,3 +1,25 @@
-[gd_scene format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=5 format=3 uid="uid://1psxygxh4rvo"]
+
+[ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_ethjy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6em2m"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ojdt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vn6oh"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -3.17217, 0)
+mesh = SubResource("BoxMesh_6em2m")
+skeleton = NodePath("../Player")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+physics_material_override = SubResource("PhysicsMaterial_6ojdt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_vn6oh")
+
+[node name="Player" parent="." instance=ExtResource("1_ethjy")]
+slide_on_ceiling = false
