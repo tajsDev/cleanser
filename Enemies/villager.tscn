@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1wudx2rbpiji"]
 
-[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_hb361"]
+[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_hedpv"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_l1ex3"]
 
@@ -18,4 +18,4 @@ mesh = SubResource("CylinderMesh_l1ex3")
 shape = SubResource("ConcavePolygonShape3D_mf800")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-script = ExtResource("1_hb361")
+script = ExtResource("1_hedpv")

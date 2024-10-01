@@ -3,7 +3,7 @@ extends Camera3D
 @onready var Player = get_parent()
 
 ## Increase this value to give a slower turn speed
-const CAMERA_TURN_SPEED = 200
+const CAMERA_TURN_SPEED = 150
 
 func _ready():
 	## Tell Godot that we want to handle input

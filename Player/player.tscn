@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=8 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
+[ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_may0v"]
 
@@ -24,6 +25,7 @@ script = ExtResource("1_7jrg8")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496753, -0.439856)
 environment = SubResource("Environment_tl3qk")
+script = ExtResource("2_urfap")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConcavePolygonShape3D_l2r0u")
