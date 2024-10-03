@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=8 format=3 uid="uid://1psxygxh4rvo"]
 
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_ethjy"]
-[ext_resource type="PackedScene" uid="uid://d1wudx2rbpiji" path="res://Enemies/villager.tscn" id="2_fppoc"]
+[ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/villager.tscn" id="2_fppoc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ilk5"]
 albedo_color = Color(0.384314, 0.356863, 0.211765, 1)
@@ -12,6 +12,8 @@ material = SubResource("StandardMaterial3D_0ilk5")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ojdt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vn6oh"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_312ki"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -26,8 +28,11 @@ physics_material_override = SubResource("PhysicsMaterial_6ojdt")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
 shape = SubResource("BoxShape3D_vn6oh")
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Ground"]
+navigation_mesh = SubResource("NavigationMesh_312ki")
+
 [node name="Player" parent="." instance=ExtResource("1_ethjy")]
 slide_on_ceiling = false
 
 [node name="Villager" parent="." instance=ExtResource("2_fppoc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28868, -0.642321, -18.1474)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.96662, -14.4861)
