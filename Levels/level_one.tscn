@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=9 format=3 uid="uid://1psxygxh4rvo"]
 
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_ethjy"]
+[ext_resource type="Script" path="res://Scripts/nav_mesh.gd" id="1_vmttd"]
 [ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/villager.tscn" id="2_fppoc"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_5e0kf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ilk5"]
 albedo_color = Color(0.384314, 0.356863, 0.211765, 1)
@@ -9,30 +12,31 @@ albedo_color = Color(0.384314, 0.356863, 0.211765, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_6em2m"]
 material = SubResource("StandardMaterial3D_0ilk5")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ojdt"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_hw4xq"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vn6oh"]
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_312ki"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_2fyjp"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -3.17217, 0)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0.482352, 0)
+navigation_mesh = SubResource("NavigationMesh_5e0kf")
+script = ExtResource("1_vmttd")
+
+[node name="Ground" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.482352, 0)
 mesh = SubResource("BoxMesh_6em2m")
-skeleton = NodePath("../Player")
+skeleton = NodePath("../../Player")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
-physics_material_override = SubResource("PhysicsMaterial_6ojdt")
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Ground"]
+physics_material_override = SubResource("PhysicsMaterial_hw4xq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource("BoxShape3D_vn6oh")
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Ground"]
-navigation_mesh = SubResource("NavigationMesh_312ki")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground/StaticBody3D"]
+shape = SubResource("BoxShape3D_2fyjp")
 
 [node name="Player" parent="." instance=ExtResource("1_ethjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48737, 0)
 slide_on_ceiling = false
 
 [node name="Villager" parent="." instance=ExtResource("2_fppoc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.96662, -14.4861)
+transform = Transform3D(1, 0, 0, 0, 0.999997, 0.00260054, 0, -0.00260054, 0.999997, 0, 0.99937, -3.88667)
