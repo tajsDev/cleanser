@@ -1,17 +1,25 @@
 extends CharacterBody3D
-@export var player: Node3D
+
 @export var movement_speed: float = 4.0
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	await get_tree().physics_frame 
-	set_movement_target(Vector3(-1,0,-1))
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
 func set_movement_target(movement_target: Vector3):
 	navigation_agent.set_target_position(movement_target)
 
-func _physics_process(_delta):
+func set_enemy_pos(pos: Vector3):
+	global_position = pos
+	
+
+
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+		
 	if navigation_agent.is_navigation_finished():
 		return
 
@@ -20,8 +28,9 @@ func _physics_process(_delta):
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.velocity = new_velocity
 	else:
+
+			
 		_on_velocity_computed(new_velocity)
-	print(next_path_position)
 
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
