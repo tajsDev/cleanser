@@ -9,6 +9,6 @@ func _ready() -> void:
 	var mob = mob_scene.instantiate()
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
-	mob.set_enemy_pos(global_position)
+	mob.set_global_pos(global_position)
 	mob.scale = scale
-	mob.set_movement_target(Player.global_position)
+	mob.player = Player

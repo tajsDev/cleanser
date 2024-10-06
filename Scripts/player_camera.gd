@@ -62,4 +62,3 @@ func _leave_tree():
 	"""
 	Show the mouse when we leave
 	"""
-
