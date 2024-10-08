@@ -6,5 +6,8 @@ var speed = 10.0
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_cleanse"):
 		var spell = cleanse_spell.instantiate()
-		add_child(spell)
+		spell.global_rotation = global_rotation 
+		get_tree().get_root().add_child(spell)
+		spell.global_position = global_position
+		spell = null
 	
