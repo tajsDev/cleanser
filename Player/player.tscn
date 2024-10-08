@@ -27,10 +27,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496753, -0.439856)
 environment = SubResource("Environment_tl3qk")
 script = ExtResource("2_urfap")
 
-[node name="cleanse_book" type="Node3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.176023, -0.137452)
+[node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.557247)
 script = ExtResource("3_gbmod")
 cleanse_spell = ExtResource("4_6e4mh")
+cam = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_tjmev")

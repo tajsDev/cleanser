@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mjfsd"]
+radius = 0.505267
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woaj5"]
 

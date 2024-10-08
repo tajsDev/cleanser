@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://pavqsibir81r"]
+[gd_scene load_steps=7 format=3 uid="uid://pavqsibir81r"]
 
 [ext_resource type="Script" path="res://Scripts/cleanse_spell.gd" id="1_qgssp"]
 [ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_fdbjq"]
@@ -6,12 +6,17 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]
 size = Vector3(0.408722, 0.562622, 1.17816)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fogoq"]
+albedo_color = Color(0.109804, 0.341176, 1, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_5v8nw"]
+material = SubResource("StandardMaterial3D_fogoq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cbofx"]
 size = Vector3(0.256958, 0.565674, 1.09204)
 
 [node name="Cleanse" type="RigidBody3D"]
+mass = 0.1
 gravity_scale = 0.5
 script = ExtResource("1_qgssp")
 
