@@ -24,6 +24,8 @@ mesh = SubResource("SphereMesh_s4y53")
 avoidance_enabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_mjfsd")
