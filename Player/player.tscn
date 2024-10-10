@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=11 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
+[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_may0v"]
 
@@ -28,7 +29,7 @@ environment = SubResource("Environment_tl3qk")
 script = ExtResource("2_urfap")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.557247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.236415)
 script = ExtResource("3_gbmod")
 cleanse_spell = ExtResource("4_6e4mh")
 cam = NodePath("..")
@@ -39,3 +40,6 @@ shape = SubResource("CylinderShape3D_tjmev")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_d4wt4")
 skeleton = NodePath("../..")
+
+[node name="HealthManager" type="Node3D" parent="."]
+script = ExtResource("5_md0m2")

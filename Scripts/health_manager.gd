@@ -5,7 +5,7 @@ signal hurts
 signal healed
 signal health_changed
 signal gibbed
-
+#this works
 @export var max_health = 100
 var cur_health = 1
 
@@ -16,7 +16,7 @@ func init():
 	cur_health = max_health
 	emit_signal("health_changed", cur_health)
 
-func hurt(damage: int, dir: Vector3):
+func hurt(damage: int):
 	if cur_health <= 0:
 		return
 	cur_health -= damage

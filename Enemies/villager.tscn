@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://busavbu5ruen3"]
+[gd_scene load_steps=7 format=3 uid="uid://busavbu5ruen3"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
+[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_0s4dt"]
+[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mjfsd"]
 radius = 0.505267
@@ -24,8 +26,15 @@ mesh = SubResource("SphereMesh_s4y53")
 avoidance_enabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 16
-collision_mask = 16
+disable_mode = 1
+script = ExtResource("2_0s4dt")
+
+[node name="HealthManager" type="Node3D" parent="Area3D"]
+script = ExtResource("3_uwt3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_mjfsd")
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="dead" from="Area3D/HealthManager" to="." method="_on_health_manager_dead"]
+[connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

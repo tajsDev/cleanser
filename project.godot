@@ -60,6 +60,11 @@ ui_cleanse={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Obs"
+3d_physics/layer_2="Enemies"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -33,3 +33,7 @@ func _physics_process(delta):
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
 	move_and_slide()
+
+
+func _on_health_manager_dead() -> void:
+	queue_free()
