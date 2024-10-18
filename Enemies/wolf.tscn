@@ -1,26 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://busavbu5ruen3"]
+[gd_scene load_steps=6 format=3 uid="uid://busavbu5ruen3"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
 [ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_0s4dt"]
+[ext_resource type="Texture2D" uid="uid://ddmvn4vg7i1a0" path="res://Assets/Images/wolf.png" id="2_d7ubs"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mjfsd"]
 radius = 0.505267
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_woaj5"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_s4y53"]
-material = SubResource("StandardMaterial3D_woaj5")
-
-[node name="Villager" type="CharacterBody3D"]
+[node name="wolf" type="CharacterBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 slide_on_ceiling = false
 script = ExtResource("1_rd73b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_mjfsd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_s4y53")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("2_d7ubs")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -33,8 +31,10 @@ script = ExtResource("2_0s4dt")
 script = ExtResource("3_uwt3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.121037, 0)
 shape = SubResource("SphereShape3D_mjfsd")
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="." method="_on_health_manager_dead"]
+[connection signal="gibbed" from="Area3D/HealthManager" to="." method="_on_health_manager_gibbed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

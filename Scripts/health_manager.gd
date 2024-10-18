@@ -23,7 +23,7 @@ func hurt(damage: int):
 	if cur_health <= 0:
 		emit_signal("dead")
 	else:
-		emit_signal("hurt")
+		emit_signal("gibbed")
 	emit_signal("health_changed")
 
 func heal(amount: int):

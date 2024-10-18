@@ -10,5 +10,4 @@ func _ready() -> void:
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 	mob.set_global_pos(global_position)
-	mob.scale = scale
 	mob.player = Player

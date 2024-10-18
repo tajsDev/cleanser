@@ -37,3 +37,7 @@ func _on_velocity_computed(safe_velocity: Vector3):
 
 func _on_health_manager_dead() -> void:
 	queue_free()
+
+
+func _on_health_manager_gibbed() -> void:
+	pass # Replace with function body.
