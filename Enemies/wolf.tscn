@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://busavbu5ruen3"]
+[gd_scene load_steps=7 format=3 uid="uid://busavbu5ruen3"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
 [ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_0s4dt"]
 [ext_resource type="Texture2D" uid="uid://ddmvn4vg7i1a0" path="res://Assets/Images/wolf.png" id="2_d7ubs"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
+[ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="4_tca0n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mjfsd"]
 radius = 0.505267
@@ -26,6 +27,7 @@ avoidance_enabled = true
 [node name="Area3D" type="Area3D" parent="."]
 disable_mode = 1
 script = ExtResource("2_0s4dt")
+bubble = ExtResource("4_tca0n")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]
 script = ExtResource("3_uwt3k")

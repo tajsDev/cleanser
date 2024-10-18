@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddp0d67qg62j3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8g8sx"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.388235, 1, 0.552941)
+
+[sub_resource type="SphereMesh" id="SphereMesh_im0lt"]
+material = SubResource("StandardMaterial3D_8g8sx")
+
+[node name="Bubble" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+mesh = SubResource("SphereMesh_im0lt")
