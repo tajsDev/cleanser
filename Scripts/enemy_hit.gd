@@ -17,11 +17,12 @@ func _on_area_entered(area: Area3D) -> void:
 
 
 func _on_health_manager_hurts() -> void:
-	if(health_mang.cur_health > 50):
-		health_mang.hurt(10)
-	else:
-		if(bubble != null && !bubble_on):
-			bubble_on = true
-			var bub = bubble.instantiate()
-			add_child(bub)
+	if(!bubble_on):
+		if(health_mang.cur_health > 50):
+			health_mang.hurt(10)
+		else:
+			if(bubble != null): 
+				bubble_on = true
+				var bub = bubble.instantiate()
+				add_child(bub)
 	
