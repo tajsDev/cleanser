@@ -36,7 +36,11 @@ script = ExtResource("3_uwt3k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.121037, 0)
 shape = SubResource("SphereShape3D_mjfsd")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="." method="_on_health_manager_dead"]
 [connection signal="gibbed" from="Area3D/HealthManager" to="." method="_on_health_manager_gibbed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

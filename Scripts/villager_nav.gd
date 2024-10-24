@@ -1,8 +1,10 @@
 extends CharacterBody3D
 
 var player: Node3D
+@export var start_seconds = 4
 @export var movement_speed: float = 4.0
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
+@onready var heal_timer = $Timer
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var cleansed = true
 
@@ -23,8 +25,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta * movement_speed
 		move_and_slide()
-	if(!cleansed):
-		return
+	if(cleansed):
+		heal_timer.start(start_seconds)
 	set_movement_target(player.global_position)
 
 
@@ -38,11 +40,20 @@ func _physics_process(delta):
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
 	move_and_slide()
+func healPlayer():
+	print(player.play_health)
+	queue_free()
 
 
 func _on_health_manager_dead() -> void:
+	
 	queue_free()
 
 
 func _on_health_manager_gibbed() -> void:
 	pass # Replace with function body.
+
+
+func _on_timer_timeout() -> void:
+	print("timer")
+	healPlayer()
