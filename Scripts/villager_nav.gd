@@ -6,7 +6,7 @@ var player: Node3D
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
 @onready var heal_timer = $Timer
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var cleansed = true
+var cleansed = false
 
 func _ready() -> void:
 	await get_tree().physics_frame 
@@ -26,7 +26,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta * movement_speed
 		move_and_slide()
 	if(cleansed):
-		heal_timer.start(start_seconds)
+		return
 	set_movement_target(player.global_position)
 
 
@@ -40,13 +40,13 @@ func _physics_process(delta):
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
 	move_and_slide()
+	
 func healPlayer():
 	print(player.play_health)
-	queue_free()
+	heal_timer.start(start_seconds)
 
 
 func _on_health_manager_dead() -> void:
-	
 	queue_free()
 
 
@@ -55,5 +55,9 @@ func _on_health_manager_gibbed() -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("timer")
+	queue_free()
+
+
+func _on_area_3d_changed() -> void:
+	cleansed = true 
 	healPlayer()
