@@ -15,23 +15,23 @@ material = SubResource("StandardMaterial3D_fogoq")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cbofx"]
 size = Vector3(0.256958, 0.565674, 1.09204)
 
-[node name="Cleanse" type="RigidBody3D"]
+[node name="Cleanse" type="RigidBody3D" groups=["projectile"]]
 mass = 0.1
 gravity_scale = 0.5
 script = ExtResource("1_qgssp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["projectile"]]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00498505, 0.0176331, -0.00469666)
 shape = SubResource("BoxShape3D_kv8pk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["projectile"]]
 transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_5v8nw")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["projectile"]]
 script = ExtResource("2_fdbjq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["projectile"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00238037, 0.00183105, -0.010376)
 shape = SubResource("BoxShape3D_cbofx")
 
