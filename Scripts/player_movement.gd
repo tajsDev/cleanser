@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-@onready var play_health = $HealthManager
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
