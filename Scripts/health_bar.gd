@@ -1,11 +1,12 @@
-extends Node
+extends Control
 
+@export var health_mang:Node3D
+@onready var health_bar = $HealthBar
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	# Initialize the health bar.
+	update_health_bar()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func update_health_bar():
+	var curr_health = clamp(health_mang.current_health, 0, health_mang.max_health)
+	health_bar.value = curr_health
