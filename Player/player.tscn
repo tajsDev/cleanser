@@ -69,7 +69,7 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_osvox")
 max_value = 0.0
 show_percentage = false
 
-[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer"]
+[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("health_mang")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -87,9 +87,10 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_pik6u")
 value = 100.0
 show_percentage = false
 script = ExtResource("3_qw161")
+health_mang = NodePath("../../../Area3D/HealthManager")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.236415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -1.8336)
 script = ExtResource("3_gbmod")
 cleanse_spell = ExtResource("4_6e4mh")
 cam = NodePath("..")
@@ -102,6 +103,7 @@ mesh = SubResource("CapsuleMesh_d4wt4")
 skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0481567)
 script = ExtResource("5_wq1dv")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]

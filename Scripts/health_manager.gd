@@ -7,7 +7,7 @@ signal health_changed
 signal gibbed
 #this works
 @export var max_health = 100
-var cur_health = 1
+@export var cur_health = 1
 
 func _ready():
 	init()

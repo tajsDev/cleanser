@@ -15,11 +15,9 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	if(area.is_in_group("projectile")):
-		if(health_mang.cur_health < 50):
-			emit_signal("changed")
-		else:
-			_on_health_manager_hurts()
-
+		_on_health_manager_hurts()
+	elif (area.is_in_group("healing")):
+		emit_signal("changed")
 
 func _on_health_manager_hurts() -> void:
 	if(!bubble_on):
