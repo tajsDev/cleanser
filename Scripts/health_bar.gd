@@ -8,5 +8,6 @@ func _ready():
 	update_health_bar()
 
 func update_health_bar():
-	var curr_health = clamp(health_mang.current_health, 0, health_mang.max_health)
-	health_bar.value = curr_health
+	#var curr_health = clamp(health_mang.current_health, 0, health_mang.max_health)
+	#health_bar.value = curr_health
+	pass
