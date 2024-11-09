@@ -22,6 +22,8 @@ project/assembly_name="Cleanser"
 [global_group]
 
 projectile=""
+healing=""
+enemy_proj=""
 
 [input]
 

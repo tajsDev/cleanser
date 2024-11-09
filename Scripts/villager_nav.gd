@@ -42,7 +42,6 @@ func _on_velocity_computed(safe_velocity: Vector3):
 	move_and_slide()
 	
 func healPlayer():
-	print(player.play_health)
 	heal_timer.start(start_seconds)
 
 
@@ -55,6 +54,7 @@ func _on_health_manager_gibbed() -> void:
 
 
 func _on_timer_timeout() -> void:
+	player.play_health.heal(5)
 	queue_free()
 
 
