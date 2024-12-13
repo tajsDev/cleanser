@@ -7,18 +7,19 @@
 [ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="4_tca0n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mjfsd"]
-radius = 0.505267
+radius = 0.211225
 
-[node name="wolf" type="CharacterBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+[node name="wolf" type="CharacterBody3D" groups=["enemy_proj"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.0857544)
 slide_on_ceiling = false
 script = ExtResource("1_rd73b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.288242, 0.857452)
 shape = SubResource("SphereShape3D_mjfsd")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.78653)
 texture = ExtResource("2_d7ubs")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -33,8 +34,8 @@ bubble = ExtResource("4_tca0n")
 [node name="HealthManager" type="Node3D" parent="Area3D"]
 script = ExtResource("3_uwt3k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.121037, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy_proj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.121037, 0.593445)
 shape = SubResource("SphereShape3D_mjfsd")
 
 [node name="Timer" type="Timer" parent="."]

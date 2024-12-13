@@ -41,8 +41,10 @@ height = 0.253943
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_d4wt4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fnev5"]
+height = 0.631898
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("play_health")]
+input_ray_pickable = false
 script = ExtResource("1_7jrg8")
 play_health = NodePath("Area3D/HealthManager")
 
@@ -106,16 +108,17 @@ mesh = SubResource("CapsuleMesh_d4wt4")
 skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.08627, -0.403183)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.08627, 0.121277)
 disable_mode = 2
 input_ray_pickable = false
 script = ExtResource("5_wq1dv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.64673, 0.39064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3833, -0.412735)
 shape = SubResource("CylinderShape3D_fnev5")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.43655, 0)
 script = ExtResource("5_md0m2")
 
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

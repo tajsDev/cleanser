@@ -14,7 +14,6 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area3D) -> void:
-	print(area)
 	if(area.is_in_group("projectile")):
 		_on_health_manager_hurts()
 	elif (area.is_in_group("healing")):
