@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://dg3uuu1k34vev"]
+
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_n5wto"]
+[ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="2_46wyf"]
+[ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_806my"]
+[ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="4_wreoa"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
+vertices = PackedVector3Array(-49.5, -326.191, -49.5, -49.5, -326.191, 49.5, 49.5, -326.191, 49.5, 49.5, -326.191, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4mi"]
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("3_806my")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_h4xos"]
+material = SubResource("StandardMaterial3D_6e4mi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0lig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_oryo4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Spawner2" type="Node3D" parent="." node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.4218, 16.4736, 312.596)
+script = ExtResource("1_n5wto")
+Player = NodePath("../Player")
+mob_scene = ExtResource("2_46wyf")
+
+[node name="Spawner" type="Node3D" parent="." node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2368, 325.636)
+script = ExtResource("1_n5wto")
+Player = NodePath("../Player")
+mob_scene = ExtResource("2_46wyf")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 27.6162, 0)
+navigation_mesh = SubResource("NavigationMesh_2683e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -376.691, 0)
+mesh = SubResource("BoxMesh_h4xos")
+
+[node name="Area3D" type="Area3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_t0lig")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_mn6p3")
+
+[node name="Player" parent="." instance=ExtResource("4_wreoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48737, 378.167)
+slide_on_ceiling = false
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Walls2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, 49.042, 0.933586, 366.921)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Walls3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, -43.7165, 0.933586, 366.921)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Walls4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 313.125)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Walls" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 417.372)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -106.789)
+
+[node name="Walls2" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, 49.042, 0.933586, 366.921)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Walls3" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, -43.7165, 0.933586, 366.921)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Walls4" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 313.125)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Walls" type="MeshInstance3D" parent="Node3D2"]
+transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 417.372)
+mesh = SubResource("BoxMesh_oryo4")
+skeleton = NodePath("../../Player")
+
+[node name="Spawner3" type="Node3D" parent="." node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70766, 16.4736, 312.596)
+script = ExtResource("1_n5wto")
+Player = NodePath("../Player")
+mob_scene = ExtResource("2_46wyf")

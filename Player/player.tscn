@@ -108,17 +108,18 @@ mesh = SubResource("CapsuleMesh_d4wt4")
 skeleton = NodePath("../..")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.08627, 0.121277)
-disable_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.16908, -1.51577)
+disable_mode = 1
 input_ray_pickable = false
 script = ExtResource("5_wq1dv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3833, -0.412735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3833, 1.09785)
 shape = SubResource("CylinderShape3D_fnev5")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.43655, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

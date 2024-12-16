@@ -4,7 +4,6 @@ var bullet_speed = 50.0
 var direction: Vector3
 
 func _ready() -> void:
-	print(position)
 	direction = -transform.basis.z.normalized()
 
 func _physics_process(delta: float) -> void:

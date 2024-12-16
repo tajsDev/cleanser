@@ -1,6 +1,5 @@
 extends Area3D
 @onready var health_mang = $HealthManager
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -13,10 +12,8 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	print(area)
-	if(area.is_in_group("enemy_proj")):
-		print("hurts")
-		_on_health_manager_hurts()
-
 
 func _on_health_manager_hurts() -> void:
-	health_mang.hurts(10)
+	health_mang.hurt(10)
+
+	
