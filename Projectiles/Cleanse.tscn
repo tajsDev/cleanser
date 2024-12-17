@@ -1,16 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://pavqsibir81r"]
+[gd_scene load_steps=6 format=3 uid="uid://pavqsibir81r"]
 
 [ext_resource type="Script" path="res://Scripts/cleanse_spell.gd" id="1_qgssp"]
 [ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_fdbjq"]
+[ext_resource type="Texture2D" uid="uid://2bn8tjxyqe6b" path="res://Assets/Images/holy_spell.png" id="3_dgbyn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]
 size = Vector3(0.408722, 0.562622, 1.17816)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fogoq"]
-albedo_color = Color(0.109804, 0.341176, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5v8nw"]
-material = SubResource("StandardMaterial3D_fogoq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cbofx"]
 size = Vector3(0.256958, 0.565674, 1.09204)
@@ -24,16 +19,15 @@ script = ExtResource("1_qgssp")
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00498505, 0.0176331, -0.00469666)
 shape = SubResource("BoxShape3D_kv8pk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["projectile"]]
-transform = Transform3D(0.25, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_5v8nw")
-
 [node name="Area3D" type="Area3D" parent="." groups=["healing"]]
 script = ExtResource("2_fdbjq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["healing"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00238037, 0.00183105, -0.010376)
 shape = SubResource("BoxShape3D_cbofx")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("3_dgbyn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

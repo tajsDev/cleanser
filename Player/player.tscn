@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=21 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
+[ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_may0v"]
 
@@ -98,6 +99,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
 script = ExtResource("3_gbmod")
 cleanse_spell = ExtResource("4_6e4mh")
 cam = NodePath("..")
+action = "ui_cleanse"
+
+[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
+script = ExtResource("3_gbmod")
+cleanse_spell = ExtResource("6_riwv4")
+cam = NodePath("..")
+action = "ui_attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.903381, 0)

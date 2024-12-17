@@ -22,11 +22,12 @@ func set_global_pos(pos: Vector3):
 
 func _physics_process(delta): 
 	look_at(player.global_position)
+	if(cleansed):
+		return
 	if not is_on_floor():
 		velocity.y -= gravity * delta * movement_speed
 		move_and_slide()
-	if(cleansed):
-		return
+
 	set_movement_target(player.global_position)
 
 

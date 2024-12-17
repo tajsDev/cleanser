@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bv40vp3xgoi22"]
+
+[ext_resource type="Script" path="res://Scripts/cleanse_spell.gd" id="1_ggvvu"]
+[ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_4k2mk"]
+[ext_resource type="Texture2D" uid="uid://7ebmfrplb77k" path="res://Assets/Images/attack_spell.png" id="3_5cp2w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]
+size = Vector3(0.408722, 0.562622, 1.17816)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbofx"]
+size = Vector3(0.256958, 0.565674, 1.09204)
+
+[node name="Attack" type="RigidBody3D" groups=["projectile"]]
+mass = 0.1
+gravity_scale = 0.5
+script = ExtResource("1_ggvvu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["projectile"]]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00498505, 0.0176331, -0.00469666)
+shape = SubResource("BoxShape3D_kv8pk")
+
+[node name="Area3D" type="Area3D" parent="." groups=["projectile"]]
+script = ExtResource("2_4k2mk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["projectile"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00238037, 0.00183105, -0.010376)
+shape = SubResource("BoxShape3D_cbofx")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("3_5cp2w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

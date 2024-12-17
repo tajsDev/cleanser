@@ -6,20 +6,20 @@
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
 [ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="4_tca0n"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_mjfsd"]
-radius = 0.29809
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_53kpa"]
+height = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yture"]
 size = Vector3(1, 0.563232, 0.393677)
 
 [node name="wolf" type="CharacterBody3D" groups=["enemy_proj"]]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.0857544)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
 slide_on_ceiling = false
 script = ExtResource("1_rd73b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.35099, 0.778411)
-shape = SubResource("SphereShape3D_mjfsd")
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.356212, 0.778411)
+shape = SubResource("CylinderShape3D_53kpa")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.78653)
@@ -35,7 +35,7 @@ script = ExtResource("2_0s4dt")
 bubble = ExtResource("4_tca0n")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.588531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0953622)
 script = ExtResource("3_uwt3k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy_proj"]]
