@@ -18,6 +18,5 @@ func _physics_process(_delta):
 		spell = null
 	
 
-
-func _on_heal_timer_timeout() -> void:
+func _on_attack_timer_timeout() -> void:
 	canShoot = true

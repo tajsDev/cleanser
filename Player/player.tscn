@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=22 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
+[ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_may0v"]
@@ -94,18 +95,25 @@ show_percentage = false
 script = ExtResource("3_qw161")
 health_mang = NodePath("../../../Area3D/HealthManager")
 
-[node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam")]
+[node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
 script = ExtResource("3_gbmod")
 cleanse_spell = ExtResource("4_6e4mh")
 cam = NodePath("..")
+cooldown_timer = NodePath("../heal_timer")
 action = "ui_cleanse"
 
-[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam")]
+[node name="heal_timer" type="Timer" parent="Camera3D"]
+
+[node name="attack_timer" type="Timer" parent="Camera3D"]
+wait_time = 0.5
+
+[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
-script = ExtResource("3_gbmod")
+script = ExtResource("6_ih34o")
 cleanse_spell = ExtResource("6_riwv4")
 cam = NodePath("..")
+cooldown_timer = NodePath("../attack_timer")
 action = "ui_attack"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -130,5 +138,7 @@ shape = SubResource("CylinderShape3D_fnev5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
+[connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
+[connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

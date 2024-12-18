@@ -22,14 +22,16 @@ func set_global_pos(pos: Vector3):
 
 func _physics_process(delta): 
 	look_at(player.global_position)
-	if(cleansed):
-		return
+
+		
 	if not is_on_floor():
 		velocity.y -= gravity * delta * movement_speed
 		move_and_slide()
 
 	set_movement_target(player.global_position)
-
+	
+	if(cleansed):
+		navigation_agent.set_target_position(global_position)
 
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * movement_speed
