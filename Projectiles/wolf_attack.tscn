@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://da2nbp14db2xt"]
+
+[ext_resource type="Script" path="res://Scripts/wolf_attack.gd" id="1_875eb"]
+[ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_wwrb3"]
+[ext_resource type="Texture2D" uid="uid://7ebmfrplb77k" path="res://Assets/Images/attack_spell.png" id="3_yfucv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]
+size = Vector3(0.408722, 0.562622, 1.17816)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbofx"]
+size = Vector3(0.256958, 0.565674, 1.09204)
+
+[node name="wolf_attack" type="RigidBody3D" groups=["enemy_proj"]]
+mass = 0.1
+gravity_scale = 0.5
+script = ExtResource("1_875eb")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["enemy_proj"]]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -0.00498505, 0.0176331, -0.00469666)
+shape = SubResource("BoxShape3D_kv8pk")
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemy_proj"]]
+script = ExtResource("2_wwrb3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy_proj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00238037, 0.00183105, -0.010376)
+shape = SubResource("BoxShape3D_cbofx")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("3_yfucv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

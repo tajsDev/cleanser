@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://busavbu5ruen3"]
+[gd_scene load_steps=12 format=3 uid="uid://busavbu5ruen3"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
 [ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_0s4dt"]
 [ext_resource type="Texture2D" uid="uid://ddmvn4vg7i1a0" path="res://Assets/Images/wolf.png" id="2_d7ubs"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
+[ext_resource type="Script" path="res://Scripts/enemy_changed.gd" id="3_wd4mw"]
+[ext_resource type="Texture2D" uid="uid://by2r6jg4wgtt4" path="res://Assets/Images/wolf_walk.png" id="4_a72jn"]
 [ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="4_tca0n"]
+[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="6_yvq5v"]
+[ext_resource type="PackedScene" uid="uid://da2nbp14db2xt" path="res://Projectiles/wolf_attack.tscn" id="7_dbk6d"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_53kpa"]
 height = 0.5
@@ -24,6 +28,8 @@ shape = SubResource("CylinderShape3D_53kpa")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.78653)
 texture = ExtResource("2_d7ubs")
+script = ExtResource("3_wd4mw")
+changed = ExtResource("4_a72jn")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
@@ -46,9 +52,21 @@ shape = SubResource("BoxShape3D_yture")
 wait_time = 4.0
 one_shot = true
 
+[node name="Attack" type="Node3D" parent="." node_paths=PackedStringArray("navigation_agent", "canTimer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.156273, 0.467789)
+script = ExtResource("6_yvq5v")
+navigation_agent = NodePath("../NavigationAgent3D")
+projectile_scene = ExtResource("7_dbk6d")
+canTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Attack"]
+
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]
+[connection signal="changed" from="Area3D" to="Sprite3D" method="_on_area_3d_changed"]
+[connection signal="changed" from="Area3D" to="Attack" method="_on_area_3d_changed"]
 [connection signal="dead" from="Area3D/HealthManager" to="." method="_on_health_manager_dead"]
 [connection signal="gibbed" from="Area3D/HealthManager" to="." method="_on_health_manager_gibbed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Attack/Timer" to="Attack" method="_on_timer_timeout"]

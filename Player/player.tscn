@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=24 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
@@ -31,10 +31,16 @@ modulate_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osvox"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_pitk5"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_komhb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqqfc"]
+texture = SubResource("CanvasTexture_komhb")
+modulate_color = Color(0.807843, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_np8vb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pik6u"]
-texture = SubResource("CanvasTexture_pitk5")
+texture = SubResource("CanvasTexture_np8vb")
 modulate_color = Color(0.301961, 1, 0.47451, 1)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tjmev"]
@@ -46,6 +52,7 @@ height = 0.253943
 height = 0.631898
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("play_health")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.158524)
 input_ray_pickable = false
 script = ExtResource("1_7jrg8")
 play_health = NodePath("Area3D/HealthManager")
@@ -75,7 +82,25 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_osvox")
 max_value = 0.0
 show_percentage = false
 
-[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("health_mang")]
+[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -334.0
+offset_top = -61.0
+offset_right = -29.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_32wf2")
+theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jqqfc")
+value = 100.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("health_mang", "health_bar")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -88,12 +113,12 @@ offset_bottom = -34.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_32wf2")
-theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
 theme_override_styles/fill = SubResource("StyleBoxTexture_pik6u")
 value = 100.0
 show_percentage = false
 script = ExtResource("3_qw161")
 health_mang = NodePath("../../../Area3D/HealthManager")
+health_bar = NodePath(".")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
@@ -131,7 +156,7 @@ input_ray_pickable = false
 script = ExtResource("5_wq1dv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3833, 1.09785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.3833, 1.56156)
 shape = SubResource("CylinderShape3D_fnev5")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]
@@ -141,4 +166,5 @@ script = ExtResource("5_md0m2")
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/HealthBar" method="_on_health_manager_health_changed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
