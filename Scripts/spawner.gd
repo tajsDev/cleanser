@@ -3,7 +3,7 @@ extends Node3D
 @export var mob_scene: PackedScene
 
 
-func _ready() -> void:
+func spawn() -> void:
 	await get_tree().physics_frame 
 	# Create a new instance of the Mob scene.sa
 	var mob = mob_scene.instantiate()
