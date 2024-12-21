@@ -16,4 +16,5 @@ func _on_area_entered(area: Area3D) -> void:
 func _on_health_manager_hurts() -> void:
 	health_mang.hurt(10)
 
-	
+func _on_health_manager_dead() -> void:
+	get_tree().paused = true

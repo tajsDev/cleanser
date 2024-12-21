@@ -100,6 +100,7 @@ spawn_timer = NodePath("spawner_timer")
 num_of_enemies = 5
 
 [node name="spawner_timer" type="Timer" parent="spawn_tracker"]
+wait_time = 2.0
 
 [node name="Spawner3" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70766, 16.4736, 312.596)

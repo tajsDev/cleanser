@@ -131,7 +131,7 @@ action = "ui_cleanse"
 [node name="heal_timer" type="Timer" parent="Camera3D"]
 
 [node name="attack_timer" type="Timer" parent="Camera3D"]
-wait_time = 0.5
+wait_time = 0.3
 
 [node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
@@ -166,5 +166,6 @@ script = ExtResource("5_md0m2")
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="dead" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_dead"]
 [connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/HealthBar" method="_on_health_manager_health_changed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
