@@ -1,10 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=27 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
+[ext_resource type="Script" path="res://Scripts/hands_animation.gd" id="3_r3d6r"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
+[ext_resource type="Texture2D" uid="uid://dqud41y1q1d1l" path="res://Assets/Images/attack_hand.png" id="4_j73wc"]
+[ext_resource type="Texture2D" uid="uid://gtljyv7q11w0" path="res://Assets/Images/cleanse_hand.png" id="5_0qpb3"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
@@ -29,13 +32,13 @@ ambient_light_color = Color(1, 1, 1, 1)
 texture = SubResource("CanvasTexture_eh203")
 modulate_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osvox"]
-
 [sub_resource type="CanvasTexture" id="CanvasTexture_komhb"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jqqfc"]
 texture = SubResource("CanvasTexture_komhb")
 modulate_color = Color(0.807843, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osvox"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_np8vb"]
 
@@ -64,34 +67,27 @@ script = ExtResource("2_urfap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
 
-[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -343.0
-offset_top = -69.0
-offset_right = -19.0
-offset_bottom = -24.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = SubResource("Theme_32wf2")
-theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
-theme_override_styles/fill = SubResource("StyleBoxTexture_osvox")
-max_value = 0.0
-show_percentage = false
+[node name="Sprite2D" type="Sprite2D" parent="Camera3D/CanvasLayer"]
+position = Vector2(586, 362)
+scale = Vector2(5, 5)
+texture = ExtResource("4_j73wc")
+script = ExtResource("3_r3d6r")
+attack_sprite = ExtResource("4_j73wc")
+cleanse_sprite = ExtResource("5_0qpb3")
 
-[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer"]
+[node name="Node2D" type="Node2D" parent="Camera3D/CanvasLayer"]
+position = Vector2(33, 567)
+
+[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Node2D"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -334.0
-offset_top = -61.0
-offset_right = -29.0
-offset_bottom = -34.0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 35.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_32wf2")
@@ -100,16 +96,32 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_jqqfc")
 value = 100.0
 show_percentage = false
 
-[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("health_mang", "health_bar")]
+[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Node2D"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -333.0
-offset_top = -61.0
-offset_right = -28.0
-offset_bottom = -34.0
+offset_right = 324.0
+offset_bottom = 45.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_32wf2")
+theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
+theme_override_styles/fill = SubResource("StyleBoxTexture_osvox")
+max_value = 0.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Node2D" node_paths=PackedStringArray("health_mang", "health_bar")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 315.0
+offset_bottom = 35.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_32wf2")
@@ -117,7 +129,7 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_pik6u")
 value = 100.0
 show_percentage = false
 script = ExtResource("3_qw161")
-health_mang = NodePath("../../../Area3D/HealthManager")
+health_mang = NodePath("../../../../Area3D/HealthManager")
 health_bar = NodePath(".")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
@@ -167,5 +179,5 @@ script = ExtResource("5_md0m2")
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_dead"]
-[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/HealthBar" method="_on_health_manager_health_changed"]
+[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Node2D/HealthBar" method="_on_health_manager_health_changed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
