@@ -16,7 +16,7 @@ func choose_and_spawn_child():
 			random_child.spawn()
 
 # Called when the node is added to the scene
-func start():
+func start() -> void:
 	# Get all Node3D children
 	for child in get_children():
 		if child is Node3D:
@@ -29,3 +29,7 @@ func _on_spawner_timer_timeout() -> void:
 	choose_and_spawn_child()
 	if num_of_enemies > 0:
 		spawn_timer.start()
+
+
+func _on_area_3d_spawning() -> void:
+	start()

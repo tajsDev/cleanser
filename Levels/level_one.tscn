@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=14 format=3 uid="uid://1psxygxh4rvo"]
 
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_ethjy"]
-[ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_qes0c"]
-[ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="2_1ccay"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_10vvo"]
-[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="3_f733j"]
+[ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="3_s4y4l"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
 vertices = PackedVector3Array(-49.5, -326.191, -49.5, -49.5, -326.191, 49.5, 49.5, -326.191, 49.5, 49.5, -326.191, -49.5)
@@ -23,7 +21,17 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_oryo4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cuyi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_74tj2"]
+material = SubResource("StandardMaterial3D_0cuyi")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cqjkk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wksja"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b5rjh"]
+size = Vector3(8.23027, 1.71553, 3.6311)
 
 [node name="level_one" type="Node3D"]
 
@@ -46,78 +54,59 @@ shape = SubResource("BoxShape3D_t0lig")
 shape = SubResource("BoxShape3D_mn6p3")
 
 [node name="Player" parent="." instance=ExtResource("1_ethjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48737, 378.167)
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 slide_on_ceiling = false
 
 [node name="box1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4572, 1.14171, 390.764)
 
-[node name="Walls2" type="MeshInstance3D" parent="box1"]
-transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, 49.042, 0.933586, 366.921)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="wall1" type="MeshInstance3D" parent="box1"]
+transform = Transform3D(-9.99828, -0.185343, 0, 0.185343, -9.99828, 0, 0, 0, 10, 20.4177, 0, 0)
+mesh = SubResource("BoxMesh_74tj2")
 
-[node name="Walls3" type="MeshInstance3D" parent="box1"]
-transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, -43.7165, 0.933586, 366.921)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="StaticBody3D" type="StaticBody3D" parent="box1/wall1"]
+physics_material_override = SubResource("PhysicsMaterial_cqjkk")
 
-[node name="Walls4" type="MeshInstance3D" parent="box1"]
-transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 313.125)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box1/wall1/StaticBody3D"]
+shape = SubResource("BoxShape3D_wksja")
 
-[node name="Walls" type="MeshInstance3D" parent="box1"]
-transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 417.372)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="wall2" type="MeshInstance3D" parent="box1"]
+transform = Transform3D(-9.99828, -0.185345, 0, 0.185345, -9.99828, 0, 0, 0, 60, 10.727, 0, -24.6639)
+mesh = SubResource("BoxMesh_74tj2")
 
-[node name="box2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -106.789)
+[node name="StaticBody3D" type="StaticBody3D" parent="box1/wall2"]
+physics_material_override = SubResource("PhysicsMaterial_cqjkk")
 
-[node name="Walls2" type="MeshInstance3D" parent="box2"]
-transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, 49.042, 0.933586, 366.921)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box1/wall2/StaticBody3D"]
+shape = SubResource("BoxShape3D_wksja")
 
-[node name="Walls3" type="MeshInstance3D" parent="box2"]
-transform = Transform3D(-4.37114e-06, -10, 0, -4.37114e-06, 1.91069e-14, -10, 100, -4.37114e-07, -4.37114e-07, -43.7165, 0.933586, 366.921)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="wall3" type="MeshInstance3D" parent="box1"]
+transform = Transform3D(-9.99828, -0.185345, 0, 0.185345, -9.99828, 0, 0, 0, 60, 29.2067, 0, -24.6639)
+mesh = SubResource("BoxMesh_74tj2")
 
-[node name="Walls4" type="MeshInstance3D" parent="box2"]
-transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 313.125)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="StaticBody3D" type="StaticBody3D" parent="box1/wall3"]
+physics_material_override = SubResource("PhysicsMaterial_cqjkk")
 
-[node name="Walls" type="MeshInstance3D" parent="box2"]
-transform = Transform3D(100, 0, 0, 0, 10, 0, 0, 0, 10, 1.87384, 1.48737, 417.372)
-mesh = SubResource("BoxMesh_oryo4")
-skeleton = NodePath("../../Player")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box1/wall3/StaticBody3D"]
+shape = SubResource("BoxShape3D_wksja")
 
-[node name="spawn_tracker" type="Node3D" parent="." node_paths=PackedStringArray("spawn_timer")]
-script = ExtResource("3_f733j")
-spawn_timer = NodePath("spawner_timer")
-num_of_enemies = 5
+[node name="spawn_tracker" parent="." instance=ExtResource("3_s4y4l")]
 
-[node name="spawner_timer" type="Timer" parent="spawn_tracker"]
-wait_time = 2.0
-
-[node name="Spawner3" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70766, 16.4736, 312.596)
-script = ExtResource("1_qes0c")
+[node name="Spawner3" parent="spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 Player = NodePath("../../Player")
-mob_scene = ExtResource("2_1ccay")
 
-[node name="Spawner" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.2368, 325.636)
-script = ExtResource("1_qes0c")
+[node name="Spawner" parent="spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 Player = NodePath("../../Player")
-mob_scene = ExtResource("2_1ccay")
 
-[node name="Spawner2" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.4218, 16.4736, 312.596)
-script = ExtResource("1_qes0c")
+[node name="Spawner2" parent="spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 Player = NodePath("../../Player")
-mob_scene = ExtResource("2_1ccay")
 
-[connection signal="timeout" from="spawn_tracker/spawner_timer" to="spawn_tracker" method="_on_spawner_timer_timeout"]
+[node name="Area3D" parent="spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89669, 0, 332.272)
+
+[node name="CollisionShape3D" parent="spawn_tracker/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.990138, -3.83714, 3.66962)
+shape = SubResource("BoxShape3D_b5rjh")
+
+[editable path="spawn_tracker"]

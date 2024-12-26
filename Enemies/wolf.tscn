@@ -144,6 +144,7 @@ animation = NodePath("../AnimatedSprite3D")
 canTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Attack"]
+wait_time = 2.0
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0121045, 0.0966873, 0.925661)

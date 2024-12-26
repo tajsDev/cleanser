@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://co8ick0fwky3m"]
+
+[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="1_3naa3"]
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_0mc4y"]
+[ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="3_nd1r2"]
+[ext_resource type="Script" path="res://Scripts/spawn_active.gd" id="4_iyqxf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
+size = Vector3(1, 0.1, 1)
+
+[node name="spawn_tracker" type="Node3D" node_paths=PackedStringArray("spawn_timer")]
+script = ExtResource("1_3naa3")
+spawn_timer = NodePath("spawner_timer")
+num_of_enemies = 5
+
+[node name="spawner_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Spawner3" type="Node3D" parent="."]
+script = ExtResource("2_0mc4y")
+mob_scene = ExtResource("3_nd1r2")
+
+[node name="Spawner" type="Node3D" parent="."]
+script = ExtResource("2_0mc4y")
+mob_scene = ExtResource("3_nd1r2")
+
+[node name="Spawner2" type="Node3D" parent="."]
+script = ExtResource("2_0mc4y")
+mob_scene = ExtResource("3_nd1r2")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("4_iyqxf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_1e2bb")
+
+[connection signal="timeout" from="spawner_timer" to="." method="_on_spawner_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="spawning" from="Area3D" to="." method="_on_area_3d_spawning"]
