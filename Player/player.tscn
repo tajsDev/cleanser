@@ -146,9 +146,10 @@ cooldown_timer = NodePath("../heal_timer")
 action = "ui_cleanse"
 
 [node name="heal_timer" type="Timer" parent="Camera3D"]
+wait_time = 2.0
 
 [node name="attack_timer" type="Timer" parent="Camera3D"]
-wait_time = 0.3
+wait_time = 0.2
 
 [node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)

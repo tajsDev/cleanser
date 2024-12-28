@@ -29,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00238037, 0.00183105, -0.01
 shape = SubResource("BoxShape3D_cbofx")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
 texture = ExtResource("3_yfucv")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
