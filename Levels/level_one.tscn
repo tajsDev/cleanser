@@ -162,4 +162,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89669, 0, 332.272)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
+[node name="Barrier" parent="spawn_tracker" index="5"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -36.8667, 0, 264.743)
+
 [editable path="spawn_tracker"]

@@ -3,7 +3,7 @@ extends Node3D
 @export var spawn_timer: Timer
 @export var num_of_enemies: int
 var children = []
-
+@onready var barrier = $Barrier
 # Function to choose a random child and activate its spawn
 func choose_and_spawn_child():
 	if num_of_enemies > 0:
@@ -29,6 +29,9 @@ func _on_spawner_timer_timeout() -> void:
 	choose_and_spawn_child()
 	if num_of_enemies > 0:
 		spawn_timer.start()
+	else: 
+		barrier.queue_free()
+		queue_free()
 
 
 func _on_area_3d_spawning() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://co8ick0fwky3m"]
+[gd_scene load_steps=9 format=3 uid="uid://co8ick0fwky3m"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="1_3naa3"]
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_0mc4y"]
@@ -8,7 +8,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
 size = Vector3(1, 0.1, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwbik"]
+transparency = 1
+albedo_color = Color(1, 0.223529, 0.0392157, 0.439216)
+
 [sub_resource type="BoxMesh" id="BoxMesh_x6wrl"]
+material = SubResource("StandardMaterial3D_vwbik")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qhm0d"]
 
@@ -38,12 +43,12 @@ script = ExtResource("4_iyqxf")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_1e2bb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Barrier" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_x6wrl")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Barrier"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrier/StaticBody3D"]
 shape = SubResource("BoxShape3D_qhm0d")
 
 [connection signal="timeout" from="spawner_timer" to="." method="_on_spawner_timer_timeout"]

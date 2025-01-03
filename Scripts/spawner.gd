@@ -8,6 +8,6 @@ func spawn() -> void:
 	
 	var mob = mob_scene.instantiate()
 	# Spawn the mob by adding it to the Main scene.
-	add_child(mob)
+	get_tree().get_root().add_child(mob) 
 	mob.set_global_pos(global_position)
 	mob.player = Player
