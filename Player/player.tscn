@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=28 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
+[ext_resource type="Script" path="res://Scripts/paused_button.gd" id="7_spkb6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_may0v"]
 
@@ -77,10 +78,10 @@ script = ExtResource("3_r3d6r")
 attack_sprite = ExtResource("4_j73wc")
 cleanse_sprite = ExtResource("5_0qpb3")
 
-[node name="Node2D" type="Node2D" parent="Camera3D/CanvasLayer"]
+[node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer"]
 position = Vector2(12, 529)
 
-[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Node2D"]
+[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -97,7 +98,7 @@ max_value = 0.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Node2D"]
+[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -116,7 +117,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Node2D" node_paths=PackedStringArray("health_mang", "health_bar")]
+[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI" node_paths=PackedStringArray("health_mang", "health_bar")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -136,6 +137,9 @@ script = ExtResource("3_qw161")
 health_mang = NodePath("../../../../Area3D/HealthManager")
 health_bar = NodePath(".")
 metadata/_edit_use_anchors_ = true
+
+[node name="Paused" type="Node2D" parent="Camera3D/CanvasLayer"]
+script = ExtResource("7_spkb6")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
@@ -181,9 +185,10 @@ shape = SubResource("CylinderShape3D_fnev5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
+[connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_dead"]
-[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Node2D/HealthBar" method="_on_health_manager_health_changed"]
+[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Health UI/HealthBar" method="_on_health_manager_health_changed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

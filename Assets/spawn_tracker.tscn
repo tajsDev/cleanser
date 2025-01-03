@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://co8ick0fwky3m"]
+[gd_scene load_steps=8 format=3 uid="uid://co8ick0fwky3m"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="1_3naa3"]
 [ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_0mc4y"]
@@ -7,6 +7,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
 size = Vector3(1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6wrl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhm0d"]
 
 [node name="spawn_tracker" type="Node3D" node_paths=PackedStringArray("spawn_timer")]
 script = ExtResource("1_3naa3")
@@ -33,6 +37,14 @@ script = ExtResource("4_iyqxf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_1e2bb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_x6wrl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_qhm0d")
 
 [connection signal="timeout" from="spawner_timer" to="." method="_on_spawner_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]

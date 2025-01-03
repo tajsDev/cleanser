@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 4.5
-
+signal paused
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var play_health: Node3D
@@ -12,7 +12,7 @@ func _physics_process(delta):
 		velocity.y += JUMP_VELOCITY
 		
 	if Input.is_action_just_pressed("ui_cancel") : 
-		get_tree().quit()
+		emit_signal("paused")
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

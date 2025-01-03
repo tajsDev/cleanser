@@ -18,4 +18,6 @@ func _on_health_manager_hurts() -> void:
 	health_mang.hurt(10)
 
 func _on_health_manager_dead() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_tree().paused = true
