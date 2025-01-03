@@ -6,7 +6,7 @@ signal paused
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var play_health: Node3D
-
+	
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") && is_on_floor() : 
 		velocity.y += JUMP_VELOCITY

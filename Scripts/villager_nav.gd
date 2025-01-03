@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 var player: Node3D
+static var saved: int = 0 
 @export var start_seconds = 4
 @export var movement_speed: float = 7.0
 @export var healing: int = 5
@@ -11,6 +12,8 @@ var cleansed = false
 
 func _ready() -> void:
 	await get_tree().physics_frame 
+	if (!player):
+		player = $Area3D
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
 func set_movement_target(movement_target: Vector3):
@@ -66,4 +69,5 @@ func _on_timer_timeout() -> void:
 
 func _on_area_3d_changed() -> void:
 	cleansed = true 
+	saved+=1
 	healPlayer()

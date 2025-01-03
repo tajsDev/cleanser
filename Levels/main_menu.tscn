@@ -40,6 +40,16 @@ shape = SubResource("BoxShape3D_mn6p3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
+[node name="Label" type="Label" parent="Camera3D"]
+offset_left = 250.0
+offset_top = 128.0
+offset_right = 818.0
+offset_bottom = 369.0
+theme_override_font_sizes/font_size = 40
+text = "Cleanser"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Start" type="Button" parent="Camera3D"]
 offset_left = 368.0
 offset_top = 416.0
@@ -60,16 +70,6 @@ theme_override_fonts/font = SubResource("SystemFont_svutl")
 theme_override_font_sizes/font_size = 30
 text = "Exit"
 script = ExtResource("2_gbfbl")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 250.0
-offset_top = 128.0
-offset_right = 818.0
-offset_bottom = 369.0
-theme_override_font_sizes/font_size = 40
-text = "Cleanser"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="Camera3D/Start" to="Camera3D/Start" method="_on_pressed"]
 [connection signal="pressed" from="Camera3D/Exit" to="Camera3D/Exit" method="_on_pressed"]
