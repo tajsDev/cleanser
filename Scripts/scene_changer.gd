@@ -12,3 +12,7 @@ func _process(delta: float) -> void:
 
 func moveScene() -> void:
 	get_tree().change_scene_to_file(sceneName)
+
+
+func _on_area_entered(area: Area3D) -> void:
+	moveScene()
