@@ -5,14 +5,9 @@ extends Area3D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func moveScene() -> void:
 	get_tree().change_scene_to_file(sceneName)
 
 
-func _on_area_entered(area: Area3D) -> void:
+func _on_area_entered(_area: Area3D) -> void:
 	moveScene()

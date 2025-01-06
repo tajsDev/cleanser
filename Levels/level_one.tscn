@@ -371,14 +371,17 @@ shape = SubResource("BoxShape3D_wksja")
 [node name="spawn_tracker2" parent="." instance=ExtResource("3_s4y4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1037, 0, 199.052)
 
-[node name="Spawner3" parent="spawn_tracker2" index="1"]
+[node name="Spawner3" parent="spawn_tracker2" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0826, 0, -27.6308)
+Player = NodePath("../../Player")
 
-[node name="Spawner" parent="spawn_tracker2" index="2"]
+[node name="Spawner" parent="spawn_tracker2" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 0)
+Player = NodePath("../../Player")
 
-[node name="Spawner2" parent="spawn_tracker2" index="3"]
+[node name="Spawner2" parent="spawn_tracker2" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4893, 0, -29.8407)
+Player = NodePath("../../Player")
 
 [node name="Area3D" parent="spawn_tracker2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4354, -3.618, 15.6484)
@@ -392,14 +395,17 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 37.0999, 0, 13.0151)
 [node name="spawn_tracker3" parent="." instance=ExtResource("3_s4y4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.943, 0, 199.052)
 
-[node name="Spawner3" parent="spawn_tracker3" index="1"]
+[node name="Spawner3" parent="spawn_tracker3" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0036, 0, -27.6308)
+Player = NodePath("../../Player")
 
-[node name="Spawner" parent="spawn_tracker3" index="2"]
+[node name="Spawner" parent="spawn_tracker3" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 50.1166)
+Player = NodePath("../../Player")
 
-[node name="Spawner2" parent="spawn_tracker3" index="3"]
+[node name="Spawner2" parent="spawn_tracker3" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17747, 0, -29.8407)
+Player = NodePath("../../Player")
 
 [node name="Area3D" parent="spawn_tracker3" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3284, -3.618, 12.9586)

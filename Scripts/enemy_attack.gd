@@ -10,7 +10,7 @@ var isHeal = false
 func _ready() -> void:
 	animation.play("walk")
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var distance_to_target = navigation_agent.distance_to_target()
 	if distance_to_target <= launch_threshold && canAttack && !isHeal:
 		canAttack = false
