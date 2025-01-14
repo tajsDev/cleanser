@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=16 format=3 uid="uid://1psxygxh4rvo"]
 
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_ethjy"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_r1qpr"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_10vvo"]
 [ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="3_s4y4l"]
+[ext_resource type="PackedScene" uid="uid://bb8ixwiu3rjkl" path="res://Assets/brickwall.tscn" id="4_gyc3j"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
 vertices = PackedVector3Array(-49.5, -326.191, -49.5, -49.5, -326.191, 49.5, 49.5, -326.191, 49.5, 49.5, -326.191, -49.5)
@@ -61,22 +62,11 @@ shape = SubResource("BoxShape3D_t0lig")
 shape = SubResource("BoxShape3D_mn6p3")
 
 [node name="Player" parent="." instance=ExtResource("1_ethjy")]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 slide_on_ceiling = false
 
 [node name="box1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4572, 1.14171, 390.764)
-
-[node name="wall1" type="MeshInstance3D" parent="box1"]
-transform = Transform3D(-9.99828, -0.185343, 0, 0.185343, -9.99828, 0, 0, 0, 10, 20.4177, 0, 0)
-mesh = SubResource("BoxMesh_74tj2")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="box1/wall1"]
-physics_material_override = SubResource("PhysicsMaterial_cqjkk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="box1/wall1/StaticBody3D"]
-shape = SubResource("BoxShape3D_wksja")
 
 [node name="wall2" type="MeshInstance3D" parent="box1"]
 transform = Transform3D(-9.99828, -0.185345, 0, 0.185345, -9.99828, 0, 0, 0, 60, 10.727, 0, -24.6639)
@@ -367,6 +357,9 @@ physics_material_override = SubResource("PhysicsMaterial_cqjkk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="box1/wall14/StaticBody3D"]
 shape = SubResource("BoxShape3D_wksja")
+
+[node name="brickwall" parent="box1" instance=ExtResource("4_gyc3j")]
+transform = Transform3D(4.58221, 0, 0, 0, 4.70327, 0, 0, 0, 10, 19.5304, -8.61579, 0)
 
 [node name="spawn_tracker2" parent="." instance=ExtResource("3_s4y4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1037, 0, 199.052)
