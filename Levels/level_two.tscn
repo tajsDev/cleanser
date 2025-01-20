@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6ghheqnf3gra"]
+[gd_scene load_steps=12 format=3 uid="uid://c6ghheqnf3gra"]
 
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_31eoj"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="2_s2f32"]
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="3_xxiff"]
+[ext_resource type="PackedScene" uid="uid://qrbuq2pw6ixo" path="res://Assets/brickwall_1.tscn" id="4_nvat0"]
 [ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="4_olucj"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
@@ -22,22 +23,16 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cuyi"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_74tj2"]
-material = SubResource("StandardMaterial3D_0cuyi")
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cqjkk"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wksja"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5rjh"]
 size = Vector3(10.8747, 0.491066, 3.6311)
 
 [node name="level_one" type="Node3D"]
 
 [node name="Next_Level" parent="." instance=ExtResource("1_31eoj")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 292.217, 0, 212.766)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -15.4967, 0, 262.424)
+
+[node name="Area3D" parent="Next_Level" index="0"]
+sceneName = "res://Levels/end_menu.tscn"
 
 [node name="CollisionShape3D" parent="Next_Level/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00256348, 0)
@@ -65,91 +60,243 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 slide_on_ceiling = false
 
-[node name="wall1" type="MeshInstance3D" parent="."]
-transform = Transform3D(-9.99828, -0.185343, 0, 0.185343, -9.99828, 0, 0, 0, 10, -7.0395, 1.14171, 390.764)
-mesh = SubResource("BoxMesh_74tj2")
-skeleton = NodePath("")
+[node name="box" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="wall1"]
-physics_material_override = SubResource("PhysicsMaterial_cqjkk")
+[node name="brickwall" parent="box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="wall1/StaticBody3D"]
-shape = SubResource("BoxShape3D_wksja")
+[node name="brickwall2" parent="box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="spawn_tracker2" parent="." instance=ExtResource("4_olucj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1037, 0, 199.052)
+[node name="brickwall3" parent="box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
 
-[node name="Spawner3" parent="spawn_tracker2" index="1" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0826, 0, -27.6308)
-Player = NodePath("../../Player")
+[node name="brickwall4" parent="box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
 
-[node name="Spawner" parent="spawn_tracker2" index="2" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 0)
-Player = NodePath("../../Player")
+[node name="brickwall5" parent="box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
 
-[node name="Spawner2" parent="spawn_tracker2" index="3" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4893, 0, -29.8407)
-Player = NodePath("../../Player")
+[node name="box4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0373, 0, -75.5571)
 
-[node name="Area3D" parent="spawn_tracker2" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4354, -3.618, 15.6484)
+[node name="brickwall2" parent="box4" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="CollisionShape3D" parent="spawn_tracker2/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626465, -0.129053, 0.0116425)
+[node name="brickwall3" parent="box4" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
 
-[node name="Barrier" parent="spawn_tracker2" index="5"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 37.0999, 0, 13.0151)
+[node name="brickwall4" parent="box4" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
 
-[node name="spawn_tracker3" parent="." instance=ExtResource("4_olucj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.943, 0, 199.052)
+[node name="brickwall5" parent="box4" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
 
-[node name="Spawner3" parent="spawn_tracker3" index="1" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0036, 0, -27.6308)
-Player = NodePath("../../Player")
+[node name="box5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9396, 0, -75.5571)
 
-[node name="Spawner" parent="spawn_tracker3" index="2" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 50.1166)
-Player = NodePath("../../Player")
+[node name="brickwall2" parent="box5" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.2766, -4.34885, 374.746)
 
-[node name="Spawner2" parent="spawn_tracker3" index="3" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17747, 0, -29.8407)
-Player = NodePath("../../Player")
+[node name="brickwall5" parent="box5" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.2766, -4.34885, 337.511)
 
-[node name="Area3D" parent="spawn_tracker3" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3284, -3.618, 12.9586)
+[node name="brickwall6" parent="box5" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.2766, -4.34885, 300.823)
 
-[node name="CollisionShape3D" parent="spawn_tracker3/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.626465, -0.333227, -0.018692)
+[node name="brickwall3" parent="box5" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
 
-[node name="Barrier" parent="spawn_tracker3" index="5"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 41.3861, 0, 13.0151)
+[node name="brickwall4" parent="box5" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 357.216)
 
-[node name="spawn_tracker" parent="." instance=ExtResource("4_olucj")]
-num_of_enemies = 10
+[node name="box2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.7814)
 
-[node name="Spawner3" parent="spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4068, 0, 320.447)
-Player = NodePath("../../Player")
+[node name="spawn_tracker" parent="box2" instance=ExtResource("4_olucj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
+num_of_enemies = 0
 
-[node name="Spawner" parent="spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9918, 0, 315.821)
-Player = NodePath("../../Player")
+[node name="Spawner3" parent="box2/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
+Player = NodePath("../../../Player")
 
-[node name="Spawner2" parent="spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 274.189)
-Player = NodePath("../../Player")
+[node name="Spawner" parent="box2/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
+Player = NodePath("../../../Player")
 
-[node name="Area3D" parent="spawn_tracker" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89669, 0, 332.272)
+[node name="Spawner2" parent="box2/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
+Player = NodePath("../../../Player")
 
-[node name="CollisionShape3D" parent="spawn_tracker/Area3D" index="0"]
+[node name="Area3D" parent="box2/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+
+[node name="CollisionShape3D" parent="box2/spawn_tracker/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
-[node name="Barrier" parent="spawn_tracker" index="5"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -36.8667, 0, 264.743)
+[node name="Barrier" parent="box2/spawn_tracker" index="5"]
+transform = Transform3D(10, 0, 0, 0, 11.5609, 0, 0, 0, 2.45556, -4.38313, 1.54605, 333.445)
+
+[node name="brickwall" parent="box2" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
+
+[node name="brickwall2" parent="box2" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+
+[node name="brickwall4" parent="box2" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
+
+[node name="brickwall5" parent="box2" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
+
+[node name="box6" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0759, 0, -112.085)
+
+[node name="spawn_tracker" parent="box6" instance=ExtResource("4_olucj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
+num_of_enemies = 0
+
+[node name="Spawner3" parent="box6/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
+Player = NodePath("../../../Player")
+
+[node name="Spawner" parent="box6/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
+Player = NodePath("../../../Player")
+
+[node name="Spawner2" parent="box6/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
+Player = NodePath("../../../Player")
+
+[node name="Area3D" parent="box6/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+
+[node name="CollisionShape3D" parent="box6/spawn_tracker/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
+shape = SubResource("BoxShape3D_b5rjh")
+
+[node name="Barrier" parent="box6/spawn_tracker" index="5"]
+transform = Transform3D(10, 0, 0, 0, 11.5609, 0, 0, 0, 2.45556, -4.38313, 1.54605, 333.445)
+
+[node name="brickwall" parent="box6" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
+
+[node name="brickwall2" parent="box6" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+
+[node name="brickwall4" parent="box6" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
+
+[node name="brickwall5" parent="box6" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
+
+[node name="box8" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 369.433, 0, 230.653)
+
+[node name="brickwall" parent="box8" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
+
+[node name="brickwall2" parent="box8" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+
+[node name="brickwall3" parent="box8" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 336.359)
+
+[node name="brickwall4" parent="box8" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
+
+[node name="brickwall5" parent="box8" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
+
+[node name="box7" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0759, 0, -148.613)
+
+[node name="spawn_tracker" parent="box7" instance=ExtResource("4_olucj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
+num_of_enemies = 0
+
+[node name="Spawner3" parent="box7/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
+Player = NodePath("../../../Player")
+
+[node name="Spawner" parent="box7/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
+Player = NodePath("../../../Player")
+
+[node name="Spawner2" parent="box7/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
+Player = NodePath("../../../Player")
+
+[node name="Area3D" parent="box7/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+
+[node name="CollisionShape3D" parent="box7/spawn_tracker/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
+shape = SubResource("BoxShape3D_b5rjh")
+
+[node name="Barrier" parent="box7/spawn_tracker" index="5"]
+transform = Transform3D(-4.37114e-07, 0, 2.45556, 0, 11.5609, 0, -10, 0, -1.07336e-07, 13.7403, 1.54605, 351.598)
+
+[node name="brickwall" parent="box7" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -5.01648, -4.34885, 355.624)
+
+[node name="brickwall2" parent="box7" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+
+[node name="brickwall4" parent="box7" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 14.1737, -4.34885, 385.302)
+
+[node name="brickwall5" parent="box7" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 14.0078, -4.34885, 362.632)
+
+[node name="box3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75.7797)
+
+[node name="brickwall8" parent="box3" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 357.628)
+
+[node name="spawn_tracker" parent="box3" instance=ExtResource("4_olucj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
+num_of_enemies = 2
+
+[node name="Spawner3" parent="box3/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
+Player = NodePath("../../../Player")
+
+[node name="Spawner" parent="box3/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
+Player = NodePath("../../../Player")
+
+[node name="Spawner2" parent="box3/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
+Player = NodePath("../../../Player")
+
+[node name="Area3D" parent="box3/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+
+[node name="CollisionShape3D" parent="box3/spawn_tracker/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
+shape = SubResource("BoxShape3D_b5rjh")
+
+[node name="Barrier" parent="box3/spawn_tracker" index="5"]
+transform = Transform3D(10, 0, 0, 0, 11.5609, 0, 0, 0, 2.45556, 70.2254, 1.54605, 333.445)
+
+[node name="brickwall4" parent="box3" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 13.9731, -4.34885, 386.245)
+
+[node name="brickwall5" parent="box3" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 13.8284, -4.34885, 366.092)
+
+[node name="brickwall6" parent="box3" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, -22.7859, -4.34885, 366.092)
+
+[node name="brickwall7" parent="box3" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, -23.4664, -4.34885, 385.817)
 
 [editable path="Next_Level"]
-[editable path="spawn_tracker2"]
-[editable path="spawn_tracker3"]
-[editable path="spawn_tracker"]
+[editable path="box2/spawn_tracker"]
+[editable path="box6/spawn_tracker"]
+[editable path="box7/spawn_tracker"]
+[editable path="box3/spawn_tracker"]
