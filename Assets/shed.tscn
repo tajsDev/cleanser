@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdysxt0ao6byi"]
+
+[ext_resource type="PackedScene" uid="uid://blfnpt15o24to" path="res://Assets/Images/shed.glb" id="1_e0cfu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bthwk"]
+size = Vector3(3.27246, 5.3335, 2.55023)
+
+[node name="shed" instance=ExtResource("1_e0cfu")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Shed" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shed/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13623, 2.16675, -0.0354919)
+shape = SubResource("BoxShape3D_bthwk")

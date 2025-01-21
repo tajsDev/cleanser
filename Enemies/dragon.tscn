@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://cn2pp3fqf2oin"]
+
+[ext_resource type="Texture2D" uid="uid://cjw7470wdpwi" path="res://Assets/Images/corrupt_dragon.png" id="1_hfwv0"]
+[ext_resource type="Texture2D" uid="uid://db6udtorqt444" path="res://Assets/Images/cleansed_dragon.png" id="1_rkp6l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8feut"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnrh2"]
+atlas = ExtResource("1_rkp6l")
+region = Rect2(0, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm6ts"]
+atlas = ExtResource("1_rkp6l")
+region = Rect2(147, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2bpi"]
+atlas = ExtResource("1_rkp6l")
+region = Rect2(294, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bqj5"]
+atlas = ExtResource("1_hfwv0")
+region = Rect2(0, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxqf7"]
+atlas = ExtResource("1_hfwv0")
+region = Rect2(147, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4s0t"]
+atlas = ExtResource("1_hfwv0")
+region = Rect2(294, 0, 147, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4oof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnrh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm6ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2bpi")
+}],
+"loop": true,
+"name": &"cleansed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bqj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxqf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4s0t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Dragon" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8feut")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_h4oof")
+frame_progress = 0.704784

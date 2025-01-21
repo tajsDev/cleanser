@@ -22,13 +22,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
-[node name="level_one" type="Node3D"]
-
-[node name="Next_Level" parent="." instance=ExtResource("1_tiv21")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 292.217, 0, 212.766)
-
-[node name="CollisionShape3D" parent="Next_Level/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00256348, 0)
+[node name="level_three" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 27.6162, 0)
@@ -52,13 +46,58 @@ shape = SubResource("BoxShape3D_mn6p3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 slide_on_ceiling = false
 
-[node name="dead_trees2" parent="." instance=ExtResource("4_rwau7")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -5.71225, 0, 395.351)
+[node name="start" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 375.319)
 
-[node name="dead_trees3" parent="." instance=ExtResource("4_rwau7")]
-transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, 381.891)
+[node name="dead_trees6" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, -9.08713)
 
-[node name="dead_trees4" parent="." instance=ExtResource("4_rwau7")]
-transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, 381.891)
+[node name="dead_trees7" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, -26.3471)
 
-[editable path="Next_Level"]
+[node name="dead_trees4" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, 6.57187)
+
+[node name="dead_trees8" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, -25.4981)
+
+[node name="dead_trees5" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, -8.36511)
+
+[node name="dead_trees3" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, 6.57187)
+
+[node name="dead_trees2" parent="start" instance=ExtResource("4_rwau7")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -5.71225, 0, 17.7759)
+
+[node name="end" type="Node3D" parent="."]
+transform = Transform3D(-0.00116938, 0, -0.999999, 0, 1, 0, 0.999999, 0, -0.00116938, -253.505, 0, 239.79)
+
+[node name="dead_trees6" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, -9.08713)
+
+[node name="dead_trees7" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, -26.3471)
+
+[node name="dead_trees4" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, -13.6304, 0, 6.57187)
+
+[node name="dead_trees8" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, -25.4981)
+
+[node name="dead_trees5" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, -8.36511)
+
+[node name="dead_trees3" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(-3.0598e-07, 0, 7, 0, 7, 0, -7, 0, -3.0598e-07, 4.56875, 0, 6.57187)
+
+[node name="dead_trees2" parent="end" instance=ExtResource("4_rwau7")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -5.71225, 0, 17.7759)
+
+[node name="Next_Level" parent="end" instance=ExtResource("1_tiv21")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -4.45706, 0, 7.43735)
+
+[node name="CollisionShape3D" parent="end/Next_Level/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00256348, 0)
+
+[editable path="end/Next_Level"]

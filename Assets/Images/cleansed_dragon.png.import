@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b251x0ubgqanq"
-path.s3tc="res://.godot/imported/Bark (9).png-f6c5dcc75d2ef3cbad6ef5abeb514afd.s3tc.ctex"
+uid="uid://db6udtorqt444"
+path.s3tc="res://.godot/imported/cleansed_dragon.png-6dc37bde3fc9187dba4753ecf142dd8e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Images/Bark (9).png"
-dest_files=["res://.godot/imported/Bark (9).png-f6c5dcc75d2ef3cbad6ef5abeb514afd.s3tc.ctex"]
+source_file="res://Assets/Images/cleansed_dragon.png"
+dest_files=["res://.godot/imported/cleansed_dragon.png-6dc37bde3fc9187dba4753ecf142dd8e.s3tc.ctex"]
 
 [params]
 

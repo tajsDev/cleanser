@@ -24,6 +24,14 @@ shape = SubResource("BoxShape3D_2n57u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.835479, 0, -0.303406)
 texture = ExtResource("1_jqqet")
 
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.306421, 0, -0.544049)
+texture = ExtResource("1_jqqet")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.431346, 0, -0.522643)
+texture = ExtResource("1_jqqet")
+
 [node name="Sprite3D3" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.861575, 0, -0.303406)
 texture = ExtResource("1_jqqet")
