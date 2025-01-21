@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://tq57gx05lw6r"]
+
+[ext_resource type="Texture2D" uid="uid://683swdqr5pwb" path="res://Assets/Images/trees/trees/Дерево1 Сведено.PNG" id="1_hjh77"]
+[ext_resource type="Texture2D" uid="uid://b85lhtlx48bs1" path="res://Assets/Images/trees/trees/Дерево3 Сведено.PNG" id="2_5jjxd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dldan"]
+size = Vector3(2.53748, 1.19519, 1)
+
+[node name="Trees" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0550103, 0)
+texture = ExtResource("1_hjh77")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0968628, 0.0975952, 0)
+shape = SubResource("BoxShape3D_dldan")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.835479, 0, -0.303406)
+texture = ExtResource("2_5jjxd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.861575, 0, -0.303406)
+texture = ExtResource("2_5jjxd")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://br87fj7nbgec5"]
+
+[ext_resource type="Texture2D" uid="uid://qe0o311l7bmc" path="res://Assets/Images/trees/dead trees/Коряга3.PNG" id="1_jqqet"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3d24h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2n57u"]
+size = Vector3(2.54211, 1.44812, 1)
+
+[node name="Trees" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0550103, 0)
+texture = ExtResource("1_jqqet")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D"]
+physics_material_override = SubResource("PhysicsMaterial_3d24h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0459595, 0.0350952, 0)
+shape = SubResource("BoxShape3D_2n57u")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.835479, 0, -0.303406)
+texture = ExtResource("1_jqqet")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.861575, 0, -0.303406)
+texture = ExtResource("1_jqqet")

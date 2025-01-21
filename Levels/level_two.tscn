@@ -195,6 +195,24 @@ transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.5
 [node name="box8" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 369.433, 0, 230.653)
 
+[node name="spawn_tracker" parent="box8" instance=ExtResource("4_olucj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, 0, 336.632)
+
+[node name="Spawner3" parent="box8/spawn_tracker" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4712, 0, -4.92839)
+
+[node name="Spawner" parent="box8/spawn_tracker" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5213, 0, 0)
+
+[node name="Spawner2" parent="box8/spawn_tracker" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.508, 0, 24.906)
+
+[node name="Area3D" parent="box8/spawn_tracker" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.12634, 0, 20.7105)
+
+[node name="Barrier" parent="box8/spawn_tracker" index="5"]
+transform = Transform3D(37.0901, 0, 0, 0, 10.8019, 0, 1.13687e-13, 0, 1, 32.1615, 0, 28.4376)
+
 [node name="brickwall" parent="box8" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
 
@@ -298,5 +316,6 @@ transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, -2
 [editable path="Next_Level"]
 [editable path="box2/spawn_tracker"]
 [editable path="box6/spawn_tracker"]
+[editable path="box8/spawn_tracker"]
 [editable path="box7/spawn_tracker"]
 [editable path="box3/spawn_tracker"]
