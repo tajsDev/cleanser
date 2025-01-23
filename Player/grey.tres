@@ -1,0 +1,6 @@
+[gd_resource type="Environment" format=3 uid="uid://dgpfss727l447"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.473976, 0.473976, 0.473976, 1)
+fog_enabled = true

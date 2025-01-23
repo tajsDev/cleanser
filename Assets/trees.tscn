@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tq57gx05lw6r"]
+[gd_scene load_steps=6 format=3 uid="uid://tq57gx05lw6r"]
 
 [ext_resource type="Texture2D" uid="uid://683swdqr5pwb" path="res://Assets/Images/trees/trees/Дерево1 Сведено.PNG" id="1_hjh77"]
 [ext_resource type="Texture2D" uid="uid://b85lhtlx48bs1" path="res://Assets/Images/trees/trees/Дерево3 Сведено.PNG" id="2_5jjxd"]
+[ext_resource type="Texture2D" uid="uid://bfpjkm7mvbpbm" path="res://Assets/Images/trees/trees/Дерево2.PNG" id="3_3md7n"]
+[ext_resource type="Texture2D" uid="uid://clg4m1kqard0r" path="res://Assets/Images/trees/bushes/Куст1 Сведено.PNG" id="4_n7kl0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dldan"]
 size = Vector3(2.53748, 1.19519, 1)
@@ -25,3 +27,19 @@ texture = ExtResource("2_5jjxd")
 [node name="Sprite3D3" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.861575, 0, -0.303406)
 texture = ExtResource("2_5jjxd")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.502029, -0.134713, 0.319644)
+texture = ExtResource("3_3md7n")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.522946, -0.123748, 0.319644)
+texture = ExtResource("3_3md7n")
+
+[node name="Sprite3D6" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25795, -0.406636, -0.132856)
+texture = ExtResource("4_n7kl0")
+
+[node name="Sprite3D7" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33245, -0.406569, -0.0687983)
+texture = ExtResource("4_n7kl0")

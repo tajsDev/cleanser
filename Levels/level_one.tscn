@@ -1,6 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=46 format=3 uid="uid://1psxygxh4rvo"]
 
 [ext_resource type="PackedScene" uid="uid://bdysxt0ao6byi" path="res://Assets/shed.tscn" id="1_58ny3"]
+[ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="1_aiomq"]
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_ethjy"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_r1qpr"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_10vvo"]
@@ -116,6 +117,15 @@ size = Vector3(10.8747, 0.491066, 3.6311)
 
 [node name="level_one" type="Node3D"]
 
+[node name="Trees" parent="." instance=ExtResource("1_aiomq")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -33.3834, 0, 172.378)
+
+[node name="Trees2" parent="." instance=ExtResource("1_aiomq")]
+transform = Transform3D(-3.3659, 0, 39.8581, 0, 40, 0, -39.8581, 0, -3.3659, -111.978, 0, 242.885)
+
+[node name="Player" parent="." instance=ExtResource("1_ethjy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
+
 [node name="shed" parent="." instance=ExtResource("1_58ny3")]
 transform = Transform3D(0.171599, 0, 1.99262, 0, 2, 0, -1.99262, 0, 0.171599, -8.5956, -5.05167, 294.801)
 
@@ -142,10 +152,6 @@ shape = SubResource("BoxShape3D_t0lig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_mn6p3")
-
-[node name="Player" parent="." instance=ExtResource("1_ethjy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
-slide_on_ceiling = false
 
 [node name="box1" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4572, 1.14171, 390.764)
@@ -483,17 +489,14 @@ shape = SubResource("BoxShape3D_wksja")
 [node name="spawn_tracker2" parent="." instance=ExtResource("3_s4y4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1037, 0, 199.052)
 
-[node name="Spawner3" parent="spawn_tracker2" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="spawn_tracker2" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.0826, 0, -27.6308)
-Player = NodePath("../../Player")
 
-[node name="Spawner" parent="spawn_tracker2" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="spawn_tracker2" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 0)
-Player = NodePath("../../Player")
 
-[node name="Spawner2" parent="spawn_tracker2" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="spawn_tracker2" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4893, 0, -29.8407)
-Player = NodePath("../../Player")
 
 [node name="Area3D" parent="spawn_tracker2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4354, -3.618, 15.6484)
@@ -507,17 +510,14 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 37.0999, 0, 13.0151)
 [node name="spawn_tracker3" parent="." instance=ExtResource("3_s4y4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.943, 0, 199.052)
 
-[node name="Spawner3" parent="spawn_tracker3" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="spawn_tracker3" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0036, 0, -27.6308)
-Player = NodePath("../../Player")
 
-[node name="Spawner" parent="spawn_tracker3" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="spawn_tracker3" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 50.1166)
-Player = NodePath("../../Player")
 
-[node name="Spawner2" parent="spawn_tracker3" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="spawn_tracker3" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17747, 0, -29.8407)
-Player = NodePath("../../Player")
 
 [node name="Area3D" parent="spawn_tracker3" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3284, -3.618, 12.9586)
@@ -531,17 +531,14 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 41.3861, 0, 13.0151)
 [node name="spawn_tracker" parent="." instance=ExtResource("3_s4y4l")]
 num_of_enemies = 10
 
-[node name="Spawner3" parent="spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="spawn_tracker" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4068, 0, 320.447)
-Player = NodePath("../../Player")
 
-[node name="Spawner" parent="spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="spawn_tracker" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9918, 0, 315.821)
-Player = NodePath("../../Player")
 
-[node name="Spawner2" parent="spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="spawn_tracker" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 274.189)
-Player = NodePath("../../Player")
 
 [node name="Area3D" parent="spawn_tracker" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89669, 0, 332.272)

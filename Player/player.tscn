@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=27 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
+[ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
@@ -14,16 +15,6 @@
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
 [ext_resource type="Script" path="res://Scripts/paused_button.gd" id="7_spkb6"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_may0v"]
-
-[sub_resource type="Sky" id="Sky_xay2l"]
-sky_material = SubResource("ProceduralSkyMaterial_may0v")
-
-[sub_resource type="Environment" id="Environment_tl3qk"]
-background_mode = 2
-sky = SubResource("Sky_xay2l")
-ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_32wf2"]
 /colors/blue = Color(0, 0, 0, 1)
@@ -65,7 +56,7 @@ play_health = NodePath("Area3D/HealthManager")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496753, -0.439856)
-environment = SubResource("Environment_tl3qk")
+environment = ExtResource("2_ql2dl")
 script = ExtResource("2_urfap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
