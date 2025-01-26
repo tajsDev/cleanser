@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4syh0b1rhl5r"]
+
+[ext_resource type="Script" path="res://Scripts/wolf_attack.gd" id="1_yck7x"]
+[ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_nsfqj"]
+[ext_resource type="Texture2D" uid="uid://bbf71gqejcnth" path="res://Assets/Images/Fire_Spreadsheet.png" id="3_rsfqx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]
+size = Vector3(2.44501, 2.71292, 3.30181)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbofx"]
+size = Vector3(2.17384, 2.30206, 2.89795)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnslw"]
+atlas = ExtResource("3_rsfqx")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8voa5"]
+atlas = ExtResource("3_rsfqx")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0rep"]
+atlas = ExtResource("3_rsfqx")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8etc"]
+atlas = ExtResource("3_rsfqx")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5532"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnslw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8voa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0rep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8etc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="dragon_attack" type="RigidBody3D" groups=["enemy_proj"]]
+mass = 0.001
+gravity_scale = 0.3
+script = ExtResource("1_yck7x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["drag_proj"]]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0.0479931, -0.326912, 0.0459123)
+shape = SubResource("BoxShape3D_kv8pk")
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemy_proj"]]
+script = ExtResource("2_nsfqj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["drag_proj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00385284, -0.327606, 0.0834962)
+shape = SubResource("BoxShape3D_cbofx")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x5532")
+frame_progress = 0.429281
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

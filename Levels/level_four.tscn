@@ -1,11 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://dubr5sx5jnasq"]
+[gd_scene load_steps=18 format=3 uid="uid://dubr5sx5jnasq"]
 
+[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="1_52ouk"]
 [ext_resource type="PackedScene" uid="uid://br87fj7nbgec5" path="res://Assets/dead_trees.tscn" id="1_bl0gt"]
-[ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="1_c03d4"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_u1dy2"]
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_5pbsl"]
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="3_2rit3"]
 [ext_resource type="Texture2D" uid="uid://2wsk4begllol" path="res://Assets/Images/Bark (12).png" id="4_g7df0"]
-[ext_resource type="PackedScene" uid="uid://cn2pp3fqf2oin" path="res://Enemies/dragon.tscn" id="4_m2trm"]
+[ext_resource type="Script" path="res://Scripts/spawn_active.gd" id="4_lr5fs"]
+[ext_resource type="PackedScene" uid="uid://lnphj2ffttth" path="res://Enemies/dragon.tscn" id="4_m2trm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
+size = Vector3(22.881, 3.28536, 6.90636)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwbik"]
+transparency = 1
+albedo_color = Color(1, 0.223529, 0.0392157, 0.439216)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6wrl"]
+material = SubResource("StandardMaterial3D_vwbik")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhm0d"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
 vertices = PackedVector3Array(-49.5, -326.191, -49.5, -49.5, -326.191, 49.5, 49.5, -326.191, 49.5, 49.5, -326.191, -49.5)
@@ -26,17 +40,49 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [node name="level_four" type="Node3D"]
 
-[node name="spawn_tracker" parent="." instance=ExtResource("1_c03d4")]
+[node name="spawn_tracker" type="Node3D" parent="." node_paths=PackedStringArray("spawn_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 364.364)
+script = ExtResource("1_52ouk")
+spawn_timer = NodePath("spawner_timer")
+num_of_enemies = 2
 
-[node name="Area3D" parent="spawn_tracker" index="4"]
+[node name="spawner_timer" type="Timer" parent="spawn_tracker"]
+wait_time = 2.0
+
+[node name="Spawner" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8642, 7.14214, -45.9709)
+script = ExtResource("2_5pbsl")
+Player = NodePath("../../Player")
+mob_scene = ExtResource("4_m2trm")
+
+[node name="Spawner2" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8642, 7.14214, -44.5959)
+script = ExtResource("2_5pbsl")
+Player = NodePath("../../Player")
+mob_scene = ExtResource("4_m2trm")
+
+[node name="Spawner3" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8642, 7.14214, -46.3499)
+script = ExtResource("2_5pbsl")
+Player = NodePath("../../Player")
+mob_scene = ExtResource("4_m2trm")
+
+[node name="Area3D" type="Area3D" parent="spawn_tracker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.986, 0, 45.6362)
+script = ExtResource("4_lr5fs")
 
-[node name="CollisionShape3D" parent="spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33897, -2.26833, 12.6769)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51161, -2.79459, 12.6769)
+shape = SubResource("BoxShape3D_1e2bb")
 
-[node name="Barrier" parent="spawn_tracker" index="5"]
+[node name="Barrier" type="MeshInstance3D" parent="spawn_tracker"]
 transform = Transform3D(70.8554, 0, 0, 0, 28.5922, 0, 0, 0, 10, -15.6699, 0, -64.4135)
+mesh = SubResource("BoxMesh_x6wrl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="spawn_tracker/Barrier"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker/Barrier/StaticBody3D"]
+shape = SubResource("BoxShape3D_qhm0d")
 
 [node name="arena" type="Node3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 7.88725, 343.572)
@@ -212,5 +258,8 @@ slide_on_ceiling = false
 
 [node name="Dragon" parent="." instance=ExtResource("4_m2trm")]
 
-[editable path="spawn_tracker"]
+[connection signal="timeout" from="spawn_tracker/spawner_timer" to="spawn_tracker" method="_on_spawner_timer_timeout"]
+[connection signal="area_entered" from="spawn_tracker/Area3D" to="spawn_tracker/Area3D" method="_on_area_entered"]
+[connection signal="spawning" from="spawn_tracker/Area3D" to="spawn_tracker" method="_on_area_3d_spawning"]
+
 [editable path="Next_Level"]

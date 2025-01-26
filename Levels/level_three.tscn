@@ -1,7 +1,8 @@
-[gd_scene load_steps=37 format=3 uid="uid://od3fw6jmjus7"]
+[gd_scene load_steps=38 format=3 uid="uid://od3fw6jmjus7"]
 
 [ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="1_cyllh"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_tiv21"]
+[ext_resource type="PackedScene" uid="uid://b1icvwesuf52e" path="res://Enemies/wolf_no_bubble.tscn" id="2_6ahje"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="2_klmj5"]
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="2_vp532"]
 [ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="3_88kw3"]
@@ -78,14 +79,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71249, 0, 273.824)
 [node name="Spawner3" parent="spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.78253)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("2_6ahje")
 
 [node name="Spawner" parent="spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0804, 0, 12.4539)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("2_6ahje")
 
 [node name="Spawner2" parent="spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0368, 0, 10.292)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("2_6ahje")
 
 [node name="Area3D" parent="spawn_tracker" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71725, 0, 58.9738)

@@ -7,9 +7,12 @@ func _ready() -> void:
 
 func _on_area_entered(area: Area3D) -> void:
 	if(area.is_in_group("enemy_proj")):
-		_on_health_manager_hurts()
+		_on_health_manager_hurts(10)
+	if(area.is_in_group("dragon_proj")):
+		_on_health_manager_hurts(20)
+		
 
-func _on_health_manager_hurts() -> void:
+func _on_health_manager_hurts(damage: int) -> void:
 	health_mang.hurt(10)
 
 func _on_health_manager_dead() -> void:

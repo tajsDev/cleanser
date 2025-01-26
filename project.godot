@@ -25,6 +25,7 @@ projectile=""
 healing=""
 enemy_proj=""
 player=""
+drag_proj=""
 
 [input]
 

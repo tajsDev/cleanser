@@ -1,14 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://busavbu5ruen3"]
+[gd_scene load_steps=22 format=3 uid="uid://b1icvwesuf52e"]
 
-[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
-[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_0s4dt"]
-[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
-[ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="4_tca0n"]
-[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="6_yvq5v"]
-[ext_resource type="PackedScene" uid="uid://da2nbp14db2xt" path="res://Projectiles/wolf_attack.tscn" id="7_dbk6d"]
-[ext_resource type="Texture2D" uid="uid://c37jxqb4pikdp" path="res://Assets/Images/c_wolf_fight.png" id="8_e38o1"]
-[ext_resource type="Texture2D" uid="uid://c388qkon06vwh" path="res://Assets/Images/wolf_attack.png" id="9_dag1u"]
-[ext_resource type="Texture2D" uid="uid://j2qj3bwki4cq" path="res://Assets/Images/c_wolf_walk.png" id="10_p25j5"]
+[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_qdqha"]
+[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_2nc6b"]
+[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="4_t15pm"]
+[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="5_g7jmp"]
+[ext_resource type="PackedScene" uid="uid://da2nbp14db2xt" path="res://Projectiles/wolf_attack.tscn" id="6_6e5lo"]
+[ext_resource type="Texture2D" uid="uid://c37jxqb4pikdp" path="res://Assets/Images/c_wolf_fight.png" id="7_16kbg"]
+[ext_resource type="Texture2D" uid="uid://c388qkon06vwh" path="res://Assets/Images/wolf_attack.png" id="8_jmg52"]
+[ext_resource type="Texture2D" uid="uid://j2qj3bwki4cq" path="res://Assets/Images/c_wolf_walk.png" id="9_k7ccu"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_53kpa"]
 height = 0.5
@@ -18,43 +17,43 @@ radius = 0.333374
 size = Vector3(0.492767, 0.563232, 0.393677)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nukkt"]
-atlas = ExtResource("8_e38o1")
+atlas = ExtResource("7_16kbg")
 region = Rect2(0, 0, 151, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u4gk8"]
-atlas = ExtResource("8_e38o1")
+atlas = ExtResource("7_16kbg")
 region = Rect2(151, 0, 151, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u3sut"]
-atlas = ExtResource("8_e38o1")
+atlas = ExtResource("7_16kbg")
 region = Rect2(302, 0, 151, 152)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3b10q"]
-atlas = ExtResource("9_dag1u")
+atlas = ExtResource("8_jmg52")
 region = Rect2(0, 0, 152, 153)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_em2lu"]
-atlas = ExtResource("9_dag1u")
+atlas = ExtResource("8_jmg52")
 region = Rect2(152, 0, 152, 153)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_doi2c"]
-atlas = ExtResource("9_dag1u")
+atlas = ExtResource("8_jmg52")
 region = Rect2(304, 0, 152, 153)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2aw0"]
-atlas = ExtResource("10_p25j5")
+atlas = ExtResource("9_k7ccu")
 region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onw20"]
-atlas = ExtResource("10_p25j5")
+atlas = ExtResource("9_k7ccu")
 region = Rect2(150, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44i4q"]
-atlas = ExtResource("10_p25j5")
+atlas = ExtResource("9_k7ccu")
 region = Rect2(300, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hh5jh"]
-atlas = ExtResource("10_p25j5")
+atlas = ExtResource("9_k7ccu")
 region = Rect2(450, 0, 150, 150)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gtc4r"]
@@ -108,7 +107,7 @@ animations = [{
 [node name="wolf" type="CharacterBody3D" groups=["enemy_proj"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
 slide_on_ceiling = false
-script = ExtResource("1_rd73b")
+script = ExtResource("1_qdqha")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0841827, -0.336342, 0.778411)
@@ -120,12 +119,11 @@ avoidance_enabled = true
 [node name="Area3D" type="Area3D" parent="." groups=["enemy_proj"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.905792)
 disable_mode = 1
-script = ExtResource("2_0s4dt")
-bubble = ExtResource("4_tca0n")
+script = ExtResource("2_2nc6b")
 
 [node name="HealthManager" type="Node3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0953622)
-script = ExtResource("3_uwt3k")
+script = ExtResource("4_t15pm")
 cur_health = 100
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy_proj"]]
@@ -138,9 +136,9 @@ one_shot = true
 
 [node name="Attack" type="Node3D" parent="." node_paths=PackedStringArray("navigation_agent", "animation", "canTimer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.156273, 0.467789)
-script = ExtResource("6_yvq5v")
+script = ExtResource("5_g7jmp")
 navigation_agent = NodePath("../NavigationAgent3D")
-projectile_scene = ExtResource("7_dbk6d")
+projectile_scene = ExtResource("6_6e5lo")
 animation = NodePath("../AnimatedSprite3D")
 canTimer = NodePath("Timer")
 

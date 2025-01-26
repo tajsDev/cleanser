@@ -11,8 +11,9 @@ func _ready() -> void:
 func _on_area_entered(area: Area3D) -> void:
 	if(area.is_in_group("projectile")):
 		_on_health_manager_hurts()
-	elif (area.is_in_group("healing") && bubble_on):
-		remove_child(bub)
+	elif (area.is_in_group("healing") ):
+		if(bubble_on):
+			remove_child(bub)
 		emit_signal("changed")
 
 func _on_health_manager_hurts() -> void:
@@ -24,4 +25,5 @@ func _on_health_manager_hurts() -> void:
 				bubble_on = true
 				bub = bubble.instantiate()
 				add_child(bub)
-	
+			else:
+				health_mang.hurt(10)

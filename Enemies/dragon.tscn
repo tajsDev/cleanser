@@ -1,45 +1,80 @@
-[gd_scene load_steps=11 format=3 uid="uid://cn2pp3fqf2oin"]
+[gd_scene load_steps=20 format=3 uid="uid://lnphj2ffttth"]
 
 [ext_resource type="Texture2D" uid="uid://cjw7470wdpwi" path="res://Assets/Images/corrupt_dragon.png" id="1_hfwv0"]
 [ext_resource type="Texture2D" uid="uid://db6udtorqt444" path="res://Assets/Images/cleansed_dragon.png" id="1_rkp6l"]
+[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_wnwaq"]
+[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_ea6qt"]
+[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="4_hr07x"]
+[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="5_ote04"]
+[ext_resource type="PackedScene" uid="uid://b4syh0b1rhl5r" path="res://Projectiles/dragon_attack.tscn" id="6_n6l05"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8feut"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gfxie"]
+size = Vector3(1, 0.2771, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tnrh2"]
-atlas = ExtResource("1_rkp6l")
-region = Rect2(0, 0, 147, 150)
+[sub_resource type="BoxShape3D" id="BoxShape3D_yture"]
+size = Vector3(0.737079, 0.696655, 0.122177)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tm6ts"]
-atlas = ExtResource("1_rkp6l")
-region = Rect2(147, 0, 147, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k2bpi"]
-atlas = ExtResource("1_rkp6l")
-region = Rect2(294, 0, 147, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8bqj5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6prr"]
 atlas = ExtResource("1_hfwv0")
 region = Rect2(0, 0, 147, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxqf7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u71f"]
 atlas = ExtResource("1_hfwv0")
 region = Rect2(147, 0, 147, 150)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4s0t"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcqa8"]
 atlas = ExtResource("1_hfwv0")
 region = Rect2(294, 0, 147, 150)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_h4oof"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvqoq"]
+atlas = ExtResource("1_rkp6l")
+region = Rect2(0, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hunhg"]
+atlas = ExtResource("1_rkp6l")
+region = Rect2(147, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krfbh"]
+atlas = ExtResource("1_rkp6l")
+region = Rect2(294, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vslhp"]
+atlas = ExtResource("1_hfwv0")
+region = Rect2(0, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqref"]
+atlas = ExtResource("1_hfwv0")
+region = Rect2(147, 0, 147, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r3hu"]
+atlas = ExtResource("1_hfwv0")
+region = Rect2(294, 0, 147, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utkf0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tnrh2")
+"texture": SubResource("AtlasTexture_m6prr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tm6ts")
+"texture": SubResource("AtlasTexture_5u71f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k2bpi")
+"texture": SubResource("AtlasTexture_tcqa8")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvqoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hunhg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krfbh")
 }],
 "loop": true,
 "name": &"cleansed",
@@ -47,24 +82,72 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8bqj5")
+"texture": SubResource("AtlasTexture_vslhp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lxqf7")
+"texture": SubResource("AtlasTexture_tqref")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c4s0t")
+"texture": SubResource("AtlasTexture_7r3hu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"walk",
 "speed": 5.0
 }]
 
-[node name="Dragon" type="CharacterBody3D"]
+[node name="dragon" type="CharacterBody3D" groups=["enemy_proj"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
+slide_on_ceiling = false
+script = ExtResource("1_wnwaq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_8feut")
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.364006, -3.27396, 0.778411)
+shape = SubResource("BoxShape3D_gfxie")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+
+[node name="Area3D" type="Area3D" parent="." groups=["enemy_proj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.905792)
+disable_mode = 1
+script = ExtResource("2_ea6qt")
+
+[node name="HealthManager" type="Node3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0953622)
+script = ExtResource("4_hr07x")
+max_health = 300
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy_proj"]]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.0542378, 0.213132, -0.0569153)
+shape = SubResource("BoxShape3D_yture")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
+[node name="Attack" type="Node3D" parent="." node_paths=PackedStringArray("navigation_agent", "animation", "canTimer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.24272, -0.483125)
+script = ExtResource("5_ote04")
+navigation_agent = NodePath("../NavigationAgent3D")
+projectile_scene = ExtResource("6_n6l05")
+launch_threshold = 200.0
+projectile_speed = 6.0
+animation = NodePath("../AnimatedSprite3D")
+canTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Attack"]
+wait_time = 0.5
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-sprite_frames = SubResource("SpriteFrames_h4oof")
-frame_progress = 0.704784
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -0.0121045, 0.0966873, 0.925661)
+sprite_frames = SubResource("SpriteFrames_utkf0")
+animation = &"attack"
+
+[connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
+[connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]
+[connection signal="changed" from="Area3D" to="Attack" method="_on_area_3d_changed"]
+[connection signal="dead" from="Area3D/HealthManager" to="." method="_on_health_manager_dead"]
+[connection signal="gibbed" from="Area3D/HealthManager" to="." method="_on_health_manager_gibbed"]
+[connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Attack/Timer" to="Attack" method="_on_timer_timeout"]
