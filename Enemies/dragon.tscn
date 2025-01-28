@@ -77,7 +77,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_krfbh")
 }],
 "loop": true,
-"name": &"cleansed",
+"name": &"changed",
 "speed": 5.0
 }, {
 "frames": [{
@@ -141,7 +141,7 @@ wait_time = 0.5
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -0.0121045, 0.0966873, 0.925661)
 sprite_frames = SubResource("SpriteFrames_utkf0")
-animation = &"attack"
+animation = &"changed"
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]

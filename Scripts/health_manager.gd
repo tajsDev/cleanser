@@ -14,7 +14,7 @@ func _ready():
 
 func init():
 	cur_health = max_health
-	emit_signal("health_changed", cur_health)
+	emit_signal("health_changed")
 
 func hurt(damage: int):
 	if cur_health <= 0:

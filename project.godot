@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cleanser"
-run/main_scene="res://Levels/level_four.tscn"
+run/main_scene="res://Levels/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -80,5 +80,4 @@ ui_attack={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"

@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://qtbsrbn6kp6k"]
+
+[ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="1_a0kgq"]
+[ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="1_qilf1"]
+[ext_resource type="Script" path="res://Scripts/start_button.gd" id="2_wc6yh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4mi"]
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("1_a0kgq")
+albedo_texture_force_srgb = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_h4xos"]
+material = SubResource("StandardMaterial3D_6e4mi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t0lig"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
+
+[sub_resource type="SystemFont" id="SystemFont_svutl"]
+msdf_pixel_range = 100
+msdf_size = 57
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.5358, -1.58078, -20.2401)
+
+[node name="Trees9" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08783, 0, -3.0153)
+
+[node name="Trees4" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90631, 0, -1.38379)
+
+[node name="Trees" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72474, 0, 1.24721)
+
+[node name="Trees2" parent="Node3D" instance=ExtResource("1_qilf1")]
+
+[node name="Trees3" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30559, 0, 0)
+
+[node name="Trees5" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26841, 0, -1.38379)
+
+[node name="Trees6" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04443, 0, -1.38379)
+
+[node name="Trees7" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19794, 0, -3.0153)
+
+[node name="Trees8" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675635, 0, -3.0153)
+
+[node name="Trees10" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09382, 0, -3.0153)
+
+[node name="Trees11" parent="Node3D" instance=ExtResource("1_qilf1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09382, 0, -3.0153)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, -10.0529, 0)
+mesh = SubResource("BoxMesh_h4xos")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("BoxShape3D_t0lig")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_mn6p3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.05612, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera3D"]
+position = Vector2(368, 540)
+
+[node name="Label" type="Label" parent="Camera3D"]
+offset_left = 250.0
+offset_top = 128.0
+offset_right = 875.0
+offset_bottom = 465.0
+theme_override_font_sizes/font_size = 27
+text = "Hello Traveler, The forest needs your help. An evil dragon has corrupted the wildlife and you must defeat him to save the creatures. Use WASD to move and SPACE to jump. Use your mouse to aim and MOUSE1 to attack the enemies and MOUSE2 to save the enemies. The lives of the wildlife are resting upon you, are you ready ?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Start" type="Button" parent="Camera3D"]
+offset_left = 368.0
+offset_top = 540.0
+offset_right = 707.0
+offset_bottom = 616.0
+theme_override_fonts/font = SubResource("SystemFont_svutl")
+theme_override_font_sizes/font_size = 30
+text = "Yes !"
+script = ExtResource("2_wc6yh")
+sceneName = "res://Levels/level_one.tscn"
+
+[connection signal="pressed" from="Camera3D/Start" to="Camera3D/Start" method="_on_pressed"]

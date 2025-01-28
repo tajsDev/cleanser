@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkkdj3d6raqg"]
+[gd_scene load_steps=11 format=3 uid="uid://bkkdj3d6raqg"]
 
+[ext_resource type="PackedScene" uid="uid://br87fj7nbgec5" path="res://Assets/dead_trees.tscn" id="1_feu12"]
 [ext_resource type="Script" path="res://Scripts/exit_button.gd" id="2_gbfbl"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="2_hrqeb"]
+[ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_nqe56"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_pdmol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4mi"]
@@ -23,6 +25,57 @@ msdf_size = 57
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, 6.91872, -30.0527)
+
+[node name="Trees" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0, 1.00529, -0.0204571)
+
+[node name="Trees6" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.129465, 1.00529, -0.173485)
+
+[node name="Trees7" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.0142921, 1.00529, -0.173485)
+
+[node name="Trees8" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0.0894576, 1.00529, -0.173485)
+
+[node name="Trees9" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0.0894576, 1.00529, -0.112419)
+
+[node name="Trees10" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.00696002, 1.00529, -0.112419)
+
+[node name="Trees11" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.0993313, 1.00529, -0.112419)
+
+[node name="Trees12" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.0729524, 1.00529, -0.24681)
+
+[node name="Trees13" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0.0409671, 1.00529, -0.24681)
+
+[node name="Trees14" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0.159213, 1.00529, -0.24681)
+
+[node name="Trees15" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.184787, 1.00529, -0.24681)
+
+[node name="Trees16" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.184787, 1.00529, -0.24681)
+
+[node name="Trees2" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.0178844, 1.00529, -0.0499488)
+
+[node name="Trees3" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0.0560991, 1.00529, -0.0499488)
+
+[node name="Trees4" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, 0.0560991, 1.00529, -0.00393318)
+
+[node name="Trees5" parent="Node3D" instance=ExtResource("1_feu12")]
+transform = Transform3D(0.03, 0, 0, 0, 3, 0, 0, 0, 0.03, -0.0500125, 1.00529, -0.00393318)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, -10.0529, 0)
 mesh = SubResource("BoxMesh_h4xos")
@@ -39,12 +92,19 @@ shape = SubResource("BoxShape3D_t0lig")
 shape = SubResource("BoxShape3D_mn6p3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+environment = ExtResource("2_nqe56")
+
+[node name="Panel" type="Panel" parent="Camera3D"]
+offset_left = 257.0
+offset_top = 135.0
+offset_right = 819.0
+offset_bottom = 297.0
 
 [node name="Label" type="Label" parent="Camera3D"]
-offset_left = 250.0
-offset_top = 128.0
-offset_right = 818.0
-offset_bottom = 369.0
+offset_left = 257.0
+offset_top = 135.0
+offset_right = 800.0
+offset_bottom = 283.0
 theme_override_font_sizes/font_size = 40
 text = "Cleanser"
 horizontal_alignment = 1
@@ -59,7 +119,7 @@ theme_override_fonts/font = SubResource("SystemFont_svutl")
 theme_override_font_sizes/font_size = 30
 text = "Start "
 script = ExtResource("2_hrqeb")
-sceneName = "res://Levels/level_one.tscn"
+sceneName = "res://Levels/tutorial.tscn"
 
 [node name="Exit" type="Button" parent="Camera3D"]
 offset_left = 368.0

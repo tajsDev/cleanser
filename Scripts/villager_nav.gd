@@ -25,9 +25,9 @@ func set_global_pos(pos: Vector3):
 	
 
 func _physics_process(delta): 
-	set_movement_target(player.global_position)
-	
-	look_at(player.global_position)
+	if(player):
+		set_movement_target(player.global_position)
+		look_at(player.global_position)
 
 		
 	if not is_on_floor():
