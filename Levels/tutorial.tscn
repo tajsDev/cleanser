@@ -85,7 +85,12 @@ offset_top = 128.0
 offset_right = 875.0
 offset_bottom = 465.0
 theme_override_font_sizes/font_size = 27
-text = "Hello Traveler, The forest needs your help. An evil dragon has corrupted the wildlife and you must defeat him to save the creatures. Use WASD to move and SPACE to jump. Use your mouse to aim and MOUSE1 to attack the enemies and MOUSE2 to save the enemies. The lives of the wildlife are resting upon you, are you ready ?"
+text = "Hello Traveler, The forest needs your help. 
+An evil dragon has corrupted the wildlife and you must defeat him to save the creatures. 
+Use WASD to move and SPACE to jump. 
+Use your mouse to aim and MOUSE1 to attack the enemies and MOUSE2 to save the enemies.
+Use ESC to pause the adventure 
+The lives of the wildlife are resting upon you, are you ready ?"
 horizontal_alignment = 1
 autowrap_mode = 3
 
