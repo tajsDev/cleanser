@@ -60,269 +60,272 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 slide_on_ceiling = false
 
-[node name="box" type="Node3D" parent="."]
+[node name="level" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58396, 0)
 
-[node name="brickwall" parent="box" instance=ExtResource("4_nvat0")]
-transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
-
-[node name="brickwall2" parent="box" instance=ExtResource("4_nvat0")]
-transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
-
-[node name="brickwall3" parent="box" instance=ExtResource("4_nvat0")]
-transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
-
-[node name="brickwall4" parent="box" instance=ExtResource("4_nvat0")]
-transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
-
-[node name="brickwall5" parent="box" instance=ExtResource("4_nvat0")]
-transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
-
-[node name="box4" type="Node3D" parent="."]
+[node name="box4" type="Node3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0373, 0, -75.5571)
 
-[node name="brickwall2" parent="box4" instance=ExtResource("4_nvat0")]
-transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+[node name="brickwall2" parent="level/box4" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.51377e-07, 0, 3, 0, 3.83259, 0, -10.3263, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="brickwall3" parent="box4" instance=ExtResource("4_nvat0")]
+[node name="brickwall3" parent="level/box4" instance=ExtResource("4_nvat0")]
 transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
 
-[node name="brickwall4" parent="box4" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box4" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
 
-[node name="brickwall5" parent="box4" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box4" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
 
-[node name="box5" type="Node3D" parent="."]
+[node name="box" type="Node3D" parent="level"]
+
+[node name="brickwall" parent="level/box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
+
+[node name="brickwall2" parent="level/box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.49565e-07, 0, 3, 0, 3.83259, 0, -10.2848, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+
+[node name="brickwall3" parent="level/box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
+
+[node name="brickwall4" parent="level/box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
+
+[node name="brickwall5" parent="level/box" instance=ExtResource("4_nvat0")]
+transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
+
+[node name="box5" type="Node3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9396, 0, -75.5571)
 
-[node name="brickwall2" parent="box5" instance=ExtResource("4_nvat0")]
-transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.2766, -4.34885, 374.746)
+[node name="brickwall2" parent="level/box5" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.51524e-07, 0, 3, 0, 3.83259, 0, -10.3297, 0, -1.31134e-07, 14.2766, -4.34885, 374.746)
 
-[node name="brickwall5" parent="box5" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box5" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.2766, -4.34885, 337.511)
 
-[node name="brickwall6" parent="box5" instance=ExtResource("4_nvat0")]
+[node name="brickwall6" parent="level/box5" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.2766, -4.34885, 300.823)
 
-[node name="brickwall3" parent="box5" instance=ExtResource("4_nvat0")]
+[node name="brickwall3" parent="level/box5" instance=ExtResource("4_nvat0")]
 transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 393.82)
 
-[node name="brickwall4" parent="box5" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box5" instance=ExtResource("4_nvat0")]
 transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 357.216)
 
-[node name="box2" type="Node3D" parent="."]
+[node name="box2" type="Node3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -37.7814)
 
-[node name="spawn_tracker" parent="box2" instance=ExtResource("4_olucj")]
+[node name="spawn_tracker" parent="level/box2" instance=ExtResource("4_olucj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
 num_of_enemies = 2
 
-[node name="Spawner3" parent="box2/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="level/box2/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner" parent="box2/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="level/box2/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner2" parent="box2/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="level/box2/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Area3D" parent="box2/spawn_tracker" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+[node name="Area3D" parent="level/box2/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 1.53095, 368.408)
 
-[node name="CollisionShape3D" parent="box2/spawn_tracker/Area3D" index="0"]
+[node name="CollisionShape3D" parent="level/box2/spawn_tracker/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
-[node name="Barrier" parent="box2/spawn_tracker" index="5"]
+[node name="Barrier" parent="level/box2/spawn_tracker" index="5"]
 transform = Transform3D(10, 0, 0, 0, 11.5609, 0, 0, 0, 2.45556, -4.38313, 1.54605, 333.445)
 
-[node name="brickwall" parent="box2" instance=ExtResource("4_nvat0")]
+[node name="brickwall" parent="level/box2" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
 
-[node name="brickwall2" parent="box2" instance=ExtResource("4_nvat0")]
+[node name="brickwall2" parent="level/box2" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="brickwall4" parent="box2" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box2" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
 
-[node name="brickwall5" parent="box2" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box2" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
 
-[node name="box6" type="Node3D" parent="."]
+[node name="box6" type="Node3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0759, 0, -112.085)
 
-[node name="spawn_tracker" parent="box6" instance=ExtResource("4_olucj")]
+[node name="spawn_tracker" parent="level/box6" instance=ExtResource("4_olucj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
 num_of_enemies = 2
 
-[node name="Spawner3" parent="box6/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="level/box6/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner" parent="box6/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="level/box6/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner2" parent="box6/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="level/box6/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Area3D" parent="box6/spawn_tracker" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+[node name="Area3D" parent="level/box6/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05776, 2.35348, 369.289)
 
-[node name="CollisionShape3D" parent="box6/spawn_tracker/Area3D" index="0"]
+[node name="CollisionShape3D" parent="level/box6/spawn_tracker/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
-[node name="Barrier" parent="box6/spawn_tracker" index="5"]
+[node name="Barrier" parent="level/box6/spawn_tracker" index="5"]
 transform = Transform3D(10, 0, 0, 0, 11.5609, 0, 0, 0, 2.45556, -4.38313, 1.54605, 333.445)
 
-[node name="brickwall" parent="box6" instance=ExtResource("4_nvat0")]
+[node name="brickwall" parent="level/box6" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
 
-[node name="brickwall2" parent="box6" instance=ExtResource("4_nvat0")]
+[node name="brickwall2" parent="level/box6" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="brickwall4" parent="box6" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box6" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
 
-[node name="brickwall5" parent="box6" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box6" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
 
-[node name="box8" type="Node3D" parent="."]
+[node name="box8" type="Node3D" parent="level"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 369.433, 0, 230.653)
 
-[node name="spawn_tracker" parent="box8" instance=ExtResource("4_olucj")]
+[node name="spawn_tracker" parent="level/box8" instance=ExtResource("4_olucj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52588e-05, 0, 336.632)
 num_of_enemies = 2
 
-[node name="Spawner3" parent="box8/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="level/box8/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4712, 0, -4.92839)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner" parent="box8/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="level/box8/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.5213, 0, 0)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner2" parent="box8/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="level/box8/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.508, 0, 24.906)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Area3D" parent="box8/spawn_tracker" index="4"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.12634, 0, 20.7105)
+[node name="Area3D" parent="level/box8/spawn_tracker" index="4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.4418, 0, 19.592)
 
-[node name="CollisionShape3D" parent="box8/spawn_tracker/Area3D" index="0"]
+[node name="CollisionShape3D" parent="level/box8/spawn_tracker/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.89056, -0.511505)
 
-[node name="Barrier" parent="box8/spawn_tracker" index="5"]
+[node name="Barrier" parent="level/box8/spawn_tracker" index="5"]
 transform = Transform3D(37.0901, 0, 0, 0, 10.8019, 0, 1.13687e-13, 0, 1, 32.1615, 0, 28.4376)
 
-[node name="brickwall" parent="box8" instance=ExtResource("4_nvat0")]
+[node name="brickwall" parent="level/box8" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, 14.4942, -4.34885, 374.746)
 
-[node name="brickwall2" parent="box8" instance=ExtResource("4_nvat0")]
+[node name="brickwall2" parent="level/box8" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="brickwall3" parent="box8" instance=ExtResource("4_nvat0")]
-transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 336.359)
+[node name="brickwall3" parent="level/box8" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.53625e-07, 0, 3, 0, 3.83259, 0, -10.3777, 0, -1.31134e-07, -23.3856, -4.34885, 336.359)
 
-[node name="brickwall4" parent="box8" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box8" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, 7.42294, -4.34885, 356.572)
 
-[node name="brickwall5" parent="box8" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box8" instance=ExtResource("4_nvat0")]
 transform = Transform3D(4, 0, 0, 0, 3.833, 0, 0, 0, 3, -15.2931, -4.34885, 356.572)
 
-[node name="box7" type="Node3D" parent="."]
+[node name="box7" type="Node3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0759, 0, -148.613)
 
-[node name="spawn_tracker" parent="box7" instance=ExtResource("4_olucj")]
+[node name="spawn_tracker" parent="level/box7" instance=ExtResource("4_olucj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
 num_of_enemies = 2
 
-[node name="Spawner3" parent="box7/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="level/box7/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner" parent="box7/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="level/box7/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner2" parent="box7/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="level/box7/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Area3D" parent="box7/spawn_tracker" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+[node name="Area3D" parent="level/box7/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0.872863, 368.408)
 
-[node name="CollisionShape3D" parent="box7/spawn_tracker/Area3D" index="0"]
+[node name="CollisionShape3D" parent="level/box7/spawn_tracker/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
-[node name="Barrier" parent="box7/spawn_tracker" index="5"]
+[node name="Barrier" parent="level/box7/spawn_tracker" index="5"]
 transform = Transform3D(-4.37114e-07, 0, 2.45556, 0, 11.5609, 0, -10, 0, -1.07336e-07, 13.7403, 1.54605, 351.598)
 
-[node name="brickwall" parent="box7" instance=ExtResource("4_nvat0")]
+[node name="brickwall" parent="level/box7" instance=ExtResource("4_nvat0")]
 transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -5.01648, -4.34885, 355.624)
 
-[node name="brickwall2" parent="box7" instance=ExtResource("4_nvat0")]
-transform = Transform3D(-4.13331e-07, 0, 3, 0, 3.83259, 0, -9.4559, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
+[node name="brickwall2" parent="level/box7" instance=ExtResource("4_nvat0")]
+transform = Transform3D(-4.48175e-07, 0, 3, 0, 3.83259, 0, -10.253, 0, -1.31134e-07, -23.3856, -4.34885, 374.746)
 
-[node name="brickwall4" parent="box7" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box7" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 14.1737, -4.34885, 385.302)
 
-[node name="brickwall5" parent="box7" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box7" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 14.0078, -4.34885, 362.632)
 
-[node name="box3" type="Node3D" parent="."]
+[node name="box3" type="Node3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75.7797)
 
-[node name="brickwall8" parent="box3" instance=ExtResource("4_nvat0")]
+[node name="brickwall8" parent="level/box3" instance=ExtResource("4_nvat0")]
 transform = Transform3D(9.4559, 0, 0, 0, 3.83259, 0, 0, 0, 3, -4.24257, -4.34885, 357.628)
 
-[node name="spawn_tracker" parent="box3" instance=ExtResource("4_olucj")]
+[node name="spawn_tracker" parent="level/box3" instance=ExtResource("4_olucj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
 num_of_enemies = 2
 
-[node name="Spawner3" parent="box3/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
+[node name="Spawner3" parent="level/box3/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner" parent="box3/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
+[node name="Spawner" parent="level/box3/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Spawner2" parent="box3/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
+[node name="Spawner2" parent="level/box3/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
-Player = NodePath("../../../Player")
+Player = NodePath("../../../../Player")
 
-[node name="Area3D" parent="box3/spawn_tracker" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0, 368.408)
+[node name="Area3D" parent="level/box3/spawn_tracker" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 1.39905, 368.408)
 
-[node name="CollisionShape3D" parent="box3/spawn_tracker/Area3D" index="0"]
+[node name="CollisionShape3D" parent="level/box3/spawn_tracker/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
-[node name="Barrier" parent="box3/spawn_tracker" index="5"]
+[node name="Barrier" parent="level/box3/spawn_tracker" index="5"]
 transform = Transform3D(10, 0, 0, 0, 11.5609, 0, 0, 0, 2.45556, 70.2254, 1.54605, 333.445)
 
-[node name="brickwall4" parent="box3" instance=ExtResource("4_nvat0")]
+[node name="brickwall4" parent="level/box3" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 13.9731, -4.34885, 386.245)
 
-[node name="brickwall5" parent="box3" instance=ExtResource("4_nvat0")]
+[node name="brickwall5" parent="level/box3" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, 13.8284, -4.34885, 366.092)
 
-[node name="brickwall6" parent="box3" instance=ExtResource("4_nvat0")]
+[node name="brickwall6" parent="level/box3" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, -22.7859, -4.34885, 366.092)
 
-[node name="brickwall7" parent="box3" instance=ExtResource("4_nvat0")]
+[node name="brickwall7" parent="level/box3" instance=ExtResource("4_nvat0")]
 transform = Transform3D(-1.74846e-07, 0, 3, 0, 3.833, 0, -4, 0, -1.31134e-07, -23.4664, -4.34885, 385.817)
 
 [editable path="Next_Level"]
-[editable path="box2/spawn_tracker"]
-[editable path="box6/spawn_tracker"]
-[editable path="box8/spawn_tracker"]
-[editable path="box7/spawn_tracker"]
-[editable path="box3/spawn_tracker"]
+[editable path="level/box2/spawn_tracker"]
+[editable path="level/box6/spawn_tracker"]
+[editable path="level/box8/spawn_tracker"]
+[editable path="level/box7/spawn_tracker"]
+[editable path="level/box3/spawn_tracker"]

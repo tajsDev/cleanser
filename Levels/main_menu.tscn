@@ -24,6 +24,7 @@ msdf_pixel_range = 100
 msdf_size = 57
 
 [node name="Node3D" type="Node3D"]
+process_mode = 3
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, 6.91872, -30.0527)

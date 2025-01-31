@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
 [ext_resource type="Script" path="res://Scripts/hands_animation.gd" id="3_r3d6r"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
-[ext_resource type="Script" path="res://Scripts/exit_button.gd" id="4_7ogeu"]
 [ext_resource type="Texture2D" uid="uid://dqud41y1q1d1l" path="res://Assets/Images/attack_hand.png" id="4_j73wc"]
 [ext_resource type="Texture2D" uid="uid://gtljyv7q11w0" path="res://Assets/Images/cleanse_hand.png" id="5_0qpb3"]
+[ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
@@ -87,7 +87,8 @@ offset_right = 706.0
 offset_bottom = 406.0
 theme_override_font_sizes/font_size = 30
 text = "Exit"
-script = ExtResource("4_7ogeu")
+script = ExtResource("5_m0vb5")
+sceneName = "res://Levels/main_menu.tscn"
 
 [node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer/Paused"]
 position = Vector2(12, 529)
