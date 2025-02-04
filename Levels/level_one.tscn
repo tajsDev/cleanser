@@ -24,7 +24,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5rjh"]
-size = Vector3(10.8747, 0.491066, 3.6311)
+size = Vector3(10.8747, 1.4877, 3.6311)
 
 [node name="level_one" type="Node3D"]
 
@@ -136,7 +136,7 @@ Player = NodePath("../../../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 1.53095, 368.408)
 
 [node name="CollisionShape3D" parent="level/box2/spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -3.95106, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
 [node name="Barrier" parent="level/box2/spawn_tracker" index="5"]

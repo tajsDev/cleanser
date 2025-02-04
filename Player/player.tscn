@@ -51,6 +51,7 @@ radius = 0.478389
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("play_health")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.158524)
 input_ray_pickable = false
+safe_margin = 0.75
 script = ExtResource("1_7jrg8")
 play_health = NodePath("Area3D/HealthManager")
 

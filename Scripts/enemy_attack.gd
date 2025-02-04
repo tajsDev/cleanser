@@ -1,7 +1,7 @@
 extends Node3D
 @export var navigation_agent: NavigationAgent3D
 @export var projectile_scene: PackedScene
-@export var launch_threshold: float = 10.0
+@export var launch_threshold: float = 5.0
 @export var projectile_speed: float = 10.0
 @export var animation: AnimatedSprite3D
 var canAttack = true

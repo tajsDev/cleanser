@@ -8,9 +8,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @export var play_health: Node3D
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("ui_accept") && is_on_floor() : 
-		velocity.y += JUMP_VELOCITY
-		
 	if Input.is_action_just_pressed("ui_cancel") : 
 		emit_signal("paused")
 	# Add the gravity.

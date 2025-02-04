@@ -25,20 +25,18 @@ func set_global_pos(pos: Vector3):
 	
 
 func _physics_process(delta): 
+	if(cleansed):
+		look_at(player.global_position)
+		return
 	if(player):
 		set_movement_target(player.global_position)
 		look_at(player.global_position)
-
 		
 	if not is_on_floor():
 		velocity.y -= gravity * delta * movement_speed
 		move_and_slide()
-
-
-	
-	if(cleansed):
-		navigation_agent.set_target_position(global_position)
-
+		velocity.y = min(velocity.y, 0)
+		
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * movement_speed
 	if navigation_agent.avoidance_enabled:
@@ -48,6 +46,7 @@ func _physics_process(delta):
 
 func _on_velocity_computed(safe_velocity: Vector3):
 	velocity = safe_velocity
+	velocity.y = min(velocity.y, 0)
 	move_and_slide()
 	
 func healPlayer():
