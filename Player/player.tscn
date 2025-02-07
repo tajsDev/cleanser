@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
+[ext_resource type="Script" path="res://Scripts/wolf_spawner.gd" id="2_rplua"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
-[ext_resource type="Script" path="res://Scripts/hands_animation.gd" id="3_r3d6r"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
-[ext_resource type="Texture2D" uid="uid://dqud41y1q1d1l" path="res://Assets/Images/attack_hand.png" id="4_j73wc"]
-[ext_resource type="Texture2D" uid="uid://gtljyv7q11w0" path="res://Assets/Images/cleanse_hand.png" id="5_0qpb3"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
+[ext_resource type="Texture2D" uid="uid://c0yv0t0n72j6b" path="res://Assets/Images/hands_new.png" id="6_sf0v8"]
 [ext_resource type="Script" path="res://Scripts/paused_button.gd" id="7_spkb6"]
+[ext_resource type="PackedScene" uid="uid://dlkg12xse30n6" path="res://Enemies/f_wolf.tscn" id="15_t5ik5"]
 
 [sub_resource type="Theme" id="Theme_32wf2"]
 /colors/blue = Color(0, 0, 0, 1)
@@ -40,7 +40,7 @@ texture = SubResource("CanvasTexture_np8vb")
 modulate_color = Color(0.301961, 1, 0.47451, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbghm"]
-size = Vector3(0.528809, 1.77234, 0.704041)
+size = Vector3(0.87912, 0.166962, 0.704041)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_d4wt4"]
 
@@ -48,12 +48,12 @@ size = Vector3(0.528809, 1.77234, 0.704041)
 height = 1.38879
 radius = 0.478389
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("play_health")]
+[node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.158524)
 input_ray_pickable = false
-safe_margin = 0.75
+slide_on_ceiling = false
+safe_margin = 0.5
 script = ExtResource("1_7jrg8")
-play_health = NodePath("Area3D/HealthManager")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496753, -0.439856)
@@ -95,14 +95,14 @@ sceneName = "res://Levels/main_menu.tscn"
 position = Vector2(12, 529)
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera3D/CanvasLayer/Paused/Health UI"]
-position = Vector2(574, -167)
-scale = Vector2(5, 5)
-texture = ExtResource("4_j73wc")
-script = ExtResource("3_r3d6r")
-attack_sprite = ExtResource("4_j73wc")
-cleanse_sprite = ExtResource("5_0qpb3")
+position = Vector2(506, -115)
+scale = Vector2(3.75, 3)
+texture = ExtResource("6_sf0v8")
 
-[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI"]
+[node name="Node2D" type="Node2D" parent="Camera3D/CanvasLayer/Paused/Health UI"]
+position = Vector2(391, -492)
+
+[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI/Node2D"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -119,7 +119,7 @@ max_value = 0.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI"]
+[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI/Node2D"]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -138,7 +138,7 @@ value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI" node_paths=PackedStringArray("health_mang", "health_bar")]
+[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI/Node2D" node_paths=PackedStringArray("health_mang", "health_bar")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -155,7 +155,7 @@ theme_override_styles/fill = SubResource("StyleBoxTexture_pik6u")
 value = 100.0
 show_percentage = false
 script = ExtResource("3_qw161")
-health_mang = NodePath("../../../../../Area3D/HealthManager")
+health_mang = NodePath("../../../../../../Area3D/HealthManager")
 health_bar = NodePath(".")
 metadata/_edit_use_anchors_ = true
 
@@ -173,16 +173,20 @@ wait_time = 2.0
 [node name="attack_timer" type="Timer" parent="Camera3D"]
 wait_time = 0.2
 
-[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
+[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
 script = ExtResource("6_ih34o")
 cleanse_spell = ExtResource("6_riwv4")
-cam = NodePath("..")
 cooldown_timer = NodePath("../attack_timer")
 action = "ui_attack"
 
+[node name="wolf_spawner" type="Node3D" parent="Camera3D/attack_book"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.682617, 0.0107915)
+script = ExtResource("2_rplua")
+f_wolf = ExtResource("15_t5ik5")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0354004, 0.0146488, 0.0121155)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00846861, -0.876968, 0.0121155)
 shape = SubResource("BoxShape3D_jbghm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -204,11 +208,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
+[connection signal="wolf_spawn" from="." to="Camera3D/attack_book/wolf_spawner" method="_on_player_wolf_spawn"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/resume_button" to="Camera3D/CanvasLayer/Paused" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/exit_button" to="Camera3D/CanvasLayer/Paused/p_menu/exit_button" method="_on_pressed"]
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_dead"]
-[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Paused/Health UI/HealthBar" method="_on_health_manager_health_changed"]
+[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Paused/Health UI/Node2D/HealthBar" method="_on_health_manager_health_changed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]

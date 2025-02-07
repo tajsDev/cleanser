@@ -5,10 +5,12 @@ var direction
 var speed = 10.0
 @export var cooldown_timer: Timer
 @export var action:String
+signal attacking
 
 var canShoot = true 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed(action) && canShoot:
+		emit_signal("attacking")
 		canShoot = false
 		cooldown_timer.start()
 		var spell = cleanse_spell.instantiate()

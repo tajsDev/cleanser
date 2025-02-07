@@ -1,6 +1,5 @@
 extends Node3D
 @export var cleanse_spell: PackedScene
-@export var cam: Camera3D
 var direction
 var speed = 10.0
 @export var cooldown_timer: Timer

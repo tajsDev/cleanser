@@ -24,7 +24,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5rjh"]
-size = Vector3(10.8747, 1.4877, 3.6311)
+size = Vector3(6.28231, 0.817214, 3.6311)
 
 [node name="level_one" type="Node3D"]
 
@@ -58,7 +58,6 @@ shape = SubResource("BoxShape3D_mn6p3")
 [node name="Player" parent="." instance=ExtResource("3_xxiff")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
-slide_on_ceiling = false
 
 [node name="level" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.58396, 0)
@@ -136,7 +135,7 @@ Player = NodePath("../../../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 1.53095, 368.408)
 
 [node name="CollisionShape3D" parent="level/box2/spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -3.95106, 3.66962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79203, -4.2863, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
 [node name="Barrier" parent="level/box2/spawn_tracker" index="5"]
@@ -261,7 +260,7 @@ Player = NodePath("../../../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 0.872863, 368.408)
 
 [node name="CollisionShape3D" parent="level/box7/spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863525, -3.60894, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
 [node name="Barrier" parent="level/box7/spawn_tracker" index="5"]
@@ -305,7 +304,7 @@ Player = NodePath("../../../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 1.39905, 368.408)
 
 [node name="CollisionShape3D" parent="level/box3/spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.863526, -4.44937, 3.66962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.724201, -4.44937, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
 [node name="Barrier" parent="level/box3/spawn_tracker" index="5"]

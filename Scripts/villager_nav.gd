@@ -25,12 +25,12 @@ func set_global_pos(pos: Vector3):
 	
 
 func _physics_process(delta): 
-	if(cleansed):
-		look_at(player.global_position)
-		return
+
 	if(player):
 		set_movement_target(player.global_position)
 		look_at(player.global_position)
+	if(cleansed):
+		set_movement_target(global_position)
 		
 	if not is_on_floor():
 		velocity.y -= gravity * delta * movement_speed
@@ -62,7 +62,7 @@ func _on_health_manager_gibbed() -> void:
 
  
 func _on_timer_timeout() -> void:
-	player.play_health.heal(healing)
+	player.spawn_child()
 	queue_free()
 
 

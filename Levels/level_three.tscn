@@ -175,12 +175,11 @@ shape = SubResource("BoxShape3D_t0lig")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_mn6p3")
 
-[node name="Player" type="CharacterBody3D" parent="." node_paths=PackedStringArray("play_health") groups=["player"]]
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 input_ray_pickable = false
 slide_on_ceiling = false
 script = ExtResource("2_vp532")
-play_health = NodePath("Area3D/HealthManager")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496753, -0.439856)
@@ -299,11 +298,10 @@ wait_time = 2.0
 [node name="attack_timer" type="Timer" parent="Player/Camera3D"]
 wait_time = 0.2
 
-[node name="attack_book" type="Node3D" parent="Player/Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
+[node name="attack_book" type="Node3D" parent="Player/Camera3D" node_paths=PackedStringArray("cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
 script = ExtResource("12_a06og")
 cleanse_spell = ExtResource("13_n5ib5")
-cam = NodePath("..")
 cooldown_timer = NodePath("../attack_timer")
 action = "ui_attack"
 
@@ -388,6 +386,24 @@ transform = Transform3D(3.69303, 0, 8.20741, 0, 9, 0, -8.20741, 0, 3.69303, 32.9
 
 [node name="Trees3" parent="level8" instance=ExtResource("3_88kw3")]
 transform = Transform3D(3.69303, 0, 8.20741, 0, 9, 0, -8.20741, 0, 3.69303, 42.0015, 0, -28.4669)
+
+[node name="Trees4" parent="level8" instance=ExtResource("3_88kw3")]
+transform = Transform3D(2.05168, 0, 4.55967, 0, 5, 0, -4.55967, 0, 2.05168, 51.4233, 0, -33.8126)
+
+[node name="Trees5" parent="level8" instance=ExtResource("3_88kw3")]
+transform = Transform3D(-4.75588, 0, 1.54326, 0, 5, 0, -1.54326, 0, -4.75588, 105.99, 0, -27.537)
+
+[node name="Trees6" parent="level8" instance=ExtResource("3_88kw3")]
+transform = Transform3D(-4.75588, 0, 1.54326, 0, 5, 0, -1.54326, 0, -4.75588, 149.572, 0, 12.0801)
+
+[node name="Trees7" parent="level8" instance=ExtResource("3_88kw3")]
+transform = Transform3D(-4.75588, 0, 1.54326, 0, 5, 0, -1.54326, 0, -4.75588, 176.467, 0, -77.1599)
+
+[node name="Trees8" parent="level8" instance=ExtResource("3_88kw3")]
+transform = Transform3D(-4.75588, 0, 1.54326, 0, 5, 0, -1.54326, 0, -4.75588, 220.758, 0, -33.0211)
+
+[node name="Trees9" parent="level8" instance=ExtResource("3_88kw3")]
+transform = Transform3D(-4.75588, 0, 1.54326, 0, 5, 0, -1.54326, 0, -4.75588, 207.036, 0, 2.63503)
 
 [node name="level9" type="Node3D" parent="."]
 transform = Transform3D(0.359182, 0, -0.933267, 0, 1, 0, 0.933267, 0, 0.359182, -120.676, 0, 111.857)

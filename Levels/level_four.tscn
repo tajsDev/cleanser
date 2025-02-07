@@ -257,7 +257,6 @@ shape = SubResource("BoxShape3D_mn6p3")
 
 [node name="Player" parent="." instance=ExtResource("3_2rit3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4247, 0, 436.823)
-slide_on_ceiling = false
 
 [node name="Dragon" parent="." instance=ExtResource("4_m2trm")]
 
