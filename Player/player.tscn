@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=31 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
 [ext_resource type="Texture2D" uid="uid://c0yv0t0n72j6b" path="res://Assets/Images/hands_new.png" id="6_sf0v8"]
 [ext_resource type="Script" path="res://Scripts/paused_button.gd" id="7_spkb6"]
+[ext_resource type="Shader" path="res://Player/pixel_art.gdshader" id="8_ann7w"]
 [ext_resource type="PackedScene" uid="uid://dlkg12xse30n6" path="res://Enemies/f_wolf.tscn" id="15_t5ik5"]
 
 [sub_resource type="Theme" id="Theme_32wf2"]
@@ -38,6 +39,19 @@ modulate_color = Color(0.807843, 0, 0, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pik6u"]
 texture = SubResource("CanvasTexture_np8vb")
 modulate_color = Color(0.301961, 1, 0.47451, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxspe"]
+shader = ExtResource("8_ann7w")
+shader_parameter/target_resolution = Vector2(320, 240)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3cmis"]
+shader = ExtResource("8_ann7w")
+shader_parameter/target_resolution = Vector2(320, 240)
+
+[sub_resource type="QuadMesh" id="QuadMesh_rxdrp"]
+material = SubResource("ShaderMaterial_3cmis")
+size = Vector2(40, 50)
+center_offset = Vector3(1, 1, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jbghm"]
 size = Vector3(0.87912, 0.166962, 0.704041)
@@ -95,7 +109,7 @@ sceneName = "res://Levels/main_menu.tscn"
 position = Vector2(12, 529)
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera3D/CanvasLayer/Paused/Health UI"]
-position = Vector2(506, -115)
+position = Vector2(506, -106)
 scale = Vector2(3.75, 3)
 texture = ExtResource("6_sf0v8")
 
@@ -158,6 +172,13 @@ script = ExtResource("3_qw161")
 health_mang = NodePath("../../../../../../Area3D/HealthManager")
 health_bar = NodePath(".")
 metadata/_edit_use_anchors_ = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Camera3D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_wxspe")
+position = Vector2(559, 330)
+scale = Vector2(30, 18)
+mesh = SubResource("QuadMesh_rxdrp")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)

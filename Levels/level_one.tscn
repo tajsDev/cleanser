@@ -24,7 +24,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5rjh"]
-size = Vector3(6.28231, 0.817214, 3.6311)
+size = Vector3(7.20925, 1.87674, 3.6311)
 
 [node name="level_one" type="Node3D"]
 
@@ -289,22 +289,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.594)
 num_of_enemies = 2
 
 [node name="Spawner3" parent="level/box3/spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.824, 0, 336.914)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.0994, 0, 341.716)
 Player = NodePath("../../../../Player")
 
 [node name="Spawner" parent="level/box3/spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 337.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57522, 0, 345.108)
 Player = NodePath("../../../../Player")
 
 [node name="Spawner2" parent="level/box3/spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 336.731)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 344.439)
 Player = NodePath("../../../../Player")
 
 [node name="Area3D" parent="level/box3/spawn_tracker" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65278, 1.39905, 368.408)
 
 [node name="CollisionShape3D" parent="level/box3/spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.724201, -4.44937, 3.66962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.595427, -3.73864, 3.66962)
 shape = SubResource("BoxShape3D_b5rjh")
 
 [node name="Barrier" parent="level/box3/spawn_tracker" index="5"]

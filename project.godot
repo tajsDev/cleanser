@@ -15,6 +15,16 @@ run/main_scene="res://Levels/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/resizable=false
+window/size/always_on_top=true
+window/size/window_width_override=1280
+window/size/window_height_override=900
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/ios/allow_high_refresh_rate=false
+
 [dotnet]
 
 project/assembly_name="Cleanser"
@@ -80,4 +90,9 @@ ui_attack={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+shading/overrides/force_vertex_shading=true
+shading/overrides/force_lambert_over_burley=true
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+2d/snap/snap_2d_transforms_to_pixel=true
