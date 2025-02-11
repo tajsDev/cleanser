@@ -23,7 +23,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 msdf_pixel_range = 100
 msdf_size = 57
 
-[node name="Node3D" type="Node3D"]
+[node name="main_menu" type="Node3D"]
 process_mode = 3
 
 [node name="Node3D" type="Node3D" parent="."]

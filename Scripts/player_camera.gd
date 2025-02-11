@@ -6,9 +6,10 @@ extends Camera3D
 const CAMERA_TURN_SPEED = 150
 
 func _ready():
+	get_tree().paused = false
 	## Tell Godot that we want to handle input
 	set_process_input(true)
-
+	
 func look_updown_rotation(new_rotation = 0):
 	var toReturn = self.get_rotation() + Vector3(new_rotation, 0, 0)
 
@@ -58,4 +59,5 @@ func _leave_tree():
 	"""
 	Show the mouse when we leave
 	"""
+	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

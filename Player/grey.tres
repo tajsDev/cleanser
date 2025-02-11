@@ -3,4 +3,6 @@
 [resource]
 background_mode = 1
 background_color = Color(0.473976, 0.473976, 0.473976, 1)
+reflected_light_source = 1
+tonemap_mode = 2
 fog_enabled = true

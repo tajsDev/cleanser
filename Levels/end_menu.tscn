@@ -22,7 +22,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
-[node name="Node3D" type="Node3D"]
+[node name="end_menu" type="Node3D"]
 
 [node name="wolf" parent="." instance=ExtResource("2_j2j4x")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -280.471, 0, -0.329285)

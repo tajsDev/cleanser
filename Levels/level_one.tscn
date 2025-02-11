@@ -31,9 +31,6 @@ size = Vector3(7.20925, 1.87674, 3.6311)
 [node name="Next_Level" parent="." instance=ExtResource("1_31eoj")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -15.4967, 0, 262.424)
 
-[node name="Area3D" parent="Next_Level" index="0"]
-sceneName = "res://Levels/level_three.tscn"
-
 [node name="CollisionShape3D" parent="Next_Level/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00256348, 0)
 
