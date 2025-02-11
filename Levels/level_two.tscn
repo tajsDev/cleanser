@@ -586,8 +586,9 @@ shape = SubResource("BoxShape3D_wksja")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1037, 0, 199.052)
 num_of_enemies = 2
 
-[node name="Spawner3" parent="spawn_tracker2" index="1"]
+[node name="Spawner3" parent="spawn_tracker2" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(0.924905, -0.380199, 0, 0.380199, 0.924905, 0, 0, 0, 1, 18.3985, 0, -8.35703)
+Player = NodePath("../../Player")
 
 [node name="Spawner" parent="spawn_tracker2" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 4.0731)

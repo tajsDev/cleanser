@@ -2,7 +2,7 @@ extends Area3D
 @export var bubble:PackedScene 
 @onready var health_mang = $HealthManager
 var bubble_on = false
-var bub
+var bub = null
 signal changed
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,16 +14,16 @@ func _on_area_entered(area: Area3D) -> void:
 	elif (area.is_in_group("healing") && bubble_on):
 		if(bub):
 			remove_child(bub)
+			bub = null
 		emit_signal("changed")
 
 func _on_health_manager_hurts() -> void:
-	if(!bubble_on):
-		if(health_mang.cur_health > 50):
-			health_mang.hurt(10)
+	if(health_mang.cur_health > 50 ):
+		health_mang.hurt(10)
+	else:
+		bubble_on = true
+		if(bubble != null && bub == null): 
+			bub = bubble.instantiate()
+			add_child(bub)
 		else:
-			bubble_on = true
-			if(bubble != null): 
-				bub = bubble.instantiate()
-				add_child(bub)
-			else:
-				health_mang.hurt(10)
+			health_mang.hurt(10)

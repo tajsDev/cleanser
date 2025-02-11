@@ -1,12 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://od3fw6jmjus7"]
+[gd_scene load_steps=19 format=3 uid="uid://od3fw6jmjus7"]
 
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_5g1ky"]
-[ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="1_cyllh"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_tiv21"]
 [ext_resource type="PackedScene" uid="uid://b1icvwesuf52e" path="res://Enemies/wolf_no_bubble.tscn" id="2_6ahje"]
+[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="2_akky4"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="2_klmj5"]
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="3_7ej2p"]
 [ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="3_88kw3"]
 [ext_resource type="PackedScene" uid="uid://br87fj7nbgec5" path="res://Assets/dead_trees.tscn" id="4_rwau7"]
+[ext_resource type="Script" path="res://Scripts/spawn_active.gd" id="5_5ynm5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
+size = Vector3(16.5823, 3.32591, 8.86236)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwbik"]
+transparency = 1
+albedo_color = Color(1, 0.223529, 0.0392157, 0.439216)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x6wrl"]
+material = SubResource("StandardMaterial3D_vwbik")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhm0d"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
 vertices = PackedVector3Array(-49.5, -326.191, -49.5, -49.5, -326.191, 49.5, 49.5, -326.191, 49.5, 49.5, -326.191, -49.5)
@@ -30,80 +44,137 @@ material = SubResource("StandardMaterial3D_6e4mi")
 [node name="Player" parent="." instance=ExtResource("1_5g1ky")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 
-[node name="spawn_tracker" parent="." instance=ExtResource("1_cyllh")]
+[node name="spawn_tracker" type="Node3D" parent="." node_paths=PackedStringArray("spawn_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71249, 0, 273.824)
+script = ExtResource("2_akky4")
+spawn_timer = NodePath("spawner_timer")
 num_of_enemies = 2
 
-[node name="Spawner3" parent="spawn_tracker" index="1"]
+[node name="spawner_timer" type="Timer" parent="spawn_tracker"]
+wait_time = 2.0
+
+[node name="Spawner3" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.78253)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Spawner" parent="spawn_tracker" index="2"]
+[node name="Spawner" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0804, 0, 12.4539)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Spawner2" parent="spawn_tracker" index="3"]
+[node name="Spawner2" type="Node3D" parent="spawn_tracker" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0368, 0, 10.292)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Area3D" parent="spawn_tracker" index="4"]
+[node name="Area3D" type="Area3D" parent="spawn_tracker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71725, 0, 58.9738)
+script = ExtResource("5_5ynm5")
 
-[node name="CollisionShape3D" parent="spawn_tracker/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73473, -3.94523, 0.0977173)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16192, -3.09453, 0.0977173)
+shape = SubResource("BoxShape3D_1e2bb")
 
-[node name="Barrier" parent="spawn_tracker" index="5"]
+[node name="Barrier" type="MeshInstance3D" parent="spawn_tracker"]
 transform = Transform3D(32.6406, 0, 0, 0, 10.111, 0, 0, 0, 5, -4.44624, 0, -16.9897)
+mesh = SubResource("BoxMesh_x6wrl")
 
-[node name="spawn_tracker2" parent="." instance=ExtResource("1_cyllh")]
+[node name="StaticBody3D" type="StaticBody3D" parent="spawn_tracker/Barrier"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker/Barrier/StaticBody3D"]
+shape = SubResource("BoxShape3D_qhm0d")
+
+[node name="spawn_tracker2" type="Node3D" parent="." node_paths=PackedStringArray("spawn_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.6819, 0, 157.989)
+script = ExtResource("2_akky4")
+spawn_timer = NodePath("spawner_timer")
 num_of_enemies = 2
 
-[node name="Spawner3" parent="spawn_tracker2" index="1"]
+[node name="spawner_timer" type="Timer" parent="spawn_tracker2"]
+wait_time = 2.0
+
+[node name="Spawner3" type="Node3D" parent="spawn_tracker2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.58055)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Spawner" parent="spawn_tracker2" index="2"]
+[node name="Spawner" type="Node3D" parent="spawn_tracker2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.2964)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Spawner2" parent="spawn_tracker2" index="3"]
+[node name="Spawner2" type="Node3D" parent="spawn_tracker2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6151, 0, 0)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Area3D" parent="spawn_tracker2" index="4"]
+[node name="Area3D" type="Area3D" parent="spawn_tracker2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.078, 0, 10.0409)
+script = ExtResource("5_5ynm5")
 
-[node name="CollisionShape3D" parent="spawn_tracker2/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.77601, -4.28492, 1.39824)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3699, -3.74999, 2.37624)
+shape = SubResource("BoxShape3D_1e2bb")
 
-[node name="Barrier" parent="spawn_tracker2" index="5"]
+[node name="Barrier" type="MeshInstance3D" parent="spawn_tracker2"]
 transform = Transform3D(9.15338, 0, 0, 0, 11.43, 0, 0, 0, 29.6847, -25.9758, 0, 0)
+mesh = SubResource("BoxMesh_x6wrl")
 
-[node name="spawn_tracker3" parent="." instance=ExtResource("1_cyllh")]
+[node name="StaticBody3D" type="StaticBody3D" parent="spawn_tracker2/Barrier"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker2/Barrier/StaticBody3D"]
+shape = SubResource("BoxShape3D_qhm0d")
+
+[node name="spawn_tracker3" type="Node3D" parent="." node_paths=PackedStringArray("spawn_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.066, 0, 246.145)
+script = ExtResource("2_akky4")
+spawn_timer = NodePath("spawner_timer")
 num_of_enemies = 2
 
-[node name="Spawner3" parent="spawn_tracker3" index="1"]
+[node name="spawner_timer" type="Timer" parent="spawn_tracker3"]
+wait_time = 2.0
+
+[node name="Spawner3" type="Node3D" parent="spawn_tracker3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.465, 0, -12.8837)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Spawner" parent="spawn_tracker3" index="2"]
+[node name="Spawner" type="Node3D" parent="spawn_tracker3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.645, 0, -16.2355)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Spawner2" parent="spawn_tracker3" index="3"]
+[node name="Spawner2" type="Node3D" parent="spawn_tracker3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.29417)
+script = ExtResource("3_7ej2p")
+Player = NodePath("../../Player")
 mob_scene = ExtResource("2_6ahje")
 
-[node name="Area3D" parent="spawn_tracker3" index="4"]
+[node name="Area3D" type="Area3D" parent="spawn_tracker3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.20643, 0, -61.9545)
+script = ExtResource("5_5ynm5")
 
-[node name="CollisionShape3D" parent="spawn_tracker3/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31776, -3.71984, 0.546906)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11414, -3.2266, 0.434402)
+shape = SubResource("BoxShape3D_1e2bb")
 
-[node name="Barrier" parent="spawn_tracker3" index="5"]
+[node name="Barrier" type="MeshInstance3D" parent="spawn_tracker3"]
 transform = Transform3D(34.6485, 0, 0, 0, 10.5717, 0, 0, 0, 5, -3.78288, -0.425354, 0)
+mesh = SubResource("BoxMesh_x6wrl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="spawn_tracker3/Barrier"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="spawn_tracker3/Barrier/StaticBody3D"]
+shape = SubResource("BoxShape3D_qhm0d")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 0.1, 0, 0, 0, 10, 0, 27.6162, 0)
@@ -429,7 +500,14 @@ sceneName = "res://Levels/level_four.tscn"
 [node name="CollisionShape3D" parent="end/Next_Level/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00256348, 0)
 
-[editable path="spawn_tracker"]
-[editable path="spawn_tracker2"]
-[editable path="spawn_tracker3"]
+[connection signal="timeout" from="spawn_tracker/spawner_timer" to="spawn_tracker" method="_on_spawner_timer_timeout"]
+[connection signal="area_entered" from="spawn_tracker/Area3D" to="spawn_tracker/Area3D" method="_on_area_entered"]
+[connection signal="spawning" from="spawn_tracker/Area3D" to="spawn_tracker" method="_on_area_3d_spawning"]
+[connection signal="timeout" from="spawn_tracker2/spawner_timer" to="spawn_tracker2" method="_on_spawner_timer_timeout"]
+[connection signal="area_entered" from="spawn_tracker2/Area3D" to="spawn_tracker2/Area3D" method="_on_area_entered"]
+[connection signal="spawning" from="spawn_tracker2/Area3D" to="spawn_tracker2" method="_on_area_3d_spawning"]
+[connection signal="timeout" from="spawn_tracker3/spawner_timer" to="spawn_tracker3" method="_on_spawner_timer_timeout"]
+[connection signal="area_entered" from="spawn_tracker3/Area3D" to="spawn_tracker3/Area3D" method="_on_area_entered"]
+[connection signal="spawning" from="spawn_tracker3/Area3D" to="spawn_tracker3" method="_on_area_3d_spawning"]
+
 [editable path="end/Next_Level"]
