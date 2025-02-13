@@ -6,5 +6,5 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _on_pressed() -> void:
-	get_tree().quit()
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN, 3)
  
