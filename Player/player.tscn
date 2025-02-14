@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=32 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="6_dcc7l"]
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
 [ext_resource type="Texture2D" uid="uid://c0yv0t0n72j6b" path="res://Assets/Images/hands_new.png" id="6_sf0v8"]
@@ -81,10 +82,107 @@ script = ExtResource("2_urfap")
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
 
+[node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer"]
+position = Vector2(12, 529)
+
+[node name="Node2D" type="Node2D" parent="Camera3D/CanvasLayer/Health UI"]
+position = Vector2(391, -492)
+
+[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI/Node2D"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 324.0
+offset_bottom = 45.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_32wf2")
+theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
+theme_override_styles/fill = SubResource("StyleBoxTexture_osvox")
+max_value = 0.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI/Node2D"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_32wf2")
+theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
+theme_override_styles/fill = SubResource("StyleBoxTexture_jqqfc")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI/Node2D" node_paths=PackedStringArray("health_mang", "health_bar")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_32wf2")
+theme_override_styles/fill = SubResource("StyleBoxTexture_pik6u")
+value = 100.0
+show_percentage = false
+script = ExtResource("3_qw161")
+health_mang = NodePath("../../../../../Area3D/HealthManager")
+health_bar = NodePath(".")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera3D/CanvasLayer/Health UI"]
+position = Vector2(506, -106)
+scale = Vector2(3.75, 3)
+texture = ExtResource("6_sf0v8")
+
+[node name="game_over" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("d_menu", "other")]
+script = ExtResource("6_dcc7l")
+d_menu = NodePath("deathUI")
+other = NodePath("../Health UI")
+
+[node name="deathUI" type="Node2D" parent="Camera3D/CanvasLayer/game_over"]
+visible = false
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer/game_over/deathUI"]
+offset_left = 346.0
+offset_top = 60.0
+offset_right = 701.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 40
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit_button" type="Button" parent="Camera3D/CanvasLayer/game_over/deathUI"]
+process_mode = 3
+offset_left = 342.0
+offset_top = 289.0
+offset_right = 706.0
+offset_bottom = 406.0
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+script = ExtResource("5_m0vb5")
+sceneName = "res://Levels/main_menu.tscn"
+
 [node name="Paused" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("p_menu", "other")]
 script = ExtResource("7_spkb6")
 p_menu = NodePath("p_menu")
-other = NodePath("Health UI")
+other = NodePath("../Health UI")
 
 [node name="p_menu" type="Node2D" parent="Camera3D/CanvasLayer/Paused"]
 visible = false
@@ -108,74 +206,6 @@ theme_override_font_sizes/font_size = 30
 text = "Exit"
 script = ExtResource("5_m0vb5")
 sceneName = "res://Levels/main_menu.tscn"
-
-[node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer/Paused"]
-position = Vector2(12, 529)
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera3D/CanvasLayer/Paused/Health UI"]
-position = Vector2(506, -106)
-scale = Vector2(3.75, 3)
-texture = ExtResource("6_sf0v8")
-
-[node name="Node2D" type="Node2D" parent="Camera3D/CanvasLayer/Paused/Health UI"]
-position = Vector2(391, -492)
-
-[node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI/Node2D"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 324.0
-offset_bottom = 45.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = SubResource("Theme_32wf2")
-theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
-theme_override_styles/fill = SubResource("StyleBoxTexture_osvox")
-max_value = 0.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar2" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI/Node2D"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 314.0
-offset_bottom = 35.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = SubResource("Theme_32wf2")
-theme_override_styles/background = SubResource("StyleBoxTexture_mloln")
-theme_override_styles/fill = SubResource("StyleBoxTexture_jqqfc")
-value = 100.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" type="ProgressBar" parent="Camera3D/CanvasLayer/Paused/Health UI/Node2D" node_paths=PackedStringArray("health_mang", "health_bar")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 8.0
-offset_right = 314.0
-offset_bottom = 35.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = SubResource("Theme_32wf2")
-theme_override_styles/fill = SubResource("StyleBoxTexture_pik6u")
-value = 100.0
-show_percentage = false
-script = ExtResource("3_qw161")
-health_mang = NodePath("../../../../../../Area3D/HealthManager")
-health_bar = NodePath(".")
-metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera3D"]
 texture_filter = 1
@@ -234,11 +264,12 @@ script = ExtResource("5_md0m2")
 
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
 [connection signal="wolf_spawn" from="." to="Camera3D/attack_book/wolf_spawner" method="_on_player_wolf_spawn"]
+[connection signal="pressed" from="Camera3D/CanvasLayer/game_over/deathUI/exit_button" to="Camera3D/CanvasLayer/game_over/deathUI/exit_button" method="_on_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/resume_button" to="Camera3D/CanvasLayer/Paused" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/exit_button" to="Camera3D/CanvasLayer/Paused/p_menu/exit_button" method="_on_pressed"]
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
-[connection signal="dead" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_dead"]
-[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Paused/Health UI/Node2D/HealthBar" method="_on_health_manager_health_changed"]
+[connection signal="dead" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/game_over" method="_on_health_manager_dead"]
+[connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Health UI/Node2D/HealthBar" method="_on_health_manager_health_changed"]
 [connection signal="hurts" from="Area3D/HealthManager" to="Area3D" method="_on_health_manager_hurts"]
