@@ -13,4 +13,4 @@ func _on_area_entered(area: Area3D) -> void:
 		
 
 func _on_health_manager_hurts(damage: int) -> void:
-	health_mang.hurt(10)
+	health_mang.hurt(damage)

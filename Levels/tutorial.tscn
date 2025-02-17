@@ -28,7 +28,7 @@ msdf_size = 57
 process_mode = 3
 
 [node name="background" type="Node3D" parent="." node_paths=PackedStringArray("wolf")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.5358, -1.58078, -20.2401)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 13.5358, -1.58078, -17.381)
 script = ExtResource("2_kmox1")
 wolf = NodePath("../wolf")
 

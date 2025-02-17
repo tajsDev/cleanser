@@ -12,8 +12,6 @@ var cleansed = false
 
 func _ready() -> void:
 	await get_tree().physics_frame 
-	if (!player):
-		player = $Area3D
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 
 func set_movement_target(movement_target: Vector3):
@@ -25,7 +23,6 @@ func set_global_pos(pos: Vector3):
 	
 
 func _physics_process(delta): 
-
 	if(player):
 		set_movement_target(player.global_position)
 		look_at(player.global_position)
@@ -54,6 +51,7 @@ func healPlayer():
 
 
 func _on_health_manager_dead() -> void:
+	player.set_speed_boost()
 	queue_free()
 
 
@@ -62,7 +60,7 @@ func _on_health_manager_gibbed() -> void:
 
  
 func _on_timer_timeout() -> void:
-	player.spawn_child()
+	player.set_attack_boost()
 	queue_free()
 
 

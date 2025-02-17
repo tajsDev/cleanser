@@ -1,7 +1,7 @@
 extends Node3D
 @export var f_wolf: PackedScene
 var spawn_offset := Vector3(0.25, 0, 0) # Adjust the offset as needed
-static var spawn_count :int = 0
+var spawn_count :int = 0
 
 func _ready():
 	if(spawn_count <= 0):
