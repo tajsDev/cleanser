@@ -1,21 +1,18 @@
 extends Node3D
-@export var f_wolf: PackedScene
-var spawn_offset := Vector3(0.25, 0, 0) # Adjust the offset as needed
-var spawn_count :int = 0
+@export var child_1: Node3D
+@export var child_2: Node3D
+@export var boost_timer: Timer
 
 func _ready():
-	if(spawn_count <= 0):
-		return 
-	for x in spawn_count:
-		var new_wolf = f_wolf.instantiate()
-		add_child(new_wolf)
-		new_wolf.position = spawn_offset * (-1 if spawn_count % 2 else 1)
-		spawn_count += 1
+	pass
 		
 func _on_player_wolf_spawn():
-	if f_wolf && spawn_count < 2:
-		var new_wolf = f_wolf.instantiate()
-		add_child(new_wolf)
-		new_wolf.position = spawn_offset * (-1 if spawn_count % 2 else 1)
-		spawn_count += 1
- 
+	child_1.visible = true
+	child_2.visible = true
+	print(child_1.is_visible_in_tree())
+	print(child_2.is_visible_in_tree())
+	boost_timer.start()
+
+func _on_boost_timer_timeout():
+	child_1.visible = false
+	child_2.visible = false
