@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=30 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
-[ext_resource type="Script" path="res://Scripts/wolf_spawner.gd" id="2_rplua"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
@@ -231,35 +230,15 @@ wait_time = 2.0
 [node name="attack_timer" type="Timer" parent="Camera3D"]
 wait_time = 0.2
 
-[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cooldown_timer")]
+[node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cooldown_timer", "boost_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
 script = ExtResource("6_ih34o")
 cleanse_spell = ExtResource("6_riwv4")
 cooldown_timer = NodePath("../attack_timer")
-action = "ui_attack"
-
-[node name="wolf_spawner" type="Node3D" parent="Camera3D/attack_book" node_paths=PackedStringArray("child_1", "child_2", "boost_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.682617, 0.0107915)
-script = ExtResource("2_rplua")
-child_1 = NodePath("child_1")
-child_2 = NodePath("child_2")
 boost_timer = NodePath("boost_timer")
-
-[node name="child_1" type="Node3D" parent="Camera3D/attack_book/wolf_spawner" node_paths=PackedStringArray("cooldown_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.682617, -0.0107915)
-script = ExtResource("6_ih34o")
-cleanse_spell = ExtResource("6_riwv4")
-cooldown_timer = NodePath("../../../attack_timer")
 action = "ui_attack"
 
-[node name="child_2" type="Node3D" parent="Camera3D/attack_book/wolf_spawner" node_paths=PackedStringArray("cooldown_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.682617, -0.0107915)
-script = ExtResource("6_ih34o")
-cleanse_spell = ExtResource("6_riwv4")
-cooldown_timer = NodePath("../../../attack_timer")
-action = "ui_attack"
-
-[node name="boost_timer" type="Timer" parent="Camera3D/attack_book/wolf_spawner"]
+[node name="boost_timer" type="Timer" parent="Camera3D/attack_book"]
 wait_time = 5.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
@@ -285,14 +264,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
-[connection signal="wolf_spawn" from="." to="Camera3D/attack_book/wolf_spawner" method="_on_player_wolf_spawn"]
+[connection signal="wolf_spawn" from="." to="Camera3D/attack_book" method="_on_player_wolf_spawn"]
 [connection signal="timeout" from="speed_timer" to="." method="_on_speed_timer_timeout"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/game_over/deathUI/exit_button" to="Camera3D/CanvasLayer/game_over/deathUI/exit_button" method="_on_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/resume_button" to="Camera3D/CanvasLayer/Paused" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/exit_button" to="Camera3D/CanvasLayer/Paused/p_menu/exit_button" method="_on_pressed"]
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="Camera3D/attack_book/wolf_spawner/boost_timer" to="Camera3D/attack_book/wolf_spawner" method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/attack_book" method="_on_boost_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/game_over" method="_on_health_manager_dead"]
 [connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Health UI/Node2D/HealthBar" method="_on_health_manager_health_changed"]
