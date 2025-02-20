@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=31 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
+[ext_resource type="Script" path="res://Scripts/boost.gd" id="4_sh7hn"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
@@ -83,6 +84,37 @@ script = ExtResource("2_urfap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
+
+[node name="Attack_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time")]
+position = Vector2(12, 529)
+script = ExtResource("4_sh7hn")
+boost_ui = NodePath("attack")
+boost_time = NodePath("../../attack_book/boost_timer")
+
+[node name="attack" type="Node2D" parent="Camera3D/CanvasLayer/Attack_boost"]
+visible = false
+position = Vector2(0, -486)
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer/Attack_boost/attack"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Attack Boost Active !"
+
+[node name="Speed_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time")]
+position = Vector2(12, 529)
+script = ExtResource("4_sh7hn")
+boost_ui = NodePath("speed")
+boost_time = NodePath("../../attack_book/boost_timer")
+
+[node name="speed" type="Node2D" parent="Camera3D/CanvasLayer/Speed_boost"]
+visible = false
+position = Vector2(0, -486)
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
+offset_left = 968.0
+offset_right = 1124.0
+offset_bottom = 23.0
+text = "Speed Boost Active !"
 
 [node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer"]
 position = Vector2(12, 529)
@@ -263,8 +295,10 @@ shape = SubResource("CylinderShape3D_fnev5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
+[connection signal="move_boost" from="." to="Camera3D/CanvasLayer/Attack_boost" method="_on_player_move_boost"]
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
 [connection signal="wolf_spawn" from="." to="Camera3D/attack_book" method="_on_player_wolf_spawn"]
+[connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Attack_boost" method="_on_player_wolf_spawn"]
 [connection signal="timeout" from="speed_timer" to="." method="_on_speed_timer_timeout"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/game_over/deathUI/exit_button" to="Camera3D/CanvasLayer/game_over/deathUI/exit_button" method="_on_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/resume_button" to="Camera3D/CanvasLayer/Paused" method="_on_button_pressed"]
@@ -272,6 +306,7 @@ script = ExtResource("5_md0m2")
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/attack_book" method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/CanvasLayer/Attack_boost" method="_on_boost_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/game_over" method="_on_health_manager_dead"]
 [connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Health UI/Node2D/HealthBar" method="_on_health_manager_health_changed"]

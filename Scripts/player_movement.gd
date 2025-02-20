@@ -4,6 +4,7 @@ var SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 signal paused
 signal wolf_spawn
+signal move_boost
 @export var speed_timer: Timer
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -31,6 +32,7 @@ func set_attack_boost():
 	emit_signal("wolf_spawn")
 	
 func set_speed_boost():
+	emit_signal("move_boost")
 	SPEED = SPEED * 2
 	speed_timer.start()
 
