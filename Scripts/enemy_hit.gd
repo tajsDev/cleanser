@@ -18,12 +18,13 @@ func _on_area_entered(area: Area3D) -> void:
 		emit_signal("changed")
 
 func _on_health_manager_hurts() -> void:
-	if(health_mang.cur_health > 50 ):
+	if(health_mang.cur_health >= 50 ):
 		health_mang.hurt(10)
 	else:
 		bubble_on = true
-		if(bubble != null && bub == null): 
-			bub = bubble.instantiate()
-			add_child(bub)
+		if(bubble != null): 
+			if(bub == null):
+				bub = bubble.instantiate()
+				add_child(bub)
 		else:
 			health_mang.hurt(10)

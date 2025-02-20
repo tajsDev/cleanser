@@ -23,7 +23,7 @@ func shoot_single():
 	get_tree().get_root().add_child(spell)
 
 func shoot_shotgun():
-	var offset_distance = 1.0 # Adjust as needed to prevent collision
+	var offset_distance = 1.5 # Adjust as needed to prevent collision
 	var directions = [Vector3.LEFT, Vector3.ZERO, Vector3.RIGHT] # Left, Center, Right
 	
 	for i in range(3): # Spawn 3 projectiles
