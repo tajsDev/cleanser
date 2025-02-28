@@ -133,7 +133,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0866089, 0.14642, -0.07727
 shape = SubResource("BoxShape3D_yture")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
 one_shot = true
 
 [node name="Attack" type="Node3D" parent="." node_paths=PackedStringArray("navigation_agent", "animation", "canTimer")]

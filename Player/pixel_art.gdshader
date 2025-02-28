@@ -16,4 +16,3 @@ void fragment() {
     vec2 combined_uv = floor(pixelated_uv / pixel_size_uv) * pixel_size_uv;
     COLOR = texture(SCREEN_TEXTURE, combined_uv);
 }
-

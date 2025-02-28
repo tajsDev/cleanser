@@ -3,7 +3,7 @@ extends Node
 @export var boost_time: Timer
 
 
-
+#this works
 func _on_player_wolf_spawn():
 	boost_ui.visible = true
 	boost_time.start()
