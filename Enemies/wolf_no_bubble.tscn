@@ -1,9 +1,9 @@
 [gd_scene load_steps=22 format=3 uid="uid://b1icvwesuf52e"]
 
-[ext_resource type="Script" uid="uid://dcja122t2kxkw" path="res://Scripts/villager_nav.gd" id="1_qdqha"]
-[ext_resource type="Script" uid="uid://b6d4cfdko5802" path="res://Scripts/enemy_hit.gd" id="2_2nc6b"]
-[ext_resource type="Script" uid="uid://ckc85mcx6ia0s" path="res://Scripts/health_manager.gd" id="4_t15pm"]
-[ext_resource type="Script" uid="uid://g8b5ggbvkm6f" path="res://Scripts/enemy_attack.gd" id="5_g7jmp"]
+[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_qdqha"]
+[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_2nc6b"]
+[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="4_t15pm"]
+[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="5_g7jmp"]
 [ext_resource type="PackedScene" uid="uid://da2nbp14db2xt" path="res://Projectiles/wolf_attack.tscn" id="6_6e5lo"]
 [ext_resource type="Texture2D" uid="uid://c37jxqb4pikdp" path="res://Assets/Images/c_wolf_fight.png" id="7_16kbg"]
 [ext_resource type="Texture2D" uid="uid://c388qkon06vwh" path="res://Assets/Images/wolf_attack.png" id="8_jmg52"]

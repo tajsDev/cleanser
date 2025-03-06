@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://da2nbp14db2xt"]
 
-[ext_resource type="Script" uid="uid://4vtshjfdqc3i" path="res://Scripts/wolf_attack.gd" id="1_875eb"]
-[ext_resource type="Script" uid="uid://dvysvkisq2rns" path="res://Scripts/destroy_proj.gd" id="2_wwrb3"]
+[ext_resource type="Script" path="res://Scripts/wolf_attack.gd" id="1_875eb"]
+[ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_wwrb3"]
 [ext_resource type="Texture2D" uid="uid://7ebmfrplb77k" path="res://Assets/Images/attack_spell.png" id="3_yfucv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]

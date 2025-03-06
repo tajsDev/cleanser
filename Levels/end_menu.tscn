@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bjqel6ppv0scd"]
 
-[ext_resource type="Script" uid="uid://c14xpek0xnaa2" path="res://Scripts/start_button.gd" id="1_dj4qn"]
-[ext_resource type="Script" uid="uid://d16tj7f3b43ns" path="res://Scripts/display_saved.gd" id="1_que44"]
+[ext_resource type="Script" path="res://Scripts/start_button.gd" id="1_dj4qn"]
+[ext_resource type="Script" path="res://Scripts/display_saved.gd" id="1_que44"]
 [ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="2_j2j4x"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_s4t1s"]
 

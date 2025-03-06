@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bv40vp3xgoi22"]
 
-[ext_resource type="Script" uid="uid://dij5f50qy8ba0" path="res://Scripts/cleanse_spell.gd" id="1_ggvvu"]
-[ext_resource type="Script" uid="uid://dvysvkisq2rns" path="res://Scripts/destroy_proj.gd" id="2_4k2mk"]
+[ext_resource type="Script" path="res://Scripts/cleanse_spell.gd" id="1_ggvvu"]
+[ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_4k2mk"]
 [ext_resource type="Texture2D" uid="uid://7ebmfrplb77k" path="res://Assets/Images/attack_spell.png" id="3_5cp2w"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]
