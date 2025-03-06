@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="1_a0kgq"]
 [ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="1_e5r0k"]
 [ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="1_qilf1"]
-[ext_resource type="Script" path="res://Levels/reset_wolf.gd" id="2_kmox1"]
-[ext_resource type="Script" path="res://Scripts/start_button.gd" id="2_wc6yh"]
+[ext_resource type="Script" uid="uid://bgm06oqj6p862" path="res://Levels/reset_wolf.gd" id="2_kmox1"]
+[ext_resource type="Script" uid="uid://c14xpek0xnaa2" path="res://Scripts/start_button.gd" id="2_wc6yh"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="3_43mfb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4mi"]

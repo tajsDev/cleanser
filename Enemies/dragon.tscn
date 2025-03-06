@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cjw7470wdpwi" path="res://Assets/Images/corrupt_dragon.png" id="1_hfwv0"]
 [ext_resource type="Texture2D" uid="uid://db6udtorqt444" path="res://Assets/Images/cleansed_dragon.png" id="1_rkp6l"]
-[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_wnwaq"]
-[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_ea6qt"]
-[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="4_hr07x"]
-[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="5_ote04"]
+[ext_resource type="Script" uid="uid://dcja122t2kxkw" path="res://Scripts/villager_nav.gd" id="1_wnwaq"]
+[ext_resource type="Script" uid="uid://b6d4cfdko5802" path="res://Scripts/enemy_hit.gd" id="2_ea6qt"]
+[ext_resource type="Script" uid="uid://ckc85mcx6ia0s" path="res://Scripts/health_manager.gd" id="4_hr07x"]
+[ext_resource type="Script" uid="uid://g8b5ggbvkm6f" path="res://Scripts/enemy_attack.gd" id="5_ote04"]
 [ext_resource type="PackedScene" uid="uid://b4syh0b1rhl5r" path="res://Projectiles/dragon_attack.tscn" id="6_n6l05"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfxie"]

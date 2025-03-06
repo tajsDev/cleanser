@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://co8ick0fwky3m"]
 
-[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="1_3naa3"]
-[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_0mc4y"]
+[ext_resource type="Script" uid="uid://dg7hgu38r3q6k" path="res://Scripts/spawn_tracker.gd" id="1_3naa3"]
+[ext_resource type="Script" uid="uid://c543evwdb4076" path="res://Scripts/spawner.gd" id="2_0mc4y"]
 [ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="3_nd1r2"]
-[ext_resource type="Script" path="res://Scripts/spawn_active.gd" id="4_iyqxf"]
+[ext_resource type="Script" uid="uid://cse3gohd3lixo" path="res://Scripts/spawn_active.gd" id="4_iyqxf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
 size = Vector3(2.25293, 0.766455, 6.90636)

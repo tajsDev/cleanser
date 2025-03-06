@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dlkg12xse30n6"]
 
-[ext_resource type="Script" path="res://Scripts/attack_book.gd" id="1_iysn5"]
+[ext_resource type="Script" uid="uid://bdp0bhejm6d80" path="res://Scripts/attack_book.gd" id="1_iysn5"]
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="2_qgt56"]
 
 [node name="FWolf" type="Node3D" node_paths=PackedStringArray("cooldown_timer")]

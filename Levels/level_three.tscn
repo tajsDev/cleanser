@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_5g1ky"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_tiv21"]
 [ext_resource type="PackedScene" uid="uid://b1icvwesuf52e" path="res://Enemies/wolf_no_bubble.tscn" id="2_6ahje"]
-[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="2_akky4"]
+[ext_resource type="Script" uid="uid://dg7hgu38r3q6k" path="res://Scripts/spawn_tracker.gd" id="2_akky4"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="2_klmj5"]
-[ext_resource type="Script" path="res://Scripts/spawner.gd" id="3_7ej2p"]
+[ext_resource type="Script" uid="uid://c543evwdb4076" path="res://Scripts/spawner.gd" id="3_7ej2p"]
 [ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="3_88kw3"]
 [ext_resource type="PackedScene" uid="uid://br87fj7nbgec5" path="res://Assets/dead_trees.tscn" id="4_rwau7"]
-[ext_resource type="Script" path="res://Scripts/spawn_active.gd" id="5_5ynm5"]
+[ext_resource type="Script" uid="uid://cse3gohd3lixo" path="res://Scripts/spawn_active.gd" id="5_5ynm5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
 size = Vector3(16.5823, 3.32591, 8.86236)

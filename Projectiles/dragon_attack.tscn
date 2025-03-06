@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b4syh0b1rhl5r"]
 
-[ext_resource type="Script" path="res://Scripts/wolf_attack.gd" id="1_yck7x"]
-[ext_resource type="Script" path="res://Scripts/destroy_proj.gd" id="2_nsfqj"]
+[ext_resource type="Script" uid="uid://4vtshjfdqc3i" path="res://Scripts/wolf_attack.gd" id="1_yck7x"]
+[ext_resource type="Script" uid="uid://dvysvkisq2rns" path="res://Scripts/destroy_proj.gd" id="2_nsfqj"]
 [ext_resource type="Texture2D" uid="uid://bbf71gqejcnth" path="res://Assets/Images/Fire_Spreadsheet.png" id="3_rsfqx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kv8pk"]

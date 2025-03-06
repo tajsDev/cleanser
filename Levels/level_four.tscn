@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=3 uid="uid://dubr5sx5jnasq"]
 
-[ext_resource type="Script" path="res://Scripts/spawn_tracker.gd" id="1_52ouk"]
+[ext_resource type="Script" uid="uid://dg7hgu38r3q6k" path="res://Scripts/spawn_tracker.gd" id="1_52ouk"]
 [ext_resource type="PackedScene" uid="uid://br87fj7nbgec5" path="res://Assets/dead_trees.tscn" id="1_bl0gt"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_u1dy2"]
-[ext_resource type="Script" path="res://Scripts/spawner.gd" id="2_5pbsl"]
+[ext_resource type="Script" uid="uid://c543evwdb4076" path="res://Scripts/spawner.gd" id="2_5pbsl"]
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="3_2rit3"]
 [ext_resource type="Texture2D" uid="uid://2wsk4begllol" path="res://Assets/Images/Bark (12).png" id="4_g7df0"]
-[ext_resource type="Script" path="res://Scripts/spawn_active.gd" id="4_lr5fs"]
+[ext_resource type="Script" uid="uid://cse3gohd3lixo" path="res://Scripts/spawn_active.gd" id="4_lr5fs"]
 [ext_resource type="PackedScene" uid="uid://lnphj2ffttth" path="res://Enemies/dragon.tscn" id="4_m2trm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1e2bb"]
