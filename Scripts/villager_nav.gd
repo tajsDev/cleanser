@@ -61,7 +61,6 @@ func _on_health_manager_gibbed() -> void:
  
 func _on_timer_timeout() -> void:
 	player.set_attack_boost()
-	queue_free()
 
 
 func _on_area_3d_changed() -> void:
