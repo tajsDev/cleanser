@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b1icvwesuf52e"]
+[gd_scene load_steps=21 format=3 uid="uid://b1icvwesuf52e"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_qdqha"]
 [ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_2nc6b"]
@@ -34,10 +34,6 @@ region = Rect2(0, 0, 152, 153)
 [sub_resource type="AtlasTexture" id="AtlasTexture_em2lu"]
 atlas = ExtResource("8_jmg52")
 region = Rect2(152, 0, 152, 153)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_doi2c"]
-atlas = ExtResource("8_jmg52")
-region = Rect2(304, 0, 152, 153)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h2aw0"]
 atlas = ExtResource("9_k7ccu")
@@ -77,9 +73,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_em2lu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_doi2c")
 }],
 "loop": true,
 "name": &"changed",
@@ -146,7 +139,7 @@ wait_time = 2.0
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0121045, 0.0966873, 0.925661)
 sprite_frames = SubResource("SpriteFrames_gtc4r")
-animation = &"attack"
+animation = &"changed"
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]

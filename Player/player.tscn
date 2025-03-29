@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=32 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
 [ext_resource type="Script" path="res://Scripts/boost.gd" id="4_sh7hn"]
+[ext_resource type="Texture2D" uid="uid://c6j0lwv4lqt0k" path="res://Assets/Images/dot.png" id="5_8efh4"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
@@ -121,6 +122,11 @@ position = Vector2(12, 529)
 
 [node name="Node2D" type="Node2D" parent="Camera3D/CanvasLayer/Health UI"]
 position = Vector2(391, -492)
+
+[node name="Dot" type="Sprite2D" parent="Camera3D/CanvasLayer/Health UI/Node2D"]
+position = Vector2(160, 290)
+scale = Vector2(2, 2)
+texture = ExtResource("5_8efh4")
 
 [node name="Background" type="ProgressBar" parent="Camera3D/CanvasLayer/Health UI/Node2D"]
 anchors_preset = 3
@@ -244,12 +250,12 @@ sceneName = "res://Levels/main_menu.tscn"
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Camera3D"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wxspe")
-position = Vector2(559, 330)
+position = Vector2(557, 330)
 scale = Vector2(30, 18)
 mesh = SubResource("QuadMesh_rxdrp")
 
 [node name="cleanse_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cam", "cooldown_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225471, 0.106079, -0.693)
 script = ExtResource("3_gbmod")
 cleanse_spell = ExtResource("4_6e4mh")
 cam = NodePath("..")
@@ -263,7 +269,7 @@ wait_time = 2.0
 wait_time = 0.2
 
 [node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cooldown_timer", "boost_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0189483, -0.692884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.566063, 0.143066, -0.663)
 script = ExtResource("6_ih34o")
 cleanse_spell = ExtResource("6_riwv4")
 cooldown_timer = NodePath("../attack_timer")
