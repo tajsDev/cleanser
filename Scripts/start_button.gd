@@ -13,4 +13,6 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file(sceneName)
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.queue_free()
+	get_tree().call_deferred("change_scene_to_file", sceneName)

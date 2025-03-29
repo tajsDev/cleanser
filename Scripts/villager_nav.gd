@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-var player: Node3D
+var player: Node3D = null
 static var saved: int = 0 
 @export var start_seconds = 4
 @export var movement_speed: float = 7.0
@@ -10,6 +10,8 @@ static var saved: int = 0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var cleansed = false
 
+func _exit_tree() -> void:
+	call_deferred("queue_free")
 func _ready() -> void:
 	await get_tree().physics_frame 
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -23,7 +25,7 @@ func set_global_pos(pos: Vector3):
 	
 
 func _physics_process(delta): 
-	if(player):
+	if(player) and is_instance_valid(player):
 		set_movement_target(player.global_position)
 		look_at(player.global_position)
 	if(cleansed):

@@ -95,7 +95,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="dragon" type="CharacterBody3D" groups=["enemy_proj"]]
+[node name="dragon" type="CharacterBody3D" groups=["enemies", "enemy_proj"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
 slide_on_ceiling = false
 script = ExtResource("1_wnwaq")

@@ -160,7 +160,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="wolf" type="CharacterBody3D" groups=["enemy_proj"]]
+[node name="wolf" type="CharacterBody3D" groups=["enemies", "enemy_proj"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
 script = ExtResource("1_rd73b")
 

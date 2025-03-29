@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6ghheqnf3gra"]
+[gd_scene load_steps=13 format=3 uid="uid://c6ghheqnf3gra"]
 
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_2yolx"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="1_31eoj"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="2_s2f32"]
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="3_xxiff"]
@@ -27,6 +28,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 size = Vector3(7.20925, 2.04499, 3.6311)
 
 [node name="level_one" type="Node3D"]
+script = ExtResource("1_2yolx")
 
 [node name="Next_Level" parent="." instance=ExtResource("1_31eoj")]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -15.4967, 0, 262.424)

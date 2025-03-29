@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkkdj3d6raqg"]
+[gd_scene load_steps=11 format=3 uid="uid://bkkdj3d6raqg"]
 
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_5k086"]
 [ext_resource type="PackedScene" uid="uid://br87fj7nbgec5" path="res://Assets/dead_trees.tscn" id="1_feu12"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="2_hrqeb"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_nqe56"]
@@ -24,6 +25,7 @@ msdf_size = 57
 
 [node name="main_menu" type="Node3D"]
 process_mode = 3
+script = ExtResource("1_5k086")
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1000, 0, 0, 0, 10, 0, 0, 0, 1000, 0, 6.91872, -30.0527)

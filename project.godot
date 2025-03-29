@@ -40,6 +40,7 @@ healing=""
 enemy_proj=""
 player=""
 drag_proj=""
+enemies=""
 
 [input]
 
