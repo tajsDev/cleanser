@@ -87,15 +87,15 @@ environment = ExtResource("3_43mfb")
 position = Vector2(368, 540)
 
 [node name="Label" type="Label" parent="Camera3D"]
-offset_left = 250.0
-offset_top = 128.0
-offset_right = 875.0
-offset_bottom = 465.0
+offset_left = 73.0
+offset_top = 21.0
+offset_right = 698.0
+offset_bottom = 418.0
 theme_override_font_sizes/font_size = 27
 text = "Hello Traveler, The forest needs your help. 
 An evil dragon has corrupted the wildlife and you must defeat him to save the creatures. 
 Use WASD to move and SPACE to jump. 
-Use your mouse to aim and MOUSE1 to attack the enemies and MOUSE2 to save the enemies.
+Use your mouse to aim and LEFT CLICK to attack the enemies and RIGHT CLICK to save the enemies.
 Use ESC to pause the adventure 
 The lives of the wildlife are resting upon you, are you ready ?"
 horizontal_alignment = 1
