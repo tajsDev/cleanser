@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=43 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c6j0lwv4lqt0k" path="res://Assets/Images/dot.png" id="5_8efh4"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
+[ext_resource type="Texture2D" uid="uid://bnbmvh8o5vhjd" path="res://Assets/Images/02.png" id="5_uqqru"]
 [ext_resource type="Script" path="res://Scripts/player_hit.gd" id="5_wq1dv"]
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="6_dcc7l"]
 [ext_resource type="Script" path="res://Scripts/attack_book.gd" id="6_ih34o"]
@@ -17,6 +18,78 @@
 [ext_resource type="Texture2D" uid="uid://c0yv0t0n72j6b" path="res://Assets/Images/hands_new.png" id="6_sf0v8"]
 [ext_resource type="Script" path="res://Scripts/paused_button.gd" id="7_spkb6"]
 [ext_resource type="Shader" path="res://Player/pixel_art.gdshader" id="8_ann7w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtj60"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlow3"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbcpm"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(192, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2h6bv"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(224, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lnnne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtj60")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlow3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbcpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2h6bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia3tp"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drw7n"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3lcn"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxbkm"]
+atlas = ExtResource("5_uqqru")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hrqyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ia3tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drw7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3lcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxbkm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Theme" id="Theme_32wf2"]
 /colors/blue = Color(0, 0, 0, 1)
@@ -86,34 +159,49 @@ script = ExtResource("2_urfap")
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
 
-[node name="Attack_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time")]
+[node name="Attack_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time", "animation")]
 position = Vector2(12, 529)
 script = ExtResource("4_sh7hn")
 boost_ui = NodePath("attack")
 boost_time = NodePath("../../attack_book/boost_timer")
+animation = NodePath("attack/AttackAnimated")
 
 [node name="attack" type="Node2D" parent="Camera3D/CanvasLayer/Attack_boost"]
 visible = false
 position = Vector2(0, -486)
 
 [node name="Label" type="Label" parent="Camera3D/CanvasLayer/Attack_boost/attack"]
-offset_right = 40.0
+offset_left = 66.0
+offset_right = 224.0
 offset_bottom = 23.0
 text = "Attack Boost Active !"
 
-[node name="Speed_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time")]
+[node name="AttackAnimated" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer/Attack_boost/attack"]
+position = Vector2(149.5, 19)
+scale = Vector2(7.65625, 3.125)
+sprite_frames = SubResource("SpriteFrames_lnnne")
+frame_progress = 0.394442
+
+[node name="Speed_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time", "animation")]
 position = Vector2(12, 529)
 script = ExtResource("4_sh7hn")
 boost_ui = NodePath("speed")
 boost_time = NodePath("../../attack_book/boost_timer")
+animation = NodePath("speed/speedAnimation")
 
 [node name="speed" type="Node2D" parent="Camera3D/CanvasLayer/Speed_boost"]
 visible = false
 position = Vector2(0, -486)
 
+[node name="speedAnimation" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
+position = Vector2(1005, 14.5)
+scale = Vector2(6.5625, 2.40625)
+sprite_frames = SubResource("SpriteFrames_hrqyr")
+frame_progress = 0.80876
+
 [node name="Label" type="Label" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
-offset_left = 968.0
-offset_right = 1124.0
+offset_left = 927.0
+offset_right = 1083.0
 offset_bottom = 23.0
 text = "Speed Boost Active !"
 
