@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b1icvwesuf52e"]
+[gd_scene load_steps=23 format=3 uid="uid://b1icvwesuf52e"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_qdqha"]
 [ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_2nc6b"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://c37jxqb4pikdp" path="res://Assets/Images/c_wolf_fight.png" id="7_16kbg"]
 [ext_resource type="Texture2D" uid="uid://c388qkon06vwh" path="res://Assets/Images/wolf_attack.png" id="8_jmg52"]
 [ext_resource type="Texture2D" uid="uid://j2qj3bwki4cq" path="res://Assets/Images/c_wolf_walk.png" id="9_k7ccu"]
+[ext_resource type="Script" path="res://Scripts/dead_spawner.gd" id="9_vmoam"]
+[ext_resource type="PackedScene" uid="uid://d2bqx5rg2agfv" path="res://Assets/psx_grave_stone.tscn" id="10_hcpl2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rb3j2"]
 size = Vector3(0.676056, 0.259033, 0.682617)
@@ -96,10 +98,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="wolf" type="CharacterBody3D" groups=["enemies", "enemy_proj"]]
+[node name="wolf" type="CharacterBody3D" node_paths=PackedStringArray("dead_spawn") groups=["enemies", "enemy_proj"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
 slide_on_ceiling = false
 script = ExtResource("1_qdqha")
+dead_spawn = NodePath("Dead_spawner")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.122276, -0.342629, 0.82553)
@@ -140,6 +143,11 @@ wait_time = 2.0
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0121045, 0.0966873, 0.925661)
 sprite_frames = SubResource("SpriteFrames_gtc4r")
 animation = &"changed"
+
+[node name="Dead_spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.256165, -0.825256, 0)
+script = ExtResource("9_vmoam")
+grave = ExtResource("10_hcpl2")
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]

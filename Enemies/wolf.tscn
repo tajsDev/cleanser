@@ -1,15 +1,16 @@
-[gd_scene load_steps=31 format=3 uid="uid://busavbu5ruen3"]
+[gd_scene load_steps=24 format=3 uid="uid://busavbu5ruen3"]
 
 [ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_rd73b"]
 [ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_0s4dt"]
-[ext_resource type="Texture2D" uid="uid://brgxxhp01oo8w" path="res://Assets/Images/Blood Splat.png" id="2_2twcv"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="3_uwt3k"]
 [ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="4_tca0n"]
 [ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="6_yvq5v"]
 [ext_resource type="PackedScene" uid="uid://da2nbp14db2xt" path="res://Projectiles/wolf_attack.tscn" id="7_dbk6d"]
 [ext_resource type="Texture2D" uid="uid://c37jxqb4pikdp" path="res://Assets/Images/c_wolf_fight.png" id="8_e38o1"]
 [ext_resource type="Texture2D" uid="uid://c388qkon06vwh" path="res://Assets/Images/wolf_attack.png" id="9_dag1u"]
+[ext_resource type="Script" path="res://Scripts/dead_spawner.gd" id="10_henwy"]
 [ext_resource type="Texture2D" uid="uid://j2qj3bwki4cq" path="res://Assets/Images/c_wolf_walk.png" id="10_p25j5"]
+[ext_resource type="PackedScene" uid="uid://d2bqx5rg2agfv" path="res://Assets/psx_grave_stone.tscn" id="11_rdg6p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xwtjf"]
 size = Vector3(0.655762, 0.31781, 1)
@@ -80,6 +81,11 @@ animations = [{
 "name": &"changed",
 "speed": 5.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h2aw0")
@@ -95,68 +101,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5t3e"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(0, 8, 64, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m53uq"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(64, 8, 64, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4dip0"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(128, 8, 64, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lxlr5"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(192, 8, 64, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dcywk"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(256, 8, 64, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bwk2v"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(320, 8, 64, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqy7r"]
-atlas = ExtResource("2_2twcv")
-region = Rect2(384, 8, 64, 56)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pctoj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5t3e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m53uq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4dip0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lxlr5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dcywk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bwk2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lqy7r")
-}],
-"loop": true,
-"name": &"bleed",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"default",
 "speed": 5.0
 }]
 
@@ -206,11 +150,14 @@ wait_time = 2.0
 [node name="Wolf" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0121045, 0.0966873, 0.925661)
 sprite_frames = SubResource("SpriteFrames_gtc4r")
-animation = &"attack"
+animation = &"walk"
+frame = 2
+frame_progress = 0.364444
 
-[node name="Death" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.130957, 0.159866, 0.77549)
-sprite_frames = SubResource("SpriteFrames_pctoj")
+[node name="Dead_spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213257, -0.382748, 0)
+script = ExtResource("10_henwy")
+grave = ExtResource("11_rdg6p")
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]

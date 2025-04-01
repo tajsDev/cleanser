@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2bqx5rg2agfv"]
+
+[ext_resource type="PackedScene" uid="uid://ddgupgv4bh80a" path="res://Assets/PSXGraveStone.glb" id="1_pdia2"]
+
+[node name="PSXGraveStone2" instance=ExtResource("1_pdia2")]

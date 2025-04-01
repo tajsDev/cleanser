@@ -78,7 +78,7 @@ size = Vector3(10.8747, 0.491066, 3.6311)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
 
 [node name="Next_Level" parent="." instance=ExtResource("2_ocd2f")]
-transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 292.217, 0, 212.766)
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 292.217, -1.51134, 212.766)
 
 [node name="Area3D" parent="Next_Level" index="0"]
 sceneName = "res://Levels/level_three.tscn"

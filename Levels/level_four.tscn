@@ -229,7 +229,7 @@ transform = Transform3D(6.30863, 0, 6.41881, 0, 9, 0, -6.41881, 0, 6.30863, 28.4
 transform = Transform3D(6.96804, 0, -5.69617, 0, 9, 0, 5.69617, 0, 6.96804, -48.1959, 0, 62.4981)
 
 [node name="Next_Level" parent="." instance=ExtResource("1_u1dy2")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -17.9024, -0.103458, 268.776)
+transform = Transform3D(19.7262, 0, 0, 0, 9.18851, 0, 0, 0, 7, -17.9024, -0.103458, 268.776)
 
 [node name="Area3D" parent="Next_Level" index="0"]
 sceneName = "res://Levels/end_menu.tscn"

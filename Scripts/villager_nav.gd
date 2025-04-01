@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var player: Node3D = null
 static var saved: int = 0 
+@export var dead_spawn: Node3D
 @export var start_seconds = 4
 @export var movement_speed: float = 7.0
 @export var healing: int = 5
@@ -54,6 +55,7 @@ func healPlayer():
 
 func _on_health_manager_dead() -> void:
 	player.set_speed_boost()
+	dead_spawn.spawn_grave()
 	queue_free()
 
 
