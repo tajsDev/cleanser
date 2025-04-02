@@ -1,12 +1,14 @@
-[gd_scene load_steps=43 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=45 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
 [ext_resource type="Script" path="res://Scripts/player_camera.gd" id="2_urfap"]
 [ext_resource type="Script" path="res://Scripts/cleanse_book.gd" id="3_gbmod"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_qw161"]
+[ext_resource type="Script" path="res://Scripts/saved_ui.gd" id="4_05x8g"]
 [ext_resource type="PackedScene" uid="uid://pavqsibir81r" path="res://Projectiles/Cleanse.tscn" id="4_6e4mh"]
 [ext_resource type="Script" path="res://Scripts/boost.gd" id="4_sh7hn"]
+[ext_resource type="Script" path="res://Scripts/healer.gd" id="4_ssr6f"]
 [ext_resource type="Texture2D" uid="uid://c6j0lwv4lqt0k" path="res://Assets/Images/dot.png" id="5_8efh4"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="5_m0vb5"]
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="5_md0m2"]
@@ -156,8 +158,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.496753, -0.439856)
 environment = ExtResource("2_ql2dl")
 script = ExtResource("2_urfap")
 
+[node name="healer" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("health")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.496753, 0.281332)
+script = ExtResource("4_ssr6f")
+health = NodePath("../../Area3D/HealthManager")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera3D"]
 follow_viewport_enabled = true
+
+[node name="Saved_ui" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("s_ui", "s_time")]
+position = Vector2(12, 529)
+script = ExtResource("4_05x8g")
+s_ui = NodePath("s_ui")
+s_time = NodePath("../../saved_timer")
+
+[node name="s_ui" type="Node2D" parent="Camera3D/CanvasLayer/Saved_ui"]
+visible = false
+position = Vector2(0, -486)
+
+[node name="Label" type="Label" parent="Camera3D/CanvasLayer/Saved_ui/s_ui"]
+offset_left = 415.0
+offset_top = 55.0
+offset_right = 692.0
+offset_bottom = 110.0
+theme_override_font_sizes/font_size = 40
+text = "Enemy Saved !"
+horizontal_alignment = 1
 
 [node name="Attack_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time", "animation")]
 position = Vector2(12, 529)
@@ -353,6 +379,9 @@ action = "ui_cleanse"
 [node name="heal_timer" type="Timer" parent="Camera3D"]
 wait_time = 2.0
 
+[node name="saved_timer" type="Timer" parent="Camera3D"]
+wait_time = 2.0
+
 [node name="attack_timer" type="Timer" parent="Camera3D"]
 wait_time = 0.2
 
@@ -365,7 +394,7 @@ boost_timer = NodePath("boost_timer")
 action = "ui_attack"
 
 [node name="boost_timer" type="Timer" parent="Camera3D/attack_book"]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00846861, -0.876968, 0.0121155)
@@ -390,14 +419,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
 [connection signal="move_boost" from="." to="Camera3D/CanvasLayer/Speed_boost" method="_on_player_move_boost"]
+[connection signal="move_boost" from="." to="Camera3D/healer" method="_on_player_move_boost"]
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
 [connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Attack_boost" method="_on_player_wolf_spawn"]
 [connection signal="wolf_spawn" from="." to="Camera3D/attack_book" method="_on_player_wolf_spawn"]
+[connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Saved_ui" method="_on_player_wolf_spawn"]
+[connection signal="wolf_spawn" from="." to="Camera3D/healer" method="_on_player_wolf_spawn"]
 [connection signal="timeout" from="speed_timer" to="." method="_on_speed_timer_timeout"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/game_over/deathUI/exit_button" to="Camera3D/CanvasLayer/game_over/deathUI/exit_button" method="_on_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/resume_button" to="Camera3D/CanvasLayer/Paused" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/exit_button" to="Camera3D/CanvasLayer/Paused/p_menu/exit_button" method="_on_pressed"]
 [connection signal="timeout" from="Camera3D/heal_timer" to="Camera3D/cleanse_book" method="_on_heal_timer_timeout"]
+[connection signal="timeout" from="Camera3D/saved_timer" to="Camera3D/CanvasLayer/Saved_ui" method="_on_saved_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/CanvasLayer/Attack_boost" method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/attack_book" method="_on_boost_timer_timeout"]
