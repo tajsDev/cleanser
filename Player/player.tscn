@@ -357,7 +357,7 @@ wait_time = 2.0
 wait_time = 0.2
 
 [node name="attack_book" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("cooldown_timer", "boost_timer")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.566063, 0.143066, -0.663)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.327796, 0.106079, -0.693)
 script = ExtResource("6_ih34o")
 cleanse_spell = ExtResource("6_riwv4")
 cooldown_timer = NodePath("../attack_timer")
@@ -389,7 +389,7 @@ shape = SubResource("CylinderShape3D_fnev5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
-[connection signal="move_boost" from="." to="Camera3D/CanvasLayer/Attack_boost" method="_on_player_move_boost"]
+[connection signal="move_boost" from="." to="Camera3D/CanvasLayer/Speed_boost" method="_on_player_move_boost"]
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
 [connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Attack_boost" method="_on_player_wolf_spawn"]
 [connection signal="wolf_spawn" from="." to="Camera3D/attack_book" method="_on_player_wolf_spawn"]
