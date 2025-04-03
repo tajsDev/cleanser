@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://1psxygxh4rvo"]
+[gd_scene load_steps=32 format=3 uid="uid://1psxygxh4rvo"]
 
 [ext_resource type="PackedScene" uid="uid://ds5rdkbb2n5fq" path="res://Player/player.tscn" id="1_02huq"]
 [ext_resource type="PackedScene" uid="uid://bvcopfuxka1qw" path="res://Assets/next_level.tscn" id="2_ocd2f"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b3thvi3u2meqp" path="res://Assets/Images/Cliff (9).png" id="6_uo2sh"]
 [ext_resource type="Texture2D" uid="uid://dtfiuw1gumdcx" path="res://Assets/Images/Cliff (4).png" id="7_7rmiy"]
 [ext_resource type="PackedScene" uid="uid://co8ick0fwky3m" path="res://Assets/spawn_tracker.tscn" id="8_o4qru"]
+[ext_resource type="PackedScene" uid="uid://b1icvwesuf52e" path="res://Enemies/wolf_no_bubble.tscn" id="9_1lyxl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2683e"]
 vertices = PackedVector3Array(-49.5, -326.191, -49.5, -49.5, -326.191, 49.5, 49.5, -326.191, 49.5, 49.5, -326.191, -49.5)
@@ -72,7 +73,7 @@ albedo_texture = ExtResource("7_7rmiy")
 [sub_resource type="BoxShape3D" id="BoxShape3D_b5rjh"]
 size = Vector3(10.8747, 0.491066, 3.6311)
 
-[node name="level_one" type="Node3D"]
+[node name="level_two" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_02huq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.97899, 0, 375.382)
@@ -589,14 +590,17 @@ num_of_enemies = 2
 [node name="Spawner3" parent="spawn_tracker2" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(0.924905, -0.380199, 0, 0.380199, 0.924905, 0, 0, 0, 1, 18.3985, 0, -8.35703)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Spawner" parent="spawn_tracker2" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 4.0731)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Spawner2" parent="spawn_tracker2" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4893, 0, 12.3766)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Area3D" parent="spawn_tracker2" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.4354, -3.618, 15.6484)
@@ -614,14 +618,17 @@ num_of_enemies = 2
 [node name="Spawner3" parent="spawn_tracker3" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0036, 0, -27.6308)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Spawner" parent="spawn_tracker3" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.918, 0, 52.8426)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Spawner2" parent="spawn_tracker3" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9512, 0, 17.3051)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Area3D" parent="spawn_tracker3" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3284, -3.618, 12.9586)
@@ -638,14 +645,17 @@ num_of_enemies = 2
 [node name="Spawner3" parent="spawn_tracker" index="1" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4068, 0, 310.33)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Spawner" parent="spawn_tracker" index="2" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.9918, 0, 312.86)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Spawner2" parent="spawn_tracker" index="3" node_paths=PackedStringArray("Player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90993, 0, 280.704)
 Player = NodePath("../../Player")
+mob_scene = ExtResource("9_1lyxl")
 
 [node name="Area3D" parent="spawn_tracker" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89669, 0, 332.272)

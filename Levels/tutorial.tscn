@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qtbsrbn6kp6k"]
+[gd_scene load_steps=14 format=3 uid="uid://qtbsrbn6kp6k"]
 
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="1_a0kgq"]
 [ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="1_e5r0k"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Levels/reset_wolf.gd" id="2_kmox1"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="2_wc6yh"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="3_43mfb"]
+[ext_resource type="Texture2D" uid="uid://cu132ogo2emap" path="res://Assets/Images/PaperUiStuff - Copy/PaperUiPanel.png" id="5_pu6np"]
+[ext_resource type="FontFile" uid="uid://5ahb2vwr7e5d" path="res://Assets/Fonts/BigBlue_TerminalPlus.TTF" id="5_ti02y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4mi"]
 shading_mode = 0
@@ -20,9 +22,7 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mn6p3"]
 
-[sub_resource type="SystemFont" id="SystemFont_svutl"]
-msdf_pixel_range = 100
-msdf_size = 57
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibu1g"]
 
 [node name="tutorial" type="Node3D"]
 process_mode = 3
@@ -83,14 +83,20 @@ shape = SubResource("BoxShape3D_mn6p3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.05612, 0)
 environment = ExtResource("3_43mfb")
 
+[node name="PaperUiPanel" type="Sprite2D" parent="Camera3D"]
+position = Vector2(534.028, 280.657)
+scale = Vector2(4.94406, 3.68613)
+texture = ExtResource("5_pu6np")
+
 [node name="Sprite2D" type="Sprite2D" parent="Camera3D"]
 position = Vector2(368, 540)
 
 [node name="Label" type="Label" parent="Camera3D"]
-offset_left = 213.0
-offset_top = 78.0
+offset_left = 238.0
+offset_top = 67.0
 offset_right = 838.0
-offset_bottom = 475.0
+offset_bottom = 478.0
+theme_override_fonts/font = ExtResource("5_ti02y")
 theme_override_font_sizes/font_size = 27
 text = "Hello Traveler, The forest needs your help. 
 An evil dragon has corrupted the wildlife and you must defeat him to save the creatures. 
@@ -101,13 +107,19 @@ The lives of the wildlife are resting upon you, are you ready ?"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D"]
+position = Vector2(539.287, 592.212)
+scale = Vector2(2.42657, 0.576642)
+texture = ExtResource("5_pu6np")
+
 [node name="Start" type="Button" parent="Camera3D"]
-offset_left = 368.0
-offset_top = 540.0
-offset_right = 707.0
-offset_bottom = 616.0
-theme_override_fonts/font = SubResource("SystemFont_svutl")
+offset_left = 370.0
+offset_top = 555.0
+offset_right = 709.0
+offset_bottom = 631.0
+theme_override_fonts/font = ExtResource("5_ti02y")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxTexture_ibu1g")
 text = "Yes !"
 script = ExtResource("2_wc6yh")
 sceneName = "res://Levels/level_one.tscn"

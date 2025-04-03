@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=48 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bv40vp3xgoi22" path="res://Projectiles/attack.tscn" id="6_riwv4"]
 [ext_resource type="Texture2D" uid="uid://c0yv0t0n72j6b" path="res://Assets/Images/hands_new.png" id="6_sf0v8"]
 [ext_resource type="Script" path="res://Scripts/paused_button.gd" id="7_spkb6"]
+[ext_resource type="Texture2D" uid="uid://cu132ogo2emap" path="res://Assets/Images/PaperUiStuff - Copy/PaperUiPanel.png" id="7_xcoxv"]
+[ext_resource type="FontFile" uid="uid://5ahb2vwr7e5d" path="res://Assets/Fonts/BigBlue_TerminalPlus.TTF" id="7_yete3"]
 [ext_resource type="Shader" path="res://Player/pixel_art.gdshader" id="8_ann7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtj60"]
@@ -116,6 +118,8 @@ modulate_color = Color(0.807843, 0, 0, 1)
 texture = SubResource("CanvasTexture_np8vb")
 modulate_color = Color(0.301961, 1, 0.47451, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lm0y"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxspe"]
 shader = ExtResource("8_ann7w")
 shader_parameter/target_resolution = Vector2(320, 240)
@@ -177,10 +181,11 @@ visible = false
 position = Vector2(0, -486)
 
 [node name="Label" type="Label" parent="Camera3D/CanvasLayer/Saved_ui/s_ui"]
-offset_left = 415.0
+offset_left = 379.0
 offset_top = 55.0
-offset_right = 692.0
+offset_right = 726.0
 offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("7_yete3")
 theme_override_font_sizes/font_size = 40
 text = "Enemy Saved !"
 horizontal_alignment = 1
@@ -196,15 +201,22 @@ animation = NodePath("attack/AttackAnimated")
 visible = false
 position = Vector2(0, -486)
 
+[node name="PaperUiPanel" type="Sprite2D" parent="Camera3D/CanvasLayer/Attack_boost/attack"]
+position = Vector2(150.119, 13.6496)
+scale = Vector2(1.76224, 0.70073)
+texture = ExtResource("7_xcoxv")
+
 [node name="Label" type="Label" parent="Camera3D/CanvasLayer/Attack_boost/attack"]
-offset_left = 66.0
-offset_right = 224.0
+offset_left = 43.0
+offset_right = 268.0
 offset_bottom = 23.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("7_yete3")
 text = "Attack Boost Active !"
 
 [node name="AttackAnimated" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer/Attack_boost/attack"]
-position = Vector2(149.5, 19)
-scale = Vector2(7.65625, 3.125)
+position = Vector2(150, 13)
+scale = Vector2(8, 3)
 sprite_frames = SubResource("SpriteFrames_lnnne")
 frame_progress = 0.394442
 
@@ -219,16 +231,22 @@ animation = NodePath("speed/speedAnimation")
 visible = false
 position = Vector2(0, -486)
 
+[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
+position = Vector2(1000, 14)
+scale = Vector2(1.76224, 0.70073)
+texture = ExtResource("7_xcoxv")
+
 [node name="speedAnimation" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
-position = Vector2(1005, 14.5)
-scale = Vector2(6.5625, 2.40625)
+position = Vector2(1002, 15)
+scale = Vector2(8, 3)
 sprite_frames = SubResource("SpriteFrames_hrqyr")
 frame_progress = 0.80876
 
 [node name="Label" type="Label" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
-offset_left = 927.0
-offset_right = 1083.0
+offset_left = 899.0
+offset_right = 1113.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_yete3")
 text = "Speed Boost Active !"
 
 [node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer"]
@@ -312,15 +330,26 @@ other = NodePath("../Health UI")
 [node name="deathUI" type="Node2D" parent="Camera3D/CanvasLayer/game_over"]
 visible = false
 
+[node name="PaperUiPanel" type="Sprite2D" parent="Camera3D/CanvasLayer/game_over/deathUI"]
+position = Vector2(522.035, 169)
+scale = Vector2(2.93007, 1)
+texture = ExtResource("7_xcoxv")
+
 [node name="Label" type="Label" parent="Camera3D/CanvasLayer/game_over/deathUI"]
 offset_left = 346.0
 offset_top = 60.0
 offset_right = 701.0
 offset_bottom = 283.0
+theme_override_fonts/font = ExtResource("7_yete3")
 theme_override_font_sizes/font_size = 40
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D/CanvasLayer/game_over/deathUI"]
+position = Vector2(522, 344)
+scale = Vector2(2.57007, 0.920002)
+texture = ExtResource("7_xcoxv")
 
 [node name="exit_button" type="Button" parent="Camera3D/CanvasLayer/game_over/deathUI"]
 process_mode = 3
@@ -328,7 +357,9 @@ offset_left = 342.0
 offset_top = 289.0
 offset_right = 706.0
 offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("7_yete3")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8lm0y")
 text = "Exit"
 script = ExtResource("5_m0vb5")
 sceneName = "res://Levels/main_menu.tscn"
@@ -418,13 +449,13 @@ shape = SubResource("CylinderShape3D_fnev5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668091, -3.33146, 1.4552)
 script = ExtResource("5_md0m2")
 
-[connection signal="move_boost" from="." to="Camera3D/CanvasLayer/Speed_boost" method="_on_player_move_boost"]
 [connection signal="move_boost" from="." to="Camera3D/healer" method="_on_player_move_boost"]
+[connection signal="move_boost" from="." to="Camera3D/CanvasLayer/Speed_boost" method="_on_player_move_boost"]
 [connection signal="paused" from="." to="Camera3D/CanvasLayer/Paused" method="_on_player_paused"]
+[connection signal="wolf_spawn" from="." to="Camera3D/healer" method="_on_player_wolf_spawn"]
+[connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Saved_ui" method="_on_player_wolf_spawn"]
 [connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Attack_boost" method="_on_player_wolf_spawn"]
 [connection signal="wolf_spawn" from="." to="Camera3D/attack_book" method="_on_player_wolf_spawn"]
-[connection signal="wolf_spawn" from="." to="Camera3D/CanvasLayer/Saved_ui" method="_on_player_wolf_spawn"]
-[connection signal="wolf_spawn" from="." to="Camera3D/healer" method="_on_player_wolf_spawn"]
 [connection signal="timeout" from="speed_timer" to="." method="_on_speed_timer_timeout"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/game_over/deathUI/exit_button" to="Camera3D/CanvasLayer/game_over/deathUI/exit_button" method="_on_pressed"]
 [connection signal="pressed" from="Camera3D/CanvasLayer/Paused/p_menu/resume_button" to="Camera3D/CanvasLayer/Paused" method="_on_button_pressed"]

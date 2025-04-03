@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjqel6ppv0scd"]
+[gd_scene load_steps=13 format=3 uid="uid://bjqel6ppv0scd"]
 
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="1_dj4qn"]
 [ext_resource type="Script" path="res://Scripts/display_saved.gd" id="1_que44"]
 [ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="2_j2j4x"]
+[ext_resource type="Texture2D" uid="uid://cu132ogo2emap" path="res://Assets/Images/PaperUiStuff - Copy/PaperUiPanel.png" id="2_j5fiu"]
+[ext_resource type="FontFile" uid="uid://5ahb2vwr7e5d" path="res://Assets/Fonts/BigBlue_TerminalPlus.TTF" id="3_cdlky"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_s4t1s"]
+[ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="6_rwrh2"]
 
-[sub_resource type="SystemFont" id="SystemFont_0cig2"]
-msdf_pixel_range = 100
-msdf_size = 57
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0p7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4mi"]
 shading_mode = 0
@@ -29,11 +30,17 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -280.471, 0, -0.329285)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
+[node name="PaperUiPanel" type="Sprite2D" parent="Camera3D"]
+position = Vector2(540.518, 255.051)
+scale = Vector2(5.96503, 1.89781)
+texture = ExtResource("2_j5fiu")
+
 [node name="Label" type="Label" parent="Camera3D" node_paths=PackedStringArray("enemy")]
 offset_left = 250.0
 offset_top = 128.0
 offset_right = 818.0
 offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("3_cdlky")
 theme_override_font_sizes/font_size = 40
 text = "Cleanser"
 horizontal_alignment = 1
@@ -41,13 +48,19 @@ vertical_alignment = 1
 script = ExtResource("1_que44")
 enemy = NodePath("../../wolf")
 
+[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D"]
+position = Vector2(536.832, 453.204)
+scale = Vector2(2.33566, 0.591241)
+texture = ExtResource("2_j5fiu")
+
 [node name="Start" type="Button" parent="Camera3D"]
 offset_left = 368.0
 offset_top = 416.0
 offset_right = 707.0
 offset_bottom = 492.0
-theme_override_fonts/font = SubResource("SystemFont_0cig2")
+theme_override_fonts/font = ExtResource("3_cdlky")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l0p7c")
 text = "Menu"
 script = ExtResource("1_dj4qn")
 sceneName = "res://Levels/main_menu.tscn"
@@ -66,6 +79,41 @@ shape = SubResource("BoxShape3D_t0lig")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_mn6p3")
+
+[node name="background" type="Node3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 20.2449, 1.24249, -34.5309)
+
+[node name="Trees9" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08783, 0, -3.0153)
+
+[node name="Trees4" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90631, 0, -1.38379)
+
+[node name="Trees" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.72474, 0, 1.24721)
+
+[node name="Trees2" parent="background" instance=ExtResource("6_rwrh2")]
+
+[node name="Trees3" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.30559, 0, 0)
+
+[node name="Trees5" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26841, 0, -1.38379)
+
+[node name="Trees6" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04443, 0, -1.38379)
+
+[node name="Trees7" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19794, 0, -3.0153)
+
+[node name="Trees8" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.675635, 0, -3.0153)
+
+[node name="Trees10" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09382, 0, -3.0153)
+
+[node name="Trees11" parent="background" instance=ExtResource("6_rwrh2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09382, 0, -3.0153)
 
 [connection signal="pressed" from="Camera3D/Start" to="Camera3D/Start" method="_on_pressed"]
 
