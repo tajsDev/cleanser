@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://ds5rdkbb2n5fq"]
+[gd_scene load_steps=50 format=3 uid="uid://ds5rdkbb2n5fq"]
 
 [ext_resource type="Script" path="res://Scripts/player_movement.gd" id="1_7jrg8"]
 [ext_resource type="Environment" uid="uid://dgpfss727l447" path="res://Player/grey.tres" id="2_ql2dl"]
@@ -119,6 +119,10 @@ texture = SubResource("CanvasTexture_np8vb")
 modulate_color = Color(0.301961, 1, 0.47451, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8lm0y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2tmql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pittc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxspe"]
 shader = ExtResource("8_ann7w")
@@ -372,22 +376,36 @@ other = NodePath("../Health UI")
 [node name="p_menu" type="Node2D" parent="Camera3D/CanvasLayer/Paused"]
 visible = false
 
+[node name="PaperUiPanel" type="Sprite2D" parent="Camera3D/CanvasLayer/Paused/p_menu"]
+position = Vector2(515.727, 186.058)
+scale = Vector2(2.54545, 0.883212)
+texture = ExtResource("7_xcoxv")
+
 [node name="resume_button" type="Button" parent="Camera3D/CanvasLayer/Paused/p_menu"]
 process_mode = 3
 offset_left = 337.0
 offset_top = 131.0
 offset_right = 701.0
 offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("7_yete3")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2tmql")
 text = "Resume"
+
+[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D/CanvasLayer/Paused/p_menu"]
+position = Vector2(516, 343)
+scale = Vector2(2.54545, 0.883212)
+texture = ExtResource("7_xcoxv")
 
 [node name="exit_button" type="Button" parent="Camera3D/CanvasLayer/Paused/p_menu"]
 process_mode = 3
-offset_left = 342.0
+offset_left = 331.0
 offset_top = 289.0
-offset_right = 706.0
+offset_right = 695.0
 offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("7_yete3")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pittc")
 text = "Exit"
 script = ExtResource("5_m0vb5")
 sceneName = "res://Levels/main_menu.tscn"
