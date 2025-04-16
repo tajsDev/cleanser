@@ -190,14 +190,13 @@ scale = Vector2(5.96503, 1.89781)
 texture = ExtResource("2_j5fiu")
 
 [node name="Label" type="Label" parent="Camera3D" node_paths=PackedStringArray("enemy")]
-offset_left = 250.0
+offset_left = 232.0
 offset_top = 128.0
-offset_right = 818.0
+offset_right = 939.0
 offset_bottom = 369.0
 theme_override_fonts/font = ExtResource("3_cdlky")
 theme_override_font_sizes/font_size = 40
 text = "Cleanser"
-horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_que44")
 enemy = NodePath("../../wolf")
