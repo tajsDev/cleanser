@@ -3,7 +3,8 @@ extends Area3D
 @export var sceneName : String
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.queue_free()
 
 func moveScene() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):

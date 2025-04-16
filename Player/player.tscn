@@ -227,31 +227,31 @@ frame_progress = 0.394442
 [node name="Speed_boost" type="Node2D" parent="Camera3D/CanvasLayer" node_paths=PackedStringArray("boost_ui", "boost_time", "animation")]
 position = Vector2(12, 529)
 script = ExtResource("4_sh7hn")
-boost_ui = NodePath("speed")
+boost_ui = NodePath("Speed")
 boost_time = NodePath("../../attack_book/boost_timer")
-animation = NodePath("speed/speedAnimation")
+animation = NodePath("Speed/speedAnimation")
 
-[node name="speed" type="Node2D" parent="Camera3D/CanvasLayer/Speed_boost"]
+[node name="Speed" type="Node2D" parent="Camera3D/CanvasLayer/Speed_boost"]
 visible = false
 position = Vector2(0, -486)
 
-[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
+[node name="PaperUiPanel2" type="Sprite2D" parent="Camera3D/CanvasLayer/Speed_boost/Speed"]
 position = Vector2(1000, 14)
 scale = Vector2(1.76224, 0.70073)
 texture = ExtResource("7_xcoxv")
 
-[node name="speedAnimation" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
-position = Vector2(1002, 15)
-scale = Vector2(8, 3)
-sprite_frames = SubResource("SpriteFrames_hrqyr")
-frame_progress = 0.80876
-
-[node name="Label" type="Label" parent="Camera3D/CanvasLayer/Speed_boost/speed"]
+[node name="Label2" type="Label" parent="Camera3D/CanvasLayer/Speed_boost/Speed"]
 offset_left = 899.0
 offset_right = 1113.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("7_yete3")
 text = "Speed Boost Active !"
+
+[node name="speedAnimation" type="AnimatedSprite2D" parent="Camera3D/CanvasLayer/Speed_boost/Speed"]
+position = Vector2(1002, 15)
+scale = Vector2(8, 3)
+sprite_frames = SubResource("SpriteFrames_hrqyr")
+frame_progress = 0.137957
 
 [node name="Health UI" type="Node2D" parent="Camera3D/CanvasLayer"]
 position = Vector2(12, 529)
@@ -483,6 +483,7 @@ script = ExtResource("5_md0m2")
 [connection signal="timeout" from="Camera3D/attack_timer" to="Camera3D/attack_book" method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/CanvasLayer/Attack_boost" method="_on_boost_timer_timeout"]
 [connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/attack_book" method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="Camera3D/attack_book/boost_timer" to="Camera3D/CanvasLayer/Speed_boost" method="_on_boost_timer_timeout"]
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="dead" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/game_over" method="_on_health_manager_dead"]
 [connection signal="health_changed" from="Area3D/HealthManager" to="Camera3D/CanvasLayer/Health UI/Node2D/HealthBar" method="_on_health_manager_health_changed"]

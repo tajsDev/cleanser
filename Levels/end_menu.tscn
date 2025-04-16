@@ -1,12 +1,114 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjqel6ppv0scd"]
+[gd_scene load_steps=35 format=3 uid="uid://bjqel6ppv0scd"]
 
+[ext_resource type="Script" path="res://Scripts/villager_nav.gd" id="1_63nic"]
 [ext_resource type="Script" path="res://Scripts/start_button.gd" id="1_dj4qn"]
 [ext_resource type="Script" path="res://Scripts/display_saved.gd" id="1_que44"]
-[ext_resource type="PackedScene" uid="uid://busavbu5ruen3" path="res://Enemies/wolf.tscn" id="2_j2j4x"]
+[ext_resource type="Script" path="res://Scripts/enemy_hit.gd" id="2_3o17v"]
 [ext_resource type="Texture2D" uid="uid://cu132ogo2emap" path="res://Assets/Images/PaperUiStuff - Copy/PaperUiPanel.png" id="2_j5fiu"]
 [ext_resource type="FontFile" uid="uid://5ahb2vwr7e5d" path="res://Assets/Fonts/BigBlue_TerminalPlus.TTF" id="3_cdlky"]
 [ext_resource type="Texture2D" uid="uid://bv0vnbven5rgd" path="res://Assets/Images/grass_lowres.png" id="3_s4t1s"]
+[ext_resource type="PackedScene" uid="uid://ddp0d67qg62j3" path="res://Enemies/bubble.tscn" id="3_yygx7"]
+[ext_resource type="Script" path="res://Scripts/health_manager.gd" id="4_avjl8"]
+[ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="5_u07ua"]
 [ext_resource type="PackedScene" uid="uid://tq57gx05lw6r" path="res://Assets/trees.tscn" id="6_rwrh2"]
+[ext_resource type="PackedScene" uid="uid://da2nbp14db2xt" path="res://Projectiles/wolf_attack.tscn" id="6_uxoxd"]
+[ext_resource type="Texture2D" uid="uid://c37jxqb4pikdp" path="res://Assets/Images/c_wolf_fight.png" id="7_ecjca"]
+[ext_resource type="Texture2D" uid="uid://c388qkon06vwh" path="res://Assets/Images/wolf_attack.png" id="8_x6hgb"]
+[ext_resource type="Texture2D" uid="uid://j2qj3bwki4cq" path="res://Assets/Images/c_wolf_walk.png" id="9_a5rau"]
+[ext_resource type="Script" path="res://Scripts/dead_spawner.gd" id="10_a6xaa"]
+[ext_resource type="PackedScene" uid="uid://d2bqx5rg2agfv" path="res://Assets/psx_grave_stone.tscn" id="11_mmlby"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwtjf"]
+size = Vector3(0.655762, 0.31781, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yture"]
+size = Vector3(0.492767, 0.563232, 0.393677)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nukkt"]
+atlas = ExtResource("7_ecjca")
+region = Rect2(0, 0, 151, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4gk8"]
+atlas = ExtResource("7_ecjca")
+region = Rect2(151, 0, 151, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3sut"]
+atlas = ExtResource("7_ecjca")
+region = Rect2(302, 0, 151, 152)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b10q"]
+atlas = ExtResource("8_x6hgb")
+region = Rect2(0, 0, 152, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em2lu"]
+atlas = ExtResource("8_x6hgb")
+region = Rect2(152, 0, 152, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2aw0"]
+atlas = ExtResource("9_a5rau")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onw20"]
+atlas = ExtResource("9_a5rau")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44i4q"]
+atlas = ExtResource("9_a5rau")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh5jh"]
+atlas = ExtResource("9_a5rau")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gtc4r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nukkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4gk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3sut")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b10q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em2lu")
+}],
+"loop": true,
+"name": &"changed",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2aw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onw20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44i4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh5jh")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0p7c"]
 
@@ -25,8 +127,60 @@ material = SubResource("StandardMaterial3D_6e4mi")
 
 [node name="end_menu" type="Node3D"]
 
-[node name="wolf" parent="." instance=ExtResource("2_j2j4x")]
+[node name="wolf" type="CharacterBody3D" parent="." groups=["enemies", "enemy_proj"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -280.471, 0, -0.329285)
+script = ExtResource("1_63nic")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wolf"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0962677, -0.279381, 0.778411)
+shape = SubResource("BoxShape3D_xwtjf")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="wolf"]
+simplify_path = true
+avoidance_enabled = true
+use_3d_avoidance = true
+
+[node name="Area3D" type="Area3D" parent="wolf" groups=["enemy_proj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.905792)
+disable_mode = 1
+script = ExtResource("2_3o17v")
+bubble = ExtResource("3_yygx7")
+
+[node name="HealthManager" type="Node3D" parent="wolf/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0953622)
+script = ExtResource("4_avjl8")
+cur_health = 100
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wolf/Area3D" groups=["enemy_proj"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0866089, 0.14642, -0.0772704)
+shape = SubResource("BoxShape3D_yture")
+
+[node name="Timer" type="Timer" parent="wolf"]
+one_shot = true
+
+[node name="Attack" type="Node3D" parent="wolf" node_paths=PackedStringArray("navigation_agent", "animation", "canTimer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.156273, 0.467789)
+script = ExtResource("5_u07ua")
+navigation_agent = NodePath("../NavigationAgent3D")
+projectile_scene = ExtResource("6_uxoxd")
+launch_threshold = 3.0
+animation = NodePath("../Wolf")
+canTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="wolf/Attack"]
+wait_time = 2.0
+
+[node name="Wolf" type="AnimatedSprite3D" parent="wolf"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0121045, 0.0966873, 0.925661)
+sprite_frames = SubResource("SpriteFrames_gtc4r")
+animation = &"walk"
+frame = 2
+frame_progress = 0.364444
+
+[node name="Dead_spawner" type="Node3D" parent="wolf"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213257, -0.382748, 0)
+script = ExtResource("10_a6xaa")
+grave = ExtResource("11_mmlby")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
@@ -115,6 +269,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09382, 0, -3.0153)
 [node name="Trees11" parent="background" instance=ExtResource("6_rwrh2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09382, 0, -3.0153)
 
+[connection signal="area_entered" from="wolf/Area3D" to="wolf/Area3D" method="_on_area_entered"]
+[connection signal="changed" from="wolf/Area3D" to="wolf" method="_on_area_3d_changed"]
+[connection signal="changed" from="wolf/Area3D" to="wolf/Attack" method="_on_area_3d_changed"]
+[connection signal="dead" from="wolf/Area3D/HealthManager" to="wolf" method="_on_health_manager_dead"]
+[connection signal="gibbed" from="wolf/Area3D/HealthManager" to="wolf" method="_on_health_manager_gibbed"]
+[connection signal="hurts" from="wolf/Area3D/HealthManager" to="wolf/Area3D" method="_on_health_manager_hurts"]
+[connection signal="timeout" from="wolf/Timer" to="wolf" method="_on_timer_timeout"]
+[connection signal="timeout" from="wolf/Attack/Timer" to="wolf/Attack" method="_on_timer_timeout"]
 [connection signal="pressed" from="Camera3D/Start" to="Camera3D/Start" method="_on_pressed"]
-
-[editable path="wolf"]
