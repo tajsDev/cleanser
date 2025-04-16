@@ -16,3 +16,8 @@ func _on_player_move_boost():
 	animation.play("default")
 	boost_ui.visible = true
 	boost_time.start()
+
+
+func _on_speed_timer_timeout():
+	boost_ui.visible = false
+
