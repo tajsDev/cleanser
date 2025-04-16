@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/health_manager.gd" id="4_hr07x"]
 [ext_resource type="Script" path="res://Scripts/enemy_attack.gd" id="5_ote04"]
 [ext_resource type="PackedScene" uid="uid://b4syh0b1rhl5r" path="res://Projectiles/dragon_attack.tscn" id="6_n6l05"]
+[ext_resource type="Script" path="res://Scripts/dead_spawner.gd" id="8_8j54f"]
+[ext_resource type="PackedScene" uid="uid://d2bqx5rg2agfv" path="res://Assets/psx_grave_stone.tscn" id="9_jx5nq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gfxie"]
 size = Vector3(1, 0.2771, 1)
@@ -29,14 +31,6 @@ region = Rect2(294, 0, 147, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvqoq"]
 atlas = ExtResource("1_rkp6l")
 region = Rect2(0, 0, 147, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hunhg"]
-atlas = ExtResource("1_rkp6l")
-region = Rect2(147, 0, 147, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_krfbh"]
-atlas = ExtResource("1_rkp6l")
-region = Rect2(294, 0, 147, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vslhp"]
 atlas = ExtResource("1_hfwv0")
@@ -69,12 +63,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uvqoq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hunhg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krfbh")
 }],
 "loop": true,
 "name": &"changed",
@@ -95,10 +83,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="dragon" type="CharacterBody3D" groups=["enemies", "enemy_proj"]]
+[node name="dragon" type="CharacterBody3D" node_paths=PackedStringArray("dead_spawn") groups=["enemies", "enemy_proj"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.329285)
 slide_on_ceiling = false
 script = ExtResource("1_wnwaq")
+dead_spawn = NodePath("Dead_spawner")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.364006, -3.27396, 0.778411)
@@ -115,7 +104,7 @@ script = ExtResource("2_ea6qt")
 [node name="HealthManager" type="Node3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0953622)
 script = ExtResource("4_hr07x")
-max_health = 300
+max_health = 200
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" groups=["enemy_proj"]]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.0542378, 0.213132, -0.0569153)
@@ -136,12 +125,16 @@ animation = NodePath("../AnimatedSprite3D")
 canTimer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Attack"]
-wait_time = 0.5
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -0.0121045, 0.0966873, 0.925661)
 sprite_frames = SubResource("SpriteFrames_utkf0")
 animation = &"changed"
+
+[node name="Dead_spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.213257, -0.382748, 0)
+script = ExtResource("8_8j54f")
+grave = ExtResource("9_jx5nq")
 
 [connection signal="area_entered" from="Area3D" to="Area3D" method="_on_area_entered"]
 [connection signal="changed" from="Area3D" to="." method="_on_area_3d_changed"]
